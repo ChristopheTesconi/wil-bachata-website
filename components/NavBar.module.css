@@ -1,0 +1,110 @@
+/* Navbar principale */
+.navbarCustom {
+  background-color: #000000 !important;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+/* Logo */
+.logo {
+  margin-right: 15px;
+  border-radius: 8px; /* Coins arrondis pour le logo */
+}
+
+/* Texte de la marque */
+.brandText {
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: #ffffff;
+  vertical-align: middle;
+}
+
+/* Liens de navigation */
+.navbarCustom :global(.nav-link) {
+  color: #ffffff !important;
+  transition: color 0.3s ease;
+}
+
+.navbarCustom :global(.nav-link:hover) {
+  color: #aa01ff !important;
+}
+
+.navbarCustom :global(.navbar-brand) {
+  color: #ffffff !important;
+  display: flex;
+  align-items: center;
+}
+
+.navbarCustom :global(.navbar-toggler-icon) {
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(255, 255, 255, 1)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+  border: 2px solid #ffffff; /* Bordure blanche */
+  border-radius: 6px;        /* Coins arrondis */
+  padding: 15px;   
+}
+
+/* Bouton WhatsApp */
+.whatsappBtn {
+  margin: 0 10px;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+}
+
+/* Liens de langue */
+.langLink {
+  font-weight: 600;
+  font-size: 0.9rem;
+  padding: 0.5rem 0.7rem !important;
+  color: #ffffff !important;
+}
+
+/* Liens sociaux */
+.socialLink {
+  color: #ffffff;
+  font-size: 1.3rem;
+  margin: 0 8px;
+  transition: color 0.3s ease;
+  text-decoration: none;
+}
+
+.socialLink:hover {
+  color: #aa01ff;
+}
+
+.whatsappCustom {
+  background-color: transparent; /* Supprime le fond vert */
+  color: #ffffff; /* Couleur de l’icône et du texte */
+  border: 2px solid #ffffff; /* Optionnel : contour vert */
+  padding: 0.3rem 0.6rem;
+  border-radius: 5px;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.whatsappCustom:hover {
+  color: #aa01ff;
+  border: 2px solid #aa01ff;
+}
+
+/* Responsive Mobile */
+@media (max-width: 991px) {
+  .whatsappBtn {
+    margin: 10px 0;
+    width: 100%;
+  }
+
+  .navDivider {
+    display: none !important;
+  }
+
+  .socialLink {
+    display: inline-block;
+    margin: 10px 15px 10px 0;
+  }
+
+  .brandText {
+    font-size: 1.4rem;
+  }
+}

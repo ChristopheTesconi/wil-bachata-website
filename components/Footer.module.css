@@ -1,0 +1,47 @@
+.footer {
+  background-color: #000000; /* noir pour rappeler la navbar */
+  color: #ffffff;
+  text-align: center;
+  padding: 1rem 1rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+
+  @media (max-width: 600px) {
+    padding: 1rem 0.5rem;
+  }
+}
+
+.footerLinks {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.footerLinks a {
+  color: #ffffff; /* vert WhatsApp pour cohérence */
+  text-decoration: none;
+  font-size: 1rem;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.footerLinks a:hover {
+  color: #aa01ff;
+}
+
+.footer p {
+  font-size: 0.85rem;
+  opacity: 0.7;
+}
+
+.footer p a {
+  color: #a5b4fc;
+  margin-left: 0.3rem;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.footer p a:hover {
+  color: #ffffff;
+}
