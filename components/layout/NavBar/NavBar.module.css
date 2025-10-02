@@ -1,0 +1,231 @@
+/* Navbar principale */
+.navbarCustom {
+  background-color: #000000 !important;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+/* Container avec flexbox */
+.navbarContainer {
+  display: flex !important;
+  justify-content: space-between !important;
+  align-items: center !important;
+}
+
+/* Section droite pour WhatsApp + Langues + Burger */
+.rightSection {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* Logo */
+.logo {
+  margin-right: 15px;
+  border-radius: 8px;
+}
+
+/* Texte de la marque */
+.brandText {
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: #ffffff;
+  vertical-align: middle;
+}
+
+/* Liens de navigation */
+.navbarCustom :global(.nav-link) {
+  color: #ffffff !important;
+  transition: color 0.3s ease;
+}
+
+.navbarCustom :global(.nav-link:hover) {
+  color: #aa01ff !important;
+}
+
+.navbarCustom :global(.navbar-brand) {
+  color: #ffffff !important;
+  display: flex;
+  align-items: center;
+}
+
+/* Burger Toggle - caché sur desktop */
+.navbarToggler {
+  display: none;
+}
+
+.navbarCustom :global(.navbar-toggler-icon) {
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(255, 255, 255, 1)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+  border-radius: 6px;
+  padding: 15px;   
+}
+
+/* Bouton WhatsApp */
+.whatsappBtn {
+  margin: 0;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.whatsappCustom {
+  background-color: transparent;
+  color: #ffffff;
+  border: 2px solid #ffffff;
+  padding: 0.3rem 0.6rem;
+  border-radius: 5px;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.whatsappCustom:hover {
+  color: #aa01ff;
+  border: 2px solid #aa01ff;
+}
+
+/* Dropdown langues */
+.languageDropdown {
+  margin: 0;
+}
+
+.globeIcon {
+  background: transparent !important;
+  border: none !important;
+  color: #ffffff !important;
+  padding: 0.3rem 0.6rem !important;
+  transition: color 0.3s ease;
+  box-shadow: none !important;
+}
+
+.globeIcon:hover,
+.globeIcon:focus,
+.globeIcon:active {
+  color: #aa01ff !important;
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+.globeIcon::after {
+  display: none !important;
+}
+
+.languageMenu {
+  background-color: #000000 !important;
+  border: 1px solid #ffffff !important;
+  border-radius: 6px;
+  width: 140px !important;
+  min-width: auto !important;
+  padding: 0.25rem 0 !important;
+  white-space: nowrap !important;
+}
+
+.languageMenu :global(.dropdown-item) {
+  color: #ffffff !important;
+  padding: 0.5rem 1rem;
+  transition: all 0.3s ease;
+}
+
+.languageMenu :global(.dropdown-item:hover),
+.languageMenu :global(.dropdown-item:focus) {
+  background-color: #aa01ff !important;
+  color: #ffffff !important;
+}
+
+/* Liens sociaux */
+.socialLink {
+  color: #ffffff;
+  font-size: 1.3rem;
+  margin: 0 8px;
+  transition: color 0.3s ease;
+  text-decoration: none;
+}
+
+.socialLink:hover {
+  color: #aa01ff;
+}
+
+/* Responsive Mobile */
+@media (max-width: 991px) {
+  /* Afficher le burger sur mobile */
+  .navbarToggler {
+    display: block !important;
+    border: 2px solid #ffffff;
+    border-radius: 6px;
+    padding: 8px 12px;
+  }
+
+  /* Ordre des éléments sur mobile : Logo | WhatsApp | Langues | Burger */
+  .rightSection {
+    order: 2;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-left: auto;
+  }
+
+  .navbarCustom :global(.navbar-brand) {
+    order: 1;
+  }
+
+  /* Menu collapse prend toute la largeur sous les autres éléments */
+  .mainNavCollapse {
+    order: 3;
+    width: 100%;
+    flex-basis: 100%;
+  }
+
+  /* Aligner les liens à gauche sur mobile */
+  .mainNavCollapse :global(.nav) {
+    align-items: flex-start !important;
+  }
+
+  .navbarCustom :global(.nav-link) {
+    text-align: left;
+    width: 100%;
+  }
+
+  .whatsappBtn {
+    margin: 0;
+  }
+
+  .languageDropdown {
+    margin: 0;
+  }
+
+  .navDivider {
+    display: none !important;
+  }
+
+  /* Masquer les icônes sociales sur mobile */
+  .socialLink {
+    display: none !important;
+  }
+
+  .brandText {
+    font-size: 1.4rem;
+  }
+
+  /* Optimisation de l'espacement mobile */
+  .navbarContainer {
+    padding: 0.5rem 1rem !important;
+    flex-wrap: wrap;
+  }
+
+  .logo {
+    width: 70px;
+    height: 70px;
+  }
+
+  .whatsappCustom {
+    font-size: 1.2rem;
+    padding: 0.25rem 0.5rem;
+  }
+
+  .globeIcon {
+    font-size: 1.2rem;
+    padding: 0.25rem 0.5rem !important;
+  }
+}
