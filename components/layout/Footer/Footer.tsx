@@ -81,7 +81,9 @@ export default function Footer({ currentLocale = "en" }: FooterProps) {
             </p>
             <p>
               <a
-                href="tel:+41774934018"
+                href="https://wa.me/41774934018?text=Hello%2C%20I%27m%20interested%20in%20Bachata%20classes"
+                target="_blank"
+                rel="noopener noreferrer"
                 itemProp="telephone"
                 aria-label={`Call us at ${t.phone}`}
               >

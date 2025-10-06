@@ -29,6 +29,7 @@
 .carouselImage {
   object-fit: cover;
   transition: opacity 0.5s ease-in-out;
+  object-position: bottom center; 
 }
 
 /* Boutons de navigation style Apple */

@@ -1,27 +1,71 @@
+/* ==============================
+   Footer principal
+   ============================== */
 .footerContainer {
+  position: relative; /* Important pour ::before */
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: 2rem;
-  max-width: 1200px;
+  width: 100%;
   margin: 0 auto;
-  padding: 3rem 1rem;
-  border: 2px red solid;
+  padding: 3rem 3rem;
+  color: #ffffff; /* texte blanc par défaut */
+  background-color: #000000; /* fond noir */
 }
 
+/* Ligne colorée animée en haut */
+.footerContainer::before {
+  content: "";
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 5px;
+  border-top-left-radius: 4px;
+  border-top-right-radius: 4px;
+  background: linear-gradient(
+    90deg,
+    #ffcc33,
+    /* jaune RDF */ #1cb0f6,
+    /* bleu Bachata */ #a64cf5,
+    /* violet Fusion */ #ff6a00,
+    /* orange/rouge splash */ #ffcc33
+  );
+  background-size: 400% 100%;
+  animation: gradientFlow 6s ease infinite;
+  z-index: 999;
+}
+
+@keyframes gradientFlow {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* Sections internes du footer */
 .footerSection {
   display: flex;
   flex-direction: column;
   gap: 1rem;
+  color: inherit;
 }
 
 .footerBrand {
   font-size: 1.5rem;
   font-weight: bold;
   margin: 0;
+  color: inherit;
 }
 
 .footerTagline {
-  color: #666;
+  color: inherit;
   font-size: 0.95rem;
   margin: 0;
 }
@@ -29,12 +73,14 @@
 .footerAddress {
   font-style: normal;
   font-size: 0.9rem;
+  color: inherit;
 }
 
 .footerHeading {
   font-size: 1.1rem;
   font-weight: 600;
   margin-bottom: 0.5rem;
+  color: inherit;
 }
 
 .footerLinks {
@@ -44,12 +90,24 @@
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
+  color: inherit;
+}
+
+.footerLinks a {
+  color: inherit; /* liens blancs */
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.footerLinks a:hover {
+  color: #aa01ff; /* violet au hover */
 }
 
 .socialLinks {
   display: flex;
   flex-direction: column;
   gap: 0.75rem;
+  color: inherit;
 }
 
 .socialLink {
@@ -57,17 +115,52 @@
   align-items: center;
   gap: 0.5rem;
   text-decoration: none;
+  color: inherit;
   transition: color 0.2s;
+}
+
+.socialLink:hover {
+  color: #aa01ff;
 }
 
 .footerBottom {
   border-top: 1px solid #ddd;
   padding: 1.5rem 1rem;
   text-align: center;
+  color: inherit;
 }
 
 .copyright {
   margin: 0;
   font-size: 0.9rem;
-  color: #666;
+  color: inherit;
+}
+
+/* ==============================
+   Responsive Footer
+   ============================== */
+@media (max-width: 768px) {
+  .footerContainer {
+    padding: 2rem 1rem;
+  }
+
+  .footerSection {
+    gap: 0.75rem;
+  }
+
+  .footerBrand {
+    font-size: 1.3rem;
+  }
+
+  .footerHeading {
+    font-size: 1rem;
+  }
+
+  .footerLinks a {
+    font-size: 0.95rem;
+  }
+
+  .socialLink {
+    font-size: 0.95rem;
+  }
 }
