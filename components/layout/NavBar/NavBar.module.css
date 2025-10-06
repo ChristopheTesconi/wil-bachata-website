@@ -1,5 +1,8 @@
-/* Navbar principale */
+/* ==============================
+   Navbar principale
+   ============================== */
 .navbarCustom {
+  position: relative; /* Important pour ::after */
   background-color: #000000 !important;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
   padding: 0.3rem 0 !important;
@@ -9,10 +12,45 @@
 .navbarContainer {
   display: flex !important;
   justify-content: space-between !important;
-  align-items: auto !important;
+  align-items: center !important;
+  flex-wrap: wrap;
 }
 
-/* Section droite pour WhatsApp + Langues + Burger */
+/* ==============================
+   Ligne colorée animée en bas
+   ============================== */
+.navbarCustom::after {
+  content: "";
+  display: block;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 5px;
+  border-bottom-left-radius: 4px;
+  border-bottom-right-radius: 4px;
+  background: linear-gradient(
+    90deg,
+    #ffcc33,  /* jaune RDF */
+    #1cb0f6,  /* bleu Bachata */
+    #a64cf5,  /* violet Fusion */
+    #ff6a00,  /* orange/rouge splash */
+    #ffcc33   /* boucle pour effet continu */
+  );
+  background-size: 400% 100%;
+  animation: gradientFlow 6s ease infinite;
+  z-index: 999;
+}
+
+@keyframes gradientFlow {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* ==============================
+   Section droite : WhatsApp, langues, burger
+   ============================== */
 .rightSection {
   display: flex;
   align-items: center;
@@ -25,14 +63,6 @@
   border-radius: 8px;
   width: 100px !important;
   height: 100px !important;
-}
-
-/* Texte de la marque */
-.brandText {
-  font-size: 1.8rem;
-  font-weight: bold;
-  color: #ffffff;
-  vertical-align: middle;
 }
 
 /* Liens de navigation */
@@ -53,7 +83,7 @@
   align-items: center;
 }
 
-/* Burger Toggle - caché sur desktop */
+/* Burger Toggle */
 .navbarToggler {
   display: none;
 }
@@ -66,10 +96,10 @@
 
 /* Bouton WhatsApp */
 .whatsappBtn {
-  margin: 0;
   display: inline-flex;
   align-items: center;
   gap: 5px;
+  margin: 0;
 }
 
 .whatsappCustom {
@@ -78,16 +108,13 @@
   border: 2px solid #ffffff;
   padding: 0.3rem 0.6rem;
   border-radius: 5px;
-  display: inline-flex;
-  align-items: center;
-  gap: 5px;
-  text-decoration: none;
   transition: all 0.3s ease;
+  text-decoration: none;
 }
 
 .whatsappCustom:hover {
   color: #aa01ff;
-  border: 2px solid #aa01ff;
+  border-color: #aa01ff;
 }
 
 /* Dropdown langues */
@@ -108,9 +135,6 @@
 .globeIcon:focus,
 .globeIcon:active {
   color: #aa01ff !important;
-  background: transparent !important;
-  border: none !important;
-  box-shadow: none !important;
 }
 
 .globeIcon::after {
@@ -139,22 +163,10 @@
   color: #ffffff !important;
 }
 
-/* Liens sociaux */
-.socialLink {
-  color: #ffffff;
-  font-size: 1.3rem;
-  margin: 0 8px;
-  transition: color 0.3s ease;
-  text-decoration: none;
-}
-
-.socialLink:hover {
-  color: #aa01ff;
-}
-
-/* Responsive Mobile */
+/* ==============================
+   Responsive Mobile
+   ============================== */
 @media (max-width: 991px) {
-  /* Afficher le burger sur mobile */
   .navbarToggler {
     display: block !important;
     border: 2px solid #ffffff;
@@ -162,11 +174,8 @@
     padding: 8px 12px;
   }
 
-  /* Ordre des éléments sur mobile : Logo | WhatsApp | Langues | Burger */
   .rightSection {
     order: 2;
-    display: flex;
-    align-items: center;
     gap: 15px;
     margin-left: auto;
   }
@@ -175,14 +184,12 @@
     order: 1;
   }
 
-  /* Menu collapse prend toute la largeur sous les autres éléments */
   .mainNavCollapse {
     order: 3;
     width: 100%;
     flex-basis: 100%;
   }
 
-  /* Aligner les liens à gauche sur mobile */
   .mainNavCollapse :global(.nav) {
     align-items: flex-start !important;
   }
@@ -192,19 +199,11 @@
     width: 100%;
   }
 
-  .whatsappBtn {
-    margin: 0;
-  }
-
+  .whatsappBtn,
   .languageDropdown {
     margin: 0;
   }
 
-  .navDivider {
-    display: none !important;
-  }
-
-  /* Masquer les icônes sociales sur mobile */
   .socialLink {
     display: none !important;
   }
@@ -213,10 +212,8 @@
     font-size: 1.4rem;
   }
 
-  /* Optimisation de l'espacement mobile */
   .navbarContainer {
     padding: 0.5rem 1rem !important;
-    flex-wrap: wrap;
   }
 
   .logo {
