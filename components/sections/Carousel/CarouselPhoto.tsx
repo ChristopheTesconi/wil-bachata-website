@@ -9,7 +9,7 @@ const images = [
   { src: "/wil_sandra1.jpg", alt: "Wilfried and Sandra dancing Bachata" },
   { src: "/wil_sandra2.jpg", alt: "Wilfried and Sandra performance" },
   { src: "/wil_sandra3.jpg", alt: "Wilfried and Sandra Bachata duo" },
-  { src: "/wil_sandra4.mp4", alt: "Wilfried and Sandra dancing" },
+  { src: "/wil_sandra4.jpg", alt: "Wilfried and Sandra dancing" },
 ];
 
 export default function CarouselPhoto() {

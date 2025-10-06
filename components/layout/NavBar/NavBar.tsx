@@ -23,7 +23,7 @@ export default function NavBar() {
       role="navigation"
       aria-label="Main navigation"
     >
-      <Container className={styles.navbarContainer}>
+      <Container fluid className={styles.navbarContainer}>
         {/* Logo */}
         <Navbar.Brand
           as={Link}
