@@ -1,20 +1,30 @@
 "use client";
 
 import { useState, useRef, useEffect } from "react";
+import Image from "next/image";
 import styles from "./Home.module.css";
 
 export default function Home() {
-  const [open, setOpen] = useState([false, false, false]);
+  const [open, setOpen] = useState([false, false, false, false]);
   const contentRefs = [
     useRef<HTMLDivElement>(null),
     useRef<HTMLDivElement>(null),
     useRef<HTMLDivElement>(null),
+    useRef<HTMLDivElement>(null),
   ];
+  const videoRef = useRef<HTMLVideoElement>(null);
 
   const toggle = (index: number) => {
     setOpen((prev) => {
       const next = [...prev];
       next[index] = !next[index];
+
+      // Si on ferme la carte vidéo (index 3), on arrête la vidéo
+      if (index === 3 && next[index] === false && videoRef.current) {
+        videoRef.current.pause();
+        videoRef.current.currentTime = 0;
+      }
+
       return next;
     });
   };
@@ -39,7 +49,7 @@ export default function Home() {
     name: "RDF Bachata Fusion by Coach Wil",
     description:
       "Bachata Lab St. Gallen - Weekly Group Classes for all levels taught by Coach Wil",
-    url: "https://wilbachata.com",
+    url: "https://bachata-stgallen.ch",
     address: {
       "@type": "PostalAddress",
       streetAddress: "Unterstrasse 22",
@@ -193,13 +203,13 @@ export default function Home() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
       />
-      <main className={`container-fluid ${styles.home}`}>
+      <main id="home" className={`container-fluid ${styles.home}`}>
         {/* Hero Section */}
         <section className={styles.hero}>
           <h1>
-            RDF Bachata Fusion <span>by Coach Wil</span>
+            Bachata Lab St. Gallen <span>by Coach Wil</span>
           </h1>
-          <h2>Bachata Lab St. Gallen – Weekly Group Classes</h2>
+          <h2> RDF Bachata Fusion – Weekly Group Classes</h2>
         </section>
 
         {/* Cards Grid */}
@@ -373,6 +383,43 @@ export default function Home() {
                 </ul>
               </div>
             </article>
+
+            {/* Video */}
+            <article className={styles.card} aria-labelledby="video-title">
+              <header className={styles.cardHeader} onClick={() => toggle(3)}>
+                <button
+                  className={styles.toggleBtn}
+                  aria-expanded={open[3]}
+                  aria-controls="panel-video"
+                  aria-label="Toggle video"
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    toggle(3);
+                  }}
+                >
+                  <span className={styles.toggleIcon}>
+                    {open[3] ? "−" : "+"}
+                  </span>
+                </button>
+                <h3 id="video-title" className={styles.cardTitle}>
+                  🎥 Video
+                </h3>
+              </header>
+              <div
+                id="panel-video"
+                role="region"
+                aria-labelledby="video-title"
+                className={styles.cardContent}
+                ref={contentRefs[3]}
+              >
+                <div className={styles.videoWrapper}>
+                  <video controls ref={videoRef}>
+                    <source src="/wil_sandra4.mp4" type="video/mp4" />
+                    Your browser does not support the video tag.
+                  </video>
+                </div>
+              </div>
+            </article>
           </div>
         </section>
 
@@ -389,6 +436,14 @@ export default function Home() {
             <br />
             Coach Wil
           </p>
+          <div className={styles.outroImage}>
+            <Image
+              src="/rythm_dance_flow.png"
+              alt="RythmDanceFlow"
+              width={700}
+              height={300}
+            />
+          </div>
         </section>
       </main>
     </>

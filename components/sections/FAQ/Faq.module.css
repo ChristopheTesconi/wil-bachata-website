@@ -1,8 +1,9 @@
-/* Global DanceRoom */
-.danceRoom {
+/* Global FAQ */
+.faq {
   padding: 3rem 2rem;
   background-color: #000;
   color: #fff;
+
 }
 
 /* Hero */
@@ -17,13 +18,13 @@
   color: #ffcc33;
 }
 
-.hero h2 {
-  font-size: 1.25rem;
-  color: #aa01ff;
-  margin-top: 1rem;
+.hero h1 span {
+  display: block;
+  font-size: 1.8rem;
+  color: #1cb0f6;
 }
 
-/* Cards Grid */
+/* --- Cards Flexbox --- */
 .cardsSection {
   margin-bottom: 3rem;
   display: flex;
@@ -49,7 +50,7 @@
   }
 }
 
-/* Card */
+/* --- Card --- */
 .card {
   background: #111;
   border-radius: 16px;
@@ -77,7 +78,7 @@
   transition: color 0.3s ease;
 }
 
-/* Toggle Button */
+/* Bouton rond + animation rotation */
 .toggleBtn {
   background: #222;
   color: #fff;
@@ -92,6 +93,7 @@
   justify-content: center;
   cursor: pointer;
   transition: background 0.25s ease, transform 0.4s ease;
+  flex-shrink: 0;
 }
 
 .toggleBtn:hover {
@@ -99,6 +101,7 @@
   transform: scale(1.1);
 }
 
+/* Animation rotation + → – */
 .toggleIcon {
   display: inline-block;
   transition: transform 0.4s ease;
@@ -108,16 +111,17 @@
   transform: rotate(180deg);
 }
 
-/* Card title */
+/* Titre de la carte */
 .cardTitle {
   font-size: 1.25rem;
   font-weight: 600;
   margin: 0;
   color: #fff;
   transition: color 0.3s ease;
+  line-height: 1.4;
 }
 
-/* Card content */
+/* --- Contenu animé --- */
 .cardContent {
   max-height: 0;
   overflow: hidden;
@@ -127,32 +131,26 @@
   color: #fff;
 }
 
+/* Quand JS applique un max-height > 0 */
 .cardContent[style*="max-height:"][style*="px"] {
   opacity: 1;
 }
 
-.cardContent p,
-.cardContent li {
-  margin-bottom: 0.75rem;
+/* Texte du contenu */
+.cardContent p {
+  margin-bottom: 1rem;
   color: #fff;
-}
-
-.cardContent ul {
-  list-style: none;
-  padding-left: 0;
-}
-
-.cardContent ul li {
-  color: #fff;
-}
-
-.cardContent strong,
-.cardContent em {
-  color: #fff;
+  line-height: 1.6;
 }
 
 /* Outro */
 .outro {
   text-align: center;
-  margin-top: 3;
+  margin-top: 3rem;
+  color: #fff;
+}
+
+.outro h2,
+.outro p {
+  color: #fff;
 }

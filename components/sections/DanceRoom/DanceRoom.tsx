@@ -79,7 +79,7 @@ export default function DanceRoom() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
       />
-      <main className={`container-fluid ${styles.danceRoom}`}>
+      <main id="danceroom" className={`container-fluid ${styles.danceRoom}`}>
         {/* Hero Section */}
         <section className={styles.hero}>
           <h1>Bachata Lab Pro Membership</h1>

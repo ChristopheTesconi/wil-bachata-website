@@ -2,15 +2,62 @@
 
 import { useState } from "react";
 import { Container, Nav, Navbar, Dropdown } from "react-bootstrap";
-import Link from "next/link";
 import Image from "next/image";
 import { FaGlobe } from "react-icons/fa";
+import { useRouter, usePathname } from "next/navigation";
 import styles from "./NavBar.module.css";
 
 export default function NavBar() {
   const [expanded, setExpanded] = useState(false);
+  const router = useRouter();
+  const pathname = usePathname();
 
   const closeNav = () => setExpanded(false);
+
+  // Vérifie si on est sur la page d'accueil
+  const isHomePage =
+    pathname === "/" ||
+    pathname === "/en" ||
+    pathname === "/de" ||
+    pathname === "/fr";
+
+  const scrollToSection = (sectionId: string) => {
+    closeNav();
+
+    if (!isHomePage) {
+      // Si on est sur une autre page (comme legal notice), navigue vers la home
+      router.push(`/#${sectionId}`);
+    } else {
+      // Si on est déjà sur la home, scroll normalement
+      const element = document.getElementById(sectionId);
+      if (element) {
+        const navbarHeight = 120;
+        const elementPosition =
+          element.getBoundingClientRect().top + window.pageYOffset;
+        const offsetPosition = elementPosition - navbarHeight;
+
+        window.scrollTo({
+          top: offsetPosition,
+          behavior: "smooth",
+        });
+      }
+    }
+  };
+
+  const scrollToTop = () => {
+    closeNav();
+
+    if (!isHomePage) {
+      // Si on est sur une autre page, retourne à la home
+      router.push("/");
+    } else {
+      // Si on est déjà sur la home, scroll en haut
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth",
+      });
+    }
+  };
 
   return (
     <Navbar
@@ -18,7 +65,7 @@ export default function NavBar() {
       expanded={expanded}
       onToggle={setExpanded}
       className={styles.navbarCustom}
-      sticky="top"
+      fixed="top"
       as="nav"
       role="navigation"
       aria-label="Main navigation"
@@ -26,10 +73,9 @@ export default function NavBar() {
       <Container fluid className={styles.navbarContainer}>
         {/* Logo */}
         <Navbar.Brand
-          as={Link}
-          href="/en"
-          onClick={closeNav}
+          onClick={scrollToTop}
           className="d-flex align-items-center"
+          style={{ cursor: "pointer" }}
           aria-label="Wil Bachata Home"
         >
           <Image
@@ -42,24 +88,25 @@ export default function NavBar() {
           />
         </Navbar.Brand>
 
-        {/* Liens principaux dans le collapse - Desktop only */}
-        <Navbar.Collapse id="main-navbar-nav" className={styles.mainNavCollapse}>
+        {/* Liens principaux dans le collapse */}
+        <Navbar.Collapse
+          id="main-navbar-nav"
+          className={styles.mainNavCollapse}
+        >
           <Nav className="d-flex align-items-center" as="ul">
             <Nav.Item as="li">
               <Nav.Link
-                as={Link}
-                href="/en"
-                onClick={closeNav}
-                aria-label="Go to home page"
+                onClick={scrollToTop}
+                style={{ cursor: "pointer" }}
+                aria-label="Go to home section"
               >
                 Home
               </Nav.Link>
             </Nav.Item>
             <Nav.Item as="li">
               <Nav.Link
-                as={Link}
-                href="/en/about"
-                onClick={closeNav}
+                onClick={() => scrollToSection("about")}
+                style={{ cursor: "pointer" }}
                 aria-label="Learn about Wilfried and his dance experience"
               >
                 About Me
@@ -67,22 +114,38 @@ export default function NavBar() {
             </Nav.Item>
             <Nav.Item as="li">
               <Nav.Link
-                as={Link}
-                href="/en/danceroom"
-                onClick={closeNav}
+                onClick={() => scrollToSection("danceroom")}
+                style={{ cursor: "pointer" }}
                 aria-label="Discover our dance studio in St. Gallen"
               >
-                Dance Room
+                Membership
               </Nav.Link>
             </Nav.Item>
             <Nav.Item as="li">
               <Nav.Link
-                as={Link}
-                href="/en/contact"
-                onClick={closeNav}
+                onClick={() => scrollToSection("review")}
+                style={{ cursor: "pointer" }}
+                aria-label="Review from students"
+              >
+                Review
+              </Nav.Link>
+            </Nav.Item>
+            <Nav.Item as="li">
+              <Nav.Link
+                onClick={() => scrollToSection("contact")}
+                style={{ cursor: "pointer" }}
                 aria-label="Contact us for class information"
               >
                 Contact
+              </Nav.Link>
+            </Nav.Item>
+            <Nav.Item as="li">
+              <Nav.Link
+                onClick={() => scrollToSection("faq")}
+                style={{ cursor: "pointer" }}
+                aria-label="FAQ"
+              >
+                FAQ
               </Nav.Link>
             </Nav.Item>
           </Nav>
@@ -115,25 +178,34 @@ export default function NavBar() {
 
             <Dropdown.Menu className={styles.languageMenu}>
               <Dropdown.Item
-                as={Link}
-                href="/en"
-                onClick={closeNav}
+                href="#"
+                onClick={(e) => {
+                  e.preventDefault();
+                  closeNav();
+                  // TODO: Changer la langue en anglais
+                }}
                 hrefLang="en"
               >
                 🇬🇧 English
               </Dropdown.Item>
               <Dropdown.Item
-                as={Link}
-                href="/de"
-                onClick={closeNav}
+                href="#"
+                onClick={(e) => {
+                  e.preventDefault();
+                  closeNav();
+                  // TODO: Changer la langue en allemand
+                }}
                 hrefLang="de"
               >
                 🇩🇪 Deutsch
               </Dropdown.Item>
               <Dropdown.Item
-                as={Link}
-                href="/fr"
-                onClick={closeNav}
+                href="#"
+                onClick={(e) => {
+                  e.preventDefault();
+                  closeNav();
+                  // TODO: Changer la langue en français
+                }}
                 hrefLang="fr"
               >
                 🇫🇷 Français

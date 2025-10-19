@@ -40,7 +40,7 @@ export default function About() {
     jobTitle: "Bachata Instructor",
     description:
       "Coach Wil teaches Bachata in St. Gallen, focusing on strong solo foundations, rhythm, and confidence-building.",
-    url: "https://wilbachata.com",
+    url: "https://bachata-stgallen.ch",
     alumniOf: "Bachata Lab",
     knowsAbout: [
       "Bachata",
@@ -49,8 +49,8 @@ export default function About() {
       "Partner Work",
     ],
     sameAs: [
-      "https://www.instagram.com/wilbachata",
-      "https://www.facebook.com/wilbachata",
+      "https://www.instagram.com/coach_wil_84",
+      "https://www.facebook.com/people/Wil-Tah/100012235066793/",
     ],
   };
 
@@ -60,7 +60,7 @@ export default function About() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
       />
-      <main className={`container-fluid ${styles.about}`}>
+      <main id="about" className={`container-fluid ${styles.about}`}>
         {/* Hero Section */}
         <section className={styles.hero}>
           <h1>About Coach Wil</h1>

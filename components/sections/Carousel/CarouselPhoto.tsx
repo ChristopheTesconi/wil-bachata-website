@@ -3,9 +3,11 @@
 import { useState, useEffect } from "react";
 import Image from "next/image";
 import styles from "./CarouselPhoto.module.css";
+import MorePhoto from "./MorePhoto";
 
 const images = [
   { src: "/wil_class.jpg", alt: "Wilfried teaching Bachata class" },
+  { src: "/wil_class2.jpg", alt: "Wilfried teaching Bachata class" },
   { src: "/wil_sandra1.jpg", alt: "Wilfried and Sandra dancing Bachata" },
   { src: "/wil_sandra2.jpg", alt: "Wilfried and Sandra performance" },
   { src: "/wil_sandra3.jpg", alt: "Wilfried and Sandra Bachata Geneva" },
@@ -17,7 +19,7 @@ export default function CarouselPhoto() {
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
-    }, 9000);
+    }, 5000);
 
     return () => clearInterval(interval);
   }, []);
@@ -33,70 +35,73 @@ export default function CarouselPhoto() {
   };
 
   return (
-    <section className={styles.carouselSection}>
-      <div className={styles.carouselContainer}>
-        <button
-          onClick={goToPrevious}
-          className={`${styles.carouselButton} ${styles.carouselButtonPrev}`}
-          aria-label="Previous image"
-        >
-          <svg
-            width="24"
-            height="24"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="2"
-            strokeLinecap="round"
-            strokeLinejoin="round"
+    <>
+      <section className={styles.carouselSection}>
+        <div className={styles.carouselContainer}>
+          <button
+            onClick={goToPrevious}
+            className={`${styles.carouselButton} ${styles.carouselButtonPrev}`}
+            aria-label="Previous image"
           >
-            <polyline points="15 18 9 12 15 6"></polyline>
-          </svg>
-        </button>
+            <svg
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            >
+              <polyline points="15 18 9 12 15 6"></polyline>
+            </svg>
+          </button>
 
-        <div className={styles.carouselImageWrapper}>
-          <Image
-            src={images[currentIndex].src}
-            alt={images[currentIndex].alt}
-            fill
-            className={styles.carouselImage}
-            priority={currentIndex === 0}
-            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 1200px"
-          />
-        </div>
-
-        <button
-          onClick={goToNext}
-          className={`${styles.carouselButton} ${styles.carouselButtonNext}`}
-          aria-label="Next image"
-        >
-          <svg
-            width="24"
-            height="24"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="2"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          >
-            <polyline points="9 18 15 12 9 6"></polyline>
-          </svg>
-        </button>
-
-        <div className={styles.carouselIndicators}>
-          {images.map((_, index) => (
-            <button
-              key={index}
-              onClick={() => setCurrentIndex(index)}
-              className={`${styles.indicator} ${
-                index === currentIndex ? styles.indicatorActive : ""
-              }`}
-              aria-label={`Go to image ${index + 1}`}
+          <div className={styles.carouselImageWrapper}>
+            <Image
+              src={images[currentIndex].src}
+              alt={images[currentIndex].alt}
+              fill
+              className={styles.carouselImage}
+              priority={currentIndex === 0}
+              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 1200px"
             />
-          ))}
+          </div>
+
+          <button
+            onClick={goToNext}
+            className={`${styles.carouselButton} ${styles.carouselButtonNext}`}
+            aria-label="Next image"
+          >
+            <svg
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            >
+              <polyline points="9 18 15 12 9 6"></polyline>
+            </svg>
+          </button>
+
+          <div className={styles.carouselIndicators}>
+            {images.map((_, index) => (
+              <button
+                key={index}
+                onClick={() => setCurrentIndex(index)}
+                className={`${styles.indicator} ${
+                  index === currentIndex ? styles.indicatorActive : ""
+                }`}
+                aria-label={`Go to image ${index + 1}`}
+              />
+            ))}
+          </div>
         </div>
-      </div>
-    </section>
+      </section>
+      <MorePhoto />
+    </>
   );
 }

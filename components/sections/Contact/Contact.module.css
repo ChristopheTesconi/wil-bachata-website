@@ -3,7 +3,7 @@
   padding: 3rem 2rem;
   background-color: #000;
   color: #fff;
-  min-height: 75vh;
+
 }
 
 /* Hero */
@@ -128,7 +128,9 @@
   color: #fff;
 }
 
-.cardContent[style*="max-height:"][style*="px"] {
+.cardContent[style*="max-height:"][style*="px"]:not(
+    [style*="max-height: 0px"]
+  ) {
   opacity: 1;
 }
 
@@ -151,4 +153,199 @@
   margin-top: 1rem;
   margin-bottom: 0.5rem;
   color: #ffcc33;
+}
+
+/* Contact Links with Hover */
+.contactLink {
+  color: #fff;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.contactLink:hover {
+  color: #ffcc33;
+}
+
+/* Adresse */
+.address {
+  font-style: normal;
+  color: black !important;
+  margin-bottom: 1rem;
+  padding: 1rem;
+  background: linear-gradient(
+      rgba(255, 255, 255, 0.65),
+      rgba(255, 255, 255, 0.65)
+    ),
+    url("/gm_background.png") center center / cover no-repeat;
+  border-radius: 12px;
+  transition: all 0.3s ease;
+  display: inline-block;
+  font-weight: 500;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+}
+
+.address:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(170, 1, 255, 0.4);
+}
+
+.address:active {
+  transform: translateY(0);
+}
+
+.mapIcon {
+  font-size: 1.2rem;
+  margin-right: 0.5rem;
+}
+
+/* SOUS-ACCORDÉONS */
+.subAccordion {
+  margin-top: 1.5rem;
+  margin-bottom: 1rem;
+  background: #1a1a1a;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid #333;
+}
+
+.subHeader {
+  display: flex;
+  align-items: center;
+  padding: 0.75rem 1rem;
+  cursor: pointer;
+  user-select: none;
+  background: #1a1a1a;
+  transition: background 0.3s ease;
+}
+
+.subHeader:hover {
+  background: #aa01ff;
+}
+
+.subHeader:hover .subTitle {
+  color: #fff;
+}
+
+/* BOUTON TOGGLE SOUS-ACCORDÉON */
+.subToggleBtn {
+  background: #2a2a2a;
+  color: #fff;
+  border: none;
+  border-radius: 50%;
+  width: 1.8rem;
+  height: 1.8rem;
+  font-size: 1rem;
+  margin-right: 0.75rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background 0.25s ease, transform 0.4s ease;
+  flex-shrink: 0;
+}
+
+.subToggleBtn:hover {
+  background: #aa01ff;
+  transform: scale(1.1);
+}
+
+.subTitle {
+  font-size: 1rem;
+  font-weight: 500;
+  margin: 0;
+  color: #ddd;
+  transition: color 0.3s ease;
+}
+
+/* CONTENU SOUS-ACCORDÉON */
+.subContent {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  padding: 0 1rem;
+}
+
+.subContent[style*="max-height:"][style*="px"]:not([style*="max-height: 0px"]) {
+  padding: 1rem;
+}
+
+/* GRILLE PHOTOS - AVEC FLEXBOX */
+.photoGrid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-top: 0.5rem;
+}
+
+.photoWrapper {
+  position: relative;
+  flex: 1 1 calc(33.333% - 1rem); /* 3 colonnes sur desktop */
+  min-width: 200px; /* Largeur minimale avant de passer à la ligne */
+  height: 200px;
+  overflow: hidden;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.photoWrapper:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 16px rgba(170, 1, 255, 0.4);
+}
+
+.photo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.photoGrid p {
+  flex-basis: 100%; /* Force le texte à prendre toute la largeur */
+  color: #aaa;
+  font-size: 0.9rem;
+  font-style: italic;
+  text-align: center;
+  margin-top: 0.5rem;
+  margin-bottom: 0;
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  .contact {
+    padding: 2rem 1rem;
+  }
+
+  .hero h1 {
+    font-size: 2rem;
+  }
+
+  .hero h2 {
+    font-size: 1rem;
+  }
+
+  .photoWrapper {
+    flex: 1 1 100%; /* 1 colonne sur mobile */
+    min-width: 100%;
+    height: 250px;
+  }
+
+  .cardContent {
+    padding: 0 1rem;
+  }
+
+  .subContent {
+    padding: 0 0.75rem;
+  }
+
+  .subContent[style*="max-height:"][style*="px"]:not(
+      [style*="max-height: 0px"]
+    ) {
+    padding: 0.75rem;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+  .photoWrapper {
+    flex: 1 1 calc(50% - 1rem); /* 2 colonnes sur tablette */
+  }
 }
