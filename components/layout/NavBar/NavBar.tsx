@@ -1,32 +1,66 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Container, Nav, Navbar, Dropdown } from "react-bootstrap";
 import Image from "next/image";
 import { FaGlobe } from "react-icons/fa";
 import { useRouter, usePathname } from "next/navigation";
 import styles from "./NavBar.module.css";
+import { getDictionary, type Locale } from "@/lib/i18n";
 
 export default function NavBar() {
   const [expanded, setExpanded] = useState(false);
   const router = useRouter();
   const pathname = usePathname();
 
+  // Extraire la locale actuelle depuis l'URL
+  const currentLocale = (pathname.split("/")[1] || "en") as Locale;
+
+  // Charger les traductions
+  const t = getDictionary(currentLocale);
+
   const closeNav = () => setExpanded(false);
 
   // Vérifie si on est sur la page d'accueil
   const isHomePage =
-    pathname === "/" ||
-    pathname === "/en" ||
-    pathname === "/de" ||
-    pathname === "/fr";
+    pathname === `/${currentLocale}` || pathname === `/${currentLocale}/`;
+
+  // ✅ DÉPLACÉ AVANT LE RETURN CONDITIONNEL
+  // Effect pour gérer le scroll après changement de langue
+  useEffect(() => {
+    // Si on a un hash dans l'URL, scroller vers cette section
+    if (window.location.hash) {
+      const sectionId = window.location.hash.substring(1); // Enlever le #
+
+      // Attendre que la page soit chargée avant de scroller
+      setTimeout(() => {
+        const element = document.getElementById(sectionId);
+        if (element) {
+          const navbarHeight = 120;
+          const elementPosition =
+            element.getBoundingClientRect().top + window.pageYOffset;
+          const offsetPosition = elementPosition - navbarHeight;
+
+          window.scrollTo({
+            top: offsetPosition,
+            behavior: "smooth",
+          });
+        }
+      }, 100);
+    }
+  }, [pathname]); // Se déclenche à chaque changement de route
+
+  // Vérification de sécurité APRÈS les hooks
+  if (!t || !t.nav) {
+    return null;
+  }
 
   const scrollToSection = (sectionId: string) => {
     closeNav();
 
     if (!isHomePage) {
-      // Si on est sur une autre page (comme legal notice), navigue vers la home
-      router.push(`/#${sectionId}`);
+      // Si on est sur une autre page, navigue vers la home avec la bonne langue
+      router.push(`/${currentLocale}/#${sectionId}`);
     } else {
       // Si on est déjà sur la home, scroll normalement
       const element = document.getElementById(sectionId);
@@ -49,7 +83,7 @@ export default function NavBar() {
 
     if (!isHomePage) {
       // Si on est sur une autre page, retourne à la home
-      router.push("/");
+      router.push(`/${currentLocale}`);
     } else {
       // Si on est déjà sur la home, scroll en haut
       window.scrollTo({
@@ -57,6 +91,60 @@ export default function NavBar() {
         behavior: "smooth",
       });
     }
+  };
+
+  // Fonction pour changer de langue en gardant la position et la section
+  const changeLanguage = (newLocale: Locale) => {
+    closeNav(); // ferme le menu mobile
+
+    // Supprime les classes Bootstrap qui bloquent le scroll
+    // document.body.classList.remove("modal-open", "overflow-hidden");
+    // document.body.style.overflow = "auto";
+
+    // Si on est déjà sur cette langue, ne rien faire
+    if (newLocale === currentLocale) return;
+
+    // Récupère le hash actuel (ex: #contact)
+    const currentHash = window.location.hash || "";
+
+    // Récupère le chemin sans la locale actuelle
+    const pathWithoutLocale = pathname.replace(`/${currentLocale}`, "") || "/";
+
+    // Construit la nouvelle URL
+    const newUrl = `/${newLocale}${pathWithoutLocale}${currentHash}`;
+
+    // Sauvegarde la position actuelle du scroll
+    const currentScrollY = window.scrollY;
+
+    // Redirige vers la nouvelle langue
+    router.push(newUrl);
+
+    // 🧩 Après redirection : attendre que le DOM se mette à jour
+    setTimeout(() => {
+      // Si on a un hash (#section)
+      if (currentHash) {
+        const element = document.getElementById(currentHash.substring(1));
+        if (element) {
+          const navbarHeight = 120; // ajuste selon ta hauteur réelle
+
+          const elementPosition =
+            element.getBoundingClientRect().top + window.pageYOffset;
+          const offsetPosition = elementPosition - navbarHeight;
+
+          window.scrollTo({
+            top: offsetPosition,
+            behavior: "smooth",
+          });
+          return;
+        }
+      }
+
+      // Sinon, on restaure la position du scroll
+      window.scrollTo({
+        top: currentScrollY,
+        behavior: "instant",
+      });
+    }, 300); // petit délai pour laisser Next.js mettre à jour la page
   };
 
   return (
@@ -100,7 +188,7 @@ export default function NavBar() {
                 style={{ cursor: "pointer" }}
                 aria-label="Go to home section"
               >
-                Home
+                {t.nav.home}
               </Nav.Link>
             </Nav.Item>
             <Nav.Item as="li">
@@ -109,7 +197,7 @@ export default function NavBar() {
                 style={{ cursor: "pointer" }}
                 aria-label="Learn about Wilfried and his dance experience"
               >
-                About Me
+                {t.nav.about}
               </Nav.Link>
             </Nav.Item>
             <Nav.Item as="li">
@@ -118,7 +206,7 @@ export default function NavBar() {
                 style={{ cursor: "pointer" }}
                 aria-label="Discover our dance studio in St. Gallen"
               >
-                Membership
+                {t.nav.membership}
               </Nav.Link>
             </Nav.Item>
             <Nav.Item as="li">
@@ -127,7 +215,7 @@ export default function NavBar() {
                 style={{ cursor: "pointer" }}
                 aria-label="Review from students"
               >
-                Review
+                {t.nav.review}
               </Nav.Link>
             </Nav.Item>
             <Nav.Item as="li">
@@ -136,7 +224,7 @@ export default function NavBar() {
                 style={{ cursor: "pointer" }}
                 aria-label="Contact us for class information"
               >
-                Contact
+                {t.nav.contact}
               </Nav.Link>
             </Nav.Item>
             <Nav.Item as="li">
@@ -145,7 +233,7 @@ export default function NavBar() {
                 style={{ cursor: "pointer" }}
                 aria-label="FAQ"
               >
-                FAQ
+                {t.nav.faq}
               </Nav.Link>
             </Nav.Item>
           </Nav>
@@ -181,10 +269,10 @@ export default function NavBar() {
                 href="#"
                 onClick={(e) => {
                   e.preventDefault();
-                  closeNav();
-                  // TODO: Changer la langue en anglais
+                  changeLanguage("en");
                 }}
                 hrefLang="en"
+                active={currentLocale === "en"}
               >
                 🇬🇧 English
               </Dropdown.Item>
@@ -192,10 +280,10 @@ export default function NavBar() {
                 href="#"
                 onClick={(e) => {
                   e.preventDefault();
-                  closeNav();
-                  // TODO: Changer la langue en allemand
+                  changeLanguage("de");
                 }}
                 hrefLang="de"
+                active={currentLocale === "de"}
               >
                 🇩🇪 Deutsch
               </Dropdown.Item>
@@ -203,10 +291,10 @@ export default function NavBar() {
                 href="#"
                 onClick={(e) => {
                   e.preventDefault();
-                  closeNav();
-                  // TODO: Changer la langue en français
+                  changeLanguage("fr");
                 }}
                 hrefLang="fr"
+                active={currentLocale === "fr"}
               >
                 🇫🇷 Français
               </Dropdown.Item>

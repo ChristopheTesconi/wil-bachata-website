@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import Image from "next/image";
 import styles from "./CarouselPhoto.module.css";
 import MorePhoto from "./MorePhoto";
+import MoreVideo from "./MoreVideo";
 
 const images = [
   { src: "/wil_class.jpg", alt: "Wilfried teaching Bachata class" },
@@ -102,6 +103,7 @@ export default function CarouselPhoto() {
         </div>
       </section>
       <MorePhoto />
+      <MoreVideo />
     </>
   );
 }

@@ -2,7 +2,7 @@
 .carouselSection {
   width: 100%;
   padding: 4rem 2rem;
-  background-color: #000000;
+  background: linear-gradient(to bottom, #000000 40%, #aa01ff 100%);
 }
 
 /* Container du carousel */
@@ -29,7 +29,7 @@
 .carouselImage {
   object-fit: cover;
   transition: opacity 0.5s ease-in-out;
-  object-position: bottom center; 
+  object-position: bottom center;
 }
 
 /* Boutons de navigation style Apple */

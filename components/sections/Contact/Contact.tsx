@@ -2,7 +2,9 @@
 
 import { useState, useRef, useEffect } from "react";
 import Image from "next/image";
+import { usePathname } from "next/navigation";
 import styles from "./Contact.module.css";
+import { getDictionary, type Locale } from "@/lib/i18n";
 
 export default function Contact() {
   const [open, setOpen] = useState([false, false, false]);
@@ -19,6 +21,14 @@ export default function Contact() {
     useRef<HTMLDivElement>(null),
     useRef<HTMLDivElement>(null),
   ];
+
+  const pathname = usePathname();
+
+  // Récupérer la locale actuelle
+  const currentLocale = (pathname.split("/")[1] || "en") as Locale;
+
+  // Charger les traductions
+  const t = getDictionary(currentLocale);
 
   const toggle = (index: number) => {
     setOpen((prev) => {
@@ -87,7 +97,6 @@ export default function Contact() {
     };
   }, [open, subOpen]);
 
-  // ✅ NOUVEAU — ajustement automatique quand les images se chargent
   useEffect(() => {
     const imageObservers: ResizeObserver[] = [];
 
@@ -119,6 +128,10 @@ export default function Contact() {
       "_blank"
     );
   };
+
+  if (!t || !t.contact) {
+    return null;
+  }
 
   const structuredData = {
     "@context": "https://schema.org",
@@ -175,10 +188,8 @@ export default function Contact() {
       />
       <main id="contact" className={`container-fluid ${styles.contact}`}>
         <section className={styles.hero}>
-          <h1>Contact & Booking</h1>
-          <h2>
-            Have questions? Want to join a class or start private training?
-          </h2>
+          <h1>{t.contact.hero.title}</h1>
+          <h2>{t.contact.hero.subtitle}</h2>
         </section>
 
         <section className={styles.cardsSection}>
@@ -201,7 +212,7 @@ export default function Contact() {
                   </span>
                 </button>
                 <h3 id="contact-title" className={styles.cardTitle}>
-                  📱 Contact Info
+                  {t.contact.contactInfo.title}
                 </h3>
               </header>
               <div
@@ -219,7 +230,7 @@ export default function Contact() {
                       rel="noopener noreferrer"
                       className={styles.contactLink}
                     >
-                      📱 WhatsApp / Call: +41 77 493 40 18 - 👉 Direct Access
+                      {t.contact.contactInfo.whatsapp}
                     </a>
                   </li>
                   <li>
@@ -227,7 +238,7 @@ export default function Contact() {
                       href="mailto:rdfbatchatafusion__will@hotmail.com"
                       className={styles.contactLink}
                     >
-                      📧 Email: rdfbatchatafusion__will@hotmail.com
+                      {t.contact.contactInfo.email}
                     </a>
                   </li>
                   <li>
@@ -237,7 +248,7 @@ export default function Contact() {
                       rel="noopener noreferrer"
                       className={styles.contactLink}
                     >
-                      📸 Instagram: @coach_wil_84
+                      {t.contact.contactInfo.instagram}
                     </a>
                   </li>
                   <li>
@@ -247,7 +258,7 @@ export default function Contact() {
                       rel="noopener noreferrer"
                       className={styles.contactLink}
                     >
-                      📘 Facebook: Wil Bachata
+                      {t.contact.contactInfo.facebook}
                     </a>
                   </li>
                   <li>
@@ -257,7 +268,7 @@ export default function Contact() {
                       rel="noopener noreferrer"
                       className={styles.contactLink}
                     >
-                      🎵 TikTok: @rdf_bachata_chanel84
+                      {t.contact.contactInfo.tiktok}
                     </a>
                   </li>
                   {/* Sous-accordéon Collaboration */}
@@ -280,7 +291,9 @@ export default function Contact() {
                           {subOpen[2] ? "−" : "+"}
                         </span>
                       </button>
-                      <h5 className={styles.subTitle}>🤝 Collaboration</h5>
+                      <h5 className={styles.subTitle}>
+                        {t.contact.contactInfo.collaborationTitle}
+                      </h5>
                     </header>
                     <div
                       id="sub-panel-collaboration"
@@ -359,7 +372,7 @@ export default function Contact() {
                   </span>
                 </button>
                 <h3 id="studio-title" className={styles.cardTitle}>
-                  🏢 Studio Locations
+                  {t.contact.studioLocations.title}
                 </h3>
               </header>
               <div
@@ -369,7 +382,7 @@ export default function Contact() {
                 className={styles.cardContent}
                 ref={contentRefs[1]}
               >
-                <h4>Group Classes — Bachata Lab Saint-Gallen</h4>
+                <h4>{t.contact.studioLocations.groupClasses}</h4>
                 <address
                   className={styles.address}
                   onClick={() =>
@@ -380,12 +393,18 @@ export default function Contact() {
                   style={{ cursor: "pointer" }}
                 >
                   <span className={styles.mapIcon}>📍</span>
-                  Move Box Studio <br />
-                  Unterstrasse 22, 9000 St. Gallen
+                  {t.contact.studioLocations.moveBoxAddress
+                    .split("\n")
+                    .map((line, i) => (
+                      <span key={i}>
+                        {line}
+                        {i === 0 && <br />}
+                      </span>
+                    ))}
                 </address>
                 <ul>
-                  <li>✅ Parking available</li>
-                  <li>✅ Easy access from Davidstrasse stop</li>
+                  <li>{t.contact.studioLocations.parkingAvailable}</li>
+                  <li>{t.contact.studioLocations.easyAccess}</li>
                 </ul>
 
                 {/* Sous-accordéon 1 */}
@@ -409,7 +428,7 @@ export default function Contact() {
                       </span>
                     </button>
                     <h5 className={styles.subTitle}>
-                      📸 Photos Move Box Studio
+                      {t.contact.studioLocations.photosMovebox}
                     </h5>
                   </header>
                   <div
@@ -452,7 +471,7 @@ export default function Contact() {
                 </div>
 
                 <h4 style={{ marginTop: "2rem" }}>
-                  Private Classes — Coach Wil Studio
+                  {t.contact.studioLocations.privateClasses}
                 </h4>
                 <address
                   className={styles.address}
@@ -462,12 +481,12 @@ export default function Contact() {
                   style={{ cursor: "pointer" }}
                 >
                   <span className={styles.mapIcon}>📍</span>
-                  Wildeggstrasse 16, 9000 St. Gallen
+                  {t.contact.studioLocations.wildeggAddress}
                 </address>
                 <ul>
-                  <li>📅 Available Tuesday–Friday (13:00–17:00)</li>
-                  <li>📅 Saturday (10:00–12:00 / 13:00–18:00)</li>
-                  <li>⚠️ By appointment only</li>
+                  <li>{t.contact.studioLocations.availableTueFri}</li>
+                  <li>{t.contact.studioLocations.availableSat}</li>
+                  <li>{t.contact.studioLocations.byAppointment}</li>
                 </ul>
 
                 {/* Sous-accordéon 2 */}
@@ -491,7 +510,7 @@ export default function Contact() {
                       </span>
                     </button>
                     <h5 className={styles.subTitle}>
-                      📸 Photos Wildeggstrasse 16
+                      {t.contact.studioLocations.photosWildegg}
                     </h5>
                   </header>
                   <div
@@ -544,7 +563,7 @@ export default function Contact() {
                   </span>
                 </button>
                 <h3 id="coaching-title" className={styles.cardTitle}>
-                  🤝 Private Coaching
+                  {t.contact.privateCoaching.title}
                 </h3>
               </header>
               <div
@@ -554,26 +573,25 @@ export default function Contact() {
                 className={styles.cardContent}
                 ref={contentRefs[2]}
               >
-                <p>
-                  Want faster progress or personal guidance? I offer 1:1 or 2:1
-                  private sessions for:
-                </p>
+                <p>{t.contact.privateCoaching.intro}</p>
                 <ul>
-                  <li>Foundation & body movement training</li>
-                  <li>Lead & follow technique</li>
-                  <li>Styling, musicality & flow</li>
-                  <li>Wedding dance or performance preparation</li>
+                  <li>{t.contact.privateCoaching.item1}</li>
+                  <li>{t.contact.privateCoaching.item2}</li>
+                  <li>{t.contact.privateCoaching.item3}</li>
+                  <li>{t.contact.privateCoaching.item4}</li>
                 </ul>
                 <p>
-                  Just send me a message with: <br />
-                  <em>&quot;Private class + your availability&quot;</em>
+                  {t.contact.privateCoaching.sendMessage} <br />
+                  <em>
+                    &quot;{t.contact.privateCoaching.messageTemplate}&quot;
+                  </em>
                   <br />
-                  and I&apos;ll propose the best options for you.
+                  {t.contact.privateCoaching.proposeOptions}
                 </p>
                 <p>
-                  I look forward to dancing with you soon!
+                  {t.contact.privateCoaching.lookForward}
                   <br />
-                  Coach Wil
+                  {t.contact.privateCoaching.signature}
                 </p>
               </div>
             </article>

@@ -1,7 +1,9 @@
 "use client";
 
 import { useState, useRef, useEffect } from "react";
+import { usePathname } from "next/navigation";
 import styles from "./About.module.css";
+import { getDictionary, type Locale } from "@/lib/i18n";
 
 export default function About() {
   const [open, setOpen] = useState([false, false, false]);
@@ -10,6 +12,13 @@ export default function About() {
     useRef<HTMLDivElement>(null),
     useRef<HTMLDivElement>(null),
   ];
+  const pathname = usePathname();
+
+  // Récupérer la locale actuelle
+  const currentLocale = (pathname.split("/")[1] || "en") as Locale;
+
+  // Charger les traductions
+  const t = getDictionary(currentLocale);
 
   const toggle = (index: number) => {
     setOpen((prev) => {
@@ -31,6 +40,10 @@ export default function About() {
       }
     });
   }, [open]);
+
+  if (!t || !t.home) {
+    return null;
+  }
 
   // Structured Data pour SEO
   const structuredData = {
@@ -63,10 +76,8 @@ export default function About() {
       <main id="about" className={`container-fluid ${styles.about}`}>
         {/* Hero Section */}
         <section className={styles.hero}>
-          <h1>About Coach Wil</h1>
-          <h2>
-            Building strong foundations, clear teaching, and real progress
-          </h2>
+          <h1>{t.about.hero.title}</h1>
+          <h2>{t.about.hero.subtitle}</h2>
         </section>
 
         {/* Cards Grid */}
@@ -90,7 +101,7 @@ export default function About() {
                   </span>
                 </button>
                 <h3 id="journey-title" className={styles.cardTitle}>
-                  🎵 My Dance Journey
+                  {t.about.journey.title}
                 </h3>
               </header>
               <div
@@ -100,18 +111,8 @@ export default function About() {
                 className={styles.cardContent}
                 ref={contentRefs[0]}
               >
-                <p>
-                  I’ve been dancing Latin styles for over 15 years. During
-                  COVID, I realized most people learn bachata through partner
-                  work first, but real progress comes when you also train your
-                  solo foundation — footwork, body movement, arm coordination,
-                  timing, and musicality.
-                </p>
-                <p>
-                  I went back to basics, drilling fundamentals repeatedly, and
-                  that’s when everything started to flow better than I could
-                  have expected.
-                </p>
+                <p>{t.about.journey.p1}</p>
+                <p>{t.about.journey.p2}</p>
               </div>
             </article>
 
@@ -133,7 +134,7 @@ export default function About() {
                   </span>
                 </button>
                 <h3 id="rdf-title" className={styles.cardTitle}>
-                  💻 RDF Bachata Fusion App
+                  {t.about.rdf.title}
                 </h3>
               </header>
               <div
@@ -143,23 +144,13 @@ export default function About() {
                 className={styles.cardContent}
                 ref={contentRefs[1]}
               >
-                <p>I designed RDF for people like:</p>
+                <p>{t.about.rdf.intro}</p>
                 <ul>
-                  <li>
-                    Complete beginners who want to learn correctly from day one
-                  </li>
-                  <li>
-                    Shy or unsure dancers who prefer building confidence first
-                  </li>
-                  <li>
-                    Experienced dancers who stopped improving and want to
-                    rebuild their foundation
-                  </li>
+                  <li>{t.about.rdf.item1}</li>
+                  <li>{t.about.rdf.item2}</li>
+                  <li>{t.about.rdf.item3}</li>
                 </ul>
-                <p>
-                  RDF focuses on rhythm, dance, and flow — helping everyone
-                  progress at their own pace.
-                </p>
+                <p>{t.about.rdf.outro}</p>
               </div>
             </article>
 
@@ -181,7 +172,7 @@ export default function About() {
                   </span>
                 </button>
                 <h3 id="teaching-title" className={styles.cardTitle}>
-                  🏫 Teaching in St. Gallen
+                  {t.about.teaching.title}
                 </h3>
               </header>
               <div
@@ -191,26 +182,13 @@ export default function About() {
                 className={styles.cardContent}
                 ref={contentRefs[2]}
               >
+                <p>{t.about.teaching.p1}</p>
+                <p>{t.about.teaching.p2}</p>
+                <p>{t.about.teaching.p3}</p>
                 <p>
-                  I’ve spent 4 years teaching in St. Gallen, grateful for every
-                  student who trusted me. My partner Sandra joins regularly,
-                  helping guide leaders and followers with patience, clarity,
-                  and fun.
-                </p>
-                <p>
-                  Our mission: Strong foundations, clear teaching, real
-                  progress, and a supportive community. Bachata Lab is about
-                  confidence, connection, fun, and growth.
-                </p>
-                <p>
-                  Every week, I see strangers become friends, dancers smile, and
-                  students gain confidence. That’s why I do this.
-                </p>
-                <p>
-                  Let&apos;s practice, have fun, and dance with passion. I’m
-                  excited to welcome you to the Bachata Lab family.
+                  {t.about.teaching.p4}
                   <br />
-                  <strong>Coach Wil</strong>
+                  <strong>{t.about.teaching.signature}</strong>
                 </p>
               </div>
             </article>

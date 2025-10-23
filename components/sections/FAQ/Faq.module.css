@@ -1,7 +1,8 @@
 /* Global FAQ */
 .faq {
   padding: 3rem 2rem;
-  background-color: #000;
+    background: linear-gradient(to bottom, #000000 40%, #aa01ff 100%);
+
   color: #fff;
 
 }

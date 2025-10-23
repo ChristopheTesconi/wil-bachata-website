@@ -1,7 +1,9 @@
 "use client";
 
 import { useState, useRef, useEffect } from "react";
+import { usePathname } from "next/navigation";
 import styles from "./DanceRoom.module.css";
+import { getDictionary, type Locale } from "@/lib/i18n";
 
 export default function DanceRoom() {
   const [open, setOpen] = useState([false, false, false, false]);
@@ -11,6 +13,13 @@ export default function DanceRoom() {
     useRef<HTMLDivElement>(null),
     useRef<HTMLDivElement>(null),
   ];
+  const pathname = usePathname();
+
+  // Récupérer la locale actuelle
+  const currentLocale = (pathname.split("/")[1] || "en") as Locale;
+
+  // Charger les traductions
+  const t = getDictionary(currentLocale);
 
   const toggle = (index: number) => {
     setOpen((prev) => {
@@ -28,6 +37,10 @@ export default function DanceRoom() {
       }
     });
   }, [open]);
+
+  if (!t || !t.home) {
+    return null;
+  }
 
   // Structured Data pour SEO
   const structuredData = {
@@ -82,8 +95,8 @@ export default function DanceRoom() {
       <main id="danceroom" className={`container-fluid ${styles.danceRoom}`}>
         {/* Hero Section */}
         <section className={styles.hero}>
-          <h1>Bachata Lab Pro Membership</h1>
-          <h2>Full dance experience, learning, practicing, and applying</h2>
+          <h1>{t.danceroom.hero.title}</h1>
+          <h2>{t.danceroom.hero.subtitle}</h2>
         </section>
 
         {/* Cards Grid */}
@@ -107,7 +120,7 @@ export default function DanceRoom() {
                   </span>
                 </button>
                 <h3 id="student-title" className={styles.cardTitle}>
-                  🎓 Pro Student (≤26y)
+                  {t.danceroom.proStudent.title}
                 </h3>
               </header>
               <div
@@ -118,12 +131,12 @@ export default function DanceRoom() {
                 ref={contentRefs[0]}
               >
                 <ul>
-                  <li>✅ All Thursday Beginner Classes</li>
-                  <li>✅ Weekly Dance Practice Included</li>
-                  <li>✅ RDF App Bachata step challenge Part 1</li>
-                  <li>✅ Domingo Latino Party Pass</li>
+                  <li>{t.danceroom.proStudent.item1}</li>
+                  <li>{t.danceroom.proStudent.item2}</li>
+                  <li>{t.danceroom.proStudent.item3}</li>
+                  <li>{t.danceroom.proStudent.item4}</li>
                 </ul>
-                <p>💳 110 CHF / month</p>
+                <p>{t.danceroom.proStudent.price}</p>
               </div>
             </article>
 
@@ -145,7 +158,7 @@ export default function DanceRoom() {
                   </span>
                 </button>
                 <h3 id="classic-title" className={styles.cardTitle}>
-                  ⭐ Pro Classic
+                  {t.danceroom.proClassic.title}
                 </h3>
               </header>
               <div
@@ -156,14 +169,11 @@ export default function DanceRoom() {
                 ref={contentRefs[1]}
               >
                 <ul>
-                  <li>✅ 5 Flexible Classes / Month</li>
-                  <li>
-                    ✅ Access to RDF App – Limited access to Laboratorium + BSC
-                    Part 1
-                  </li>
-                  <li>✅ Salsa Ritmo Party Pass</li>
+                  <li>{t.danceroom.proClassic.item1}</li>
+                  <li>{t.danceroom.proClassic.item2}</li>
+                  <li>{t.danceroom.proClassic.item3}</li>
                 </ul>
-                <p>💳 150 CHF / month</p>
+                <p>{t.danceroom.proClassic.price}</p>
               </div>
             </article>
 
@@ -185,7 +195,7 @@ export default function DanceRoom() {
                   </span>
                 </button>
                 <h3 id="party-title" className={styles.cardTitle}>
-                  🔥 Pro PartyBanger
+                  {t.danceroom.proPartyBanger.title}
                 </h3>
               </header>
               <div
@@ -196,13 +206,13 @@ export default function DanceRoom() {
                 ref={contentRefs[2]}
               >
                 <ul>
-                  <li>✅ 8 Flexible Classes / Month</li>
-                  <li>✅ Access to RDF App Laboratorium + BSC Part 1</li>
-                  <li>✅ Salsa Ritmo Party Pass (x1)</li>
-                  <li>✅ Domingo Latino Party Pass (x1)</li>
-                  <li>✅ Bachata Loca Party Pass (x1)</li>
+                  <li>{t.danceroom.proPartyBanger.item1}</li>
+                  <li>{t.danceroom.proPartyBanger.item2}</li>
+                  <li>{t.danceroom.proPartyBanger.item3}</li>
+                  <li>{t.danceroom.proPartyBanger.item4}</li>
+                  <li>{t.danceroom.proPartyBanger.item5}</li>
                 </ul>
-                <p>💳 190 CHF / month</p>
+                <p>{t.danceroom.proPartyBanger.price}</p>
               </div>
             </article>
 
@@ -224,7 +234,7 @@ export default function DanceRoom() {
                   </span>
                 </button>
                 <h3 id="vip-title" className={styles.cardTitle}>
-                  👑 Pro VIP
+                  {t.danceroom.proVIP.title}
                 </h3>
               </header>
               <div
@@ -235,20 +245,20 @@ export default function DanceRoom() {
                 ref={contentRefs[3]}
               >
                 <ul>
-                  <li>✅ Unlimited Classes (Monday / Thursday / Friday)</li>
-                  <li>✅ Full Access to RDF App — All Modules Unlocked</li>
-                  <li>✅ Salsa Ritmo Party Pass (x1)</li>
-                  <li>✅ Domingo Latino Party Pass (x2)</li>
-                  <li>✅ Bachata Loca Party Pass + Workshop Included (x1)</li>
+                  <li>{t.danceroom.proVIP.item1}</li>
+                  <li>{t.danceroom.proVIP.item2}</li>
+                  <li>{t.danceroom.proVIP.item3}</li>
+                  <li>{t.danceroom.proVIP.item4}</li>
+                  <li>{t.danceroom.proVIP.item5}</li>
                 </ul>
-                <p>💳 240 CHF / month</p>
+                <p>{t.danceroom.proVIP.price}</p>
               </div>
             </article>
           </div>
         </section>
 
         <section className={styles.outro}>
-          <p>Let&apos;s start here and join the journey!</p>
+          <p>{t.danceroom.outro}</p>
         </section>
       </main>
     </>

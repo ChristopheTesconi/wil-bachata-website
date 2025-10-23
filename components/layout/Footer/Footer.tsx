@@ -3,86 +3,27 @@
 import Image from "next/image";
 import { useRouter, usePathname } from "next/navigation";
 import styles from "./Footer.module.css";
+import { getDictionary, type Locale } from "@/lib/i18n";
 
-interface FooterProps {
-  currentLocale?: string;
-}
-
-export default function Footer({ currentLocale = "en" }: FooterProps) {
+export default function Footer() {
   const year = new Date().getFullYear();
   const router = useRouter();
   const pathname = usePathname();
 
-  const texts: Record<string, Record<string, string>> = {
-    en: {
-      contact: "Contact Us",
-      whatsapp: "WhatsApp",
-      instagram: "Instagram",
-      facebook: "Facebook",
-      legal: "Legal Notice",
-      copyright: `© ${year} Wil Bachata. All rights reserved.`,
-      tagline:
-        "Professional Bachata Fusion Dance Classes in St. Gallen, Switzerland",
-      address: "St. Gallen, Switzerland",
-      phone: "+41 77 493 40 18",
-      email: "RDFBachataFusion_wil@hotmail.com",
-      quickLinks: "Quick Links",
-      followUs: "Follow Us",
-      home: "Home",
-      aboutMe: "About Me",
-      danceRoom: "Membership",
-    },
-    de: {
-      contact: "Kontakt",
-      whatsapp: "WhatsApp",
-      instagram: "Instagram",
-      facebook: "Facebook",
-      legal: "Impressum",
-      copyright: `© ${year} Wil Bachata. Alle Rechte vorbehalten.`,
-      tagline:
-        "Professioneller Bachata Fusion Tanzunterricht in St. Gallen, Schweiz",
-      address: "St. Gallen, Schweiz",
-      phone: "+41 77 493 40 18",
-      email: "rdfbatchatafusion__will@hotmail.com",
-      quickLinks: "Schnelllinks",
-      followUs: "Folge uns",
-      home: "Startseite",
-      aboutMe: "Über mich",
-      danceRoom: "Tanzraum",
-    },
-    fr: {
-      contact: "Contact",
-      whatsapp: "WhatsApp",
-      instagram: "Instagram",
-      facebook: "Facebook",
-      legal: "Mentions légales",
-      copyright: `© ${year} Wil Bachata. Tous droits réservés.`,
-      tagline:
-        "Cours de danse Bachata Fusion professionnels à St. Gallen, Suisse",
-      address: "St. Gallen, Suisse",
-      phone: "+41 77 493 40 18",
-      email: "rdfbatchatafusion__will@hotmail.com",
-      quickLinks: "Liens rapides",
-      followUs: "Suivez-nous",
-      home: "Accueil",
-      aboutMe: "À propos",
-      danceRoom: "Salle de danse",
-    },
-  };
+  // Récupérer la locale actuelle
+  const currentLocale = (pathname.split("/")[1] || "en") as Locale;
 
-  const t = texts[currentLocale] || texts.en;
+  // Charger les traductions
+  const t = getDictionary(currentLocale);
 
   // Vérifie si on est sur la page d'accueil
   const isHomePage =
-    pathname === "/" ||
-    pathname === "/en" ||
-    pathname === "/de" ||
-    pathname === "/fr";
+    pathname === `/${currentLocale}` || pathname === `/${currentLocale}/`;
 
   const scrollToSection = (sectionId: string) => {
     if (!isHomePage) {
-      // Si on est sur une autre page (comme legal notice), navigue vers la home
-      router.push(`/#${sectionId}`);
+      // Si on est sur une autre page, navigue vers la home avec la bonne langue
+      router.push(`/${currentLocale}/#${sectionId}`);
     } else {
       // Si on est déjà sur la home, scroll normalement
       const element = document.getElementById(sectionId);
@@ -103,7 +44,7 @@ export default function Footer({ currentLocale = "en" }: FooterProps) {
   const scrollToTop = () => {
     if (!isHomePage) {
       // Si on est sur une autre page, retourne à la home
-      router.push("/");
+      router.push(`/${currentLocale}`);
     } else {
       // Si on est déjà sur la home, scroll en haut
       window.scrollTo({
@@ -112,6 +53,10 @@ export default function Footer({ currentLocale = "en" }: FooterProps) {
       });
     }
   };
+
+  if (!t || !t.footer) {
+    return null;
+  }
 
   return (
     <footer
@@ -122,15 +67,15 @@ export default function Footer({ currentLocale = "en" }: FooterProps) {
       <div className={styles.footerContainer}>
         {/* Section About/Tagline */}
         <div className={styles.footerSection}>
-          <h2 className={styles.footerBrand}>Wil Bachata</h2>
-          <p className={styles.footerTagline}>{t.tagline}</p>
+          <h2 className={styles.footerBrand}>{t.footer.brand}</h2>
+          <p className={styles.footerTagline}>{t.footer.tagline}</p>
           <address className={styles.footerAddress}>
             <p
               itemProp="address"
               itemScope
               itemType="https://schema.org/PostalAddress"
             >
-              <span itemProp="addressLocality">{t.address}</span>
+              <span itemProp="addressLocality">{t.footer.address}</span>
             </p>
             <p>
               <a
@@ -138,18 +83,18 @@ export default function Footer({ currentLocale = "en" }: FooterProps) {
                 target="_blank"
                 rel="noopener noreferrer"
                 itemProp="telephone"
-                aria-label={`Call us at ${t.phone}`}
+                aria-label={`Call us at ${t.footer.phone}`}
               >
-                {t.phone}
+                {t.footer.phone}
               </a>
             </p>
             <p>
               <a
-                href="mailto:RDFBachataFusion_wil@hotmail.com"
+                href="mailto:rdfbatchatafusion__will@hotmail.com"
                 itemProp="email"
-                aria-label={`Send email to ${t.email}`}
+                aria-label={`Send email to ${t.footer.email}`}
               >
-                {t.email}
+                {t.footer.email}
               </a>
             </p>
           </address>
@@ -157,7 +102,7 @@ export default function Footer({ currentLocale = "en" }: FooterProps) {
 
         {/* Section Quick Links */}
         <div className={styles.footerSection}>
-          <h3 className={styles.footerHeading}>{t.quickLinks}</h3>
+          <h3 className={styles.footerHeading}>{t.footer.quickLinks}</h3>
           <nav aria-label="Footer navigation">
             <ul className={styles.footerLinks}>
               <li>
@@ -167,7 +112,7 @@ export default function Footer({ currentLocale = "en" }: FooterProps) {
                   aria-label="Go to home page"
                   className={styles.footerLink}
                 >
-                  {t.home}
+                  {t.footer.home}
                 </a>
               </li>
               <li>
@@ -177,7 +122,7 @@ export default function Footer({ currentLocale = "en" }: FooterProps) {
                   aria-label="Learn about Wilfried"
                   className={styles.footerLink}
                 >
-                  {t.aboutMe}
+                  {t.footer.aboutMe}
                 </a>
               </li>
               <li>
@@ -187,7 +132,7 @@ export default function Footer({ currentLocale = "en" }: FooterProps) {
                   aria-label="Visit our dance studio"
                   className={styles.footerLink}
                 >
-                  {t.danceRoom}
+                  {t.footer.membership}
                 </a>
               </li>
               <li>
@@ -197,7 +142,7 @@ export default function Footer({ currentLocale = "en" }: FooterProps) {
                   aria-label="Contact us for information"
                   className={styles.footerLink}
                 >
-                  {t.contact}
+                  {t.footer.contact}
                 </a>
               </li>
               <li>
@@ -212,7 +157,7 @@ export default function Footer({ currentLocale = "en" }: FooterProps) {
                   aria-label="Read our legal notice and privacy policy"
                   className={styles.footerLink}
                 >
-                  {t.legal}
+                  {t.footer.legal}
                 </a>
               </li>
             </ul>
@@ -221,7 +166,7 @@ export default function Footer({ currentLocale = "en" }: FooterProps) {
 
         {/* Section Social Media */}
         <div className={styles.footerSection}>
-          <h3 className={styles.footerHeading}>{t.followUs}</h3>
+          <h3 className={styles.footerHeading}>{t.footer.followUs}</h3>
           <div
             className={styles.socialLinks}
             role="group"
@@ -232,11 +177,11 @@ export default function Footer({ currentLocale = "en" }: FooterProps) {
               target="_blank"
               rel="noopener noreferrer"
               aria-label="Contact us on WhatsApp for class inquiries"
-              title={`${t.whatsapp}: ${t.phone}`}
+              title={`${t.footer.whatsapp}: ${t.footer.phone}`}
               className={styles.socialLink}
             >
               <i className="bi bi-whatsapp" aria-hidden="true"></i>
-              <span>{t.whatsapp}</span>
+              <span>{t.footer.whatsapp}</span>
             </a>
             <a
               href="https://www.instagram.com/coach_wil_84"
@@ -247,7 +192,7 @@ export default function Footer({ currentLocale = "en" }: FooterProps) {
               className={styles.socialLink}
             >
               <i className="bi bi-instagram" aria-hidden="true"></i>
-              <span>{t.instagram}</span>
+              <span>{t.footer.instagram}</span>
             </a>
             <a
               href="https://www.facebook.com/people/Wil-Tah/100012235066793/"
@@ -258,7 +203,7 @@ export default function Footer({ currentLocale = "en" }: FooterProps) {
               className={styles.socialLink}
             >
               <i className="bi bi-facebook" aria-hidden="true"></i>
-              <span>{t.facebook}</span>
+              <span>{t.footer.facebook}</span>
             </a>
             <a
               href="https://www.tiktok.com/@rdf_bachata_chanel84"
@@ -268,9 +213,8 @@ export default function Footer({ currentLocale = "en" }: FooterProps) {
               aria-label="Visit our TikTok page for photos and events"
               title="Follow us on TikTok"
             >
-              <i className="bi bi-tiktok" aria-hidden="true">
-                TikTok
-              </i>
+              <i className="bi bi-tiktok" aria-hidden="true"></i>
+              <span>{t.footer.tiktok}</span>
             </a>
             <a
               href="https://rdf-bachata-fusion.passion.io"
@@ -280,9 +224,8 @@ export default function Footer({ currentLocale = "en" }: FooterProps) {
               aria-label="Download our mobile app for class schedules and videos"
               title="Download our app"
             >
-              <i className="bi bi-phone" aria-hidden="true">
-                App
-              </i>
+              <i className="bi bi-phone" aria-hidden="true"></i>
+              <span>{t.footer.app}</span>
             </a>
           </div>
         </div>
@@ -310,7 +253,7 @@ export default function Footer({ currentLocale = "en" }: FooterProps) {
       {/* Copyright Bar */}
       <div className={styles.footerBottom}>
         <p className={styles.copyright}>
-          {t.copyright}
+          © {year} {t.footer.brand}. {t.footer.copyright}
           <br />
           <a
             href="https://christophetesconidev.com/en"
@@ -318,7 +261,7 @@ export default function Footer({ currentLocale = "en" }: FooterProps) {
             rel="noopener noreferrer"
             className={styles.designCredit}
           >
-            This website was designed and created by christophetesconidev.com
+            {t.footer.designCredit}
           </a>
         </p>
       </div>

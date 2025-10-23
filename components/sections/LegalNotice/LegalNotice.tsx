@@ -1,10 +1,9 @@
 "use client";
 
+import { usePathname } from "next/navigation";
 import styles from "./LegalNotice.module.css";
 
-interface LegalNoticeProps {
-  locale?: string;
-}
+type Locale = "en" | "de" | "fr";
 
 interface ContentTranslation {
   title: string;
@@ -27,7 +26,12 @@ interface ContentTranslation {
   footerCopyright: string;
 }
 
-export default function LegalNotice({ locale = "en" }: LegalNoticeProps) {
+export default function LegalNotice() {
+  const pathname = usePathname();
+
+  // Récupérer la locale depuis l'URL
+  const currentLocale = (pathname.split("/")[1] || "en") as Locale;
+
   const content: Record<string, ContentTranslation> = {
     en: {
       title: "Legal Notice",
@@ -103,7 +107,7 @@ export default function LegalNotice({ locale = "en" }: LegalNoticeProps) {
     },
   };
 
-  const t = content[locale] || content.en;
+  const t = content[currentLocale] || content.en;
 
   return (
     <main id="legal" className={styles.legal}>

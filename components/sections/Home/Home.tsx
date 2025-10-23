@@ -2,7 +2,9 @@
 
 import { useState, useRef, useEffect } from "react";
 import Image from "next/image";
+import { usePathname } from "next/navigation";
 import styles from "./Home.module.css";
+import { getDictionary, type Locale } from "@/lib/i18n";
 
 export default function Home() {
   const [open, setOpen] = useState([false, false, false, false]);
@@ -13,6 +15,13 @@ export default function Home() {
     useRef<HTMLDivElement>(null),
   ];
   const videoRef = useRef<HTMLVideoElement>(null);
+  const pathname = usePathname();
+
+  // Récupérer la locale actuelle
+  const currentLocale = (pathname.split("/")[1] || "en") as Locale;
+
+  // Charger les traductions
+  const t = getDictionary(currentLocale);
 
   const toggle = (index: number) => {
     setOpen((prev) => {
@@ -41,6 +50,10 @@ export default function Home() {
       }
     });
   }, [open]);
+
+  if (!t || !t.home) {
+    return null;
+  }
 
   // Structured Data pour SEO
   const structuredData = {
@@ -207,9 +220,9 @@ export default function Home() {
         {/* Hero Section */}
         <section className={styles.hero}>
           <h1>
-            Bachata Lab St. Gallen <span>by Coach Wil</span>
+            {t.home.hero.title} <span>{t.home.hero.subtitle}</span>
           </h1>
-          <h2> RDF Bachata Fusion – Weekly Group Classes</h2>
+          <h2>{t.home.hero.tagline}</h2>
         </section>
 
         {/* Cards Grid */}
@@ -233,7 +246,7 @@ export default function Home() {
                   </span>
                 </button>
                 <h3 id="weekly-title" className={styles.cardTitle}>
-                  🗓 Weekly Classes
+                  {t.home.weeklyClasses.title}
                 </h3>
               </header>
               <div
@@ -244,37 +257,31 @@ export default function Home() {
                 ref={contentRefs[0]}
               >
                 <div className={styles.classItem}>
-                  <h4>Monday – Intermediate (20:30–22:30)</h4>
-                  <p>
-                    We focus on one combination for the whole month. This helps
-                    you truly learn the technique, control your body, and dance
-                    it with confidence and flow.
-                  </p>
+                  <h4>{t.home.weeklyClasses.monday.title}</h4>
+                  <p>{t.home.weeklyClasses.monday.description}</p>
                 </div>
                 <div className={styles.classItem}>
-                  <h4>Thursday – Beginner + Practice (20:30–22:30)</h4>
+                  <h4>{t.home.weeklyClasses.thursday.title}</h4>
                   <p>
-                    <strong>20:30–21:30:</strong> Learn partnerwork basics,
-                    rhythm, body movement, and connection.
+                    <strong>{t.home.weeklyClasses.thursday.part1}</strong>{" "}
+                    {t.home.weeklyClasses.thursday.part1desc}
                     <br />
-                    <strong>21:30–22:30:</strong> Practice in a relaxed space —
-                    grow at your own pace.
+                    <strong>{t.home.weeklyClasses.thursday.part2}</strong>{" "}
+                    {t.home.weeklyClasses.thursday.part2desc}
                   </p>
                 </div>
                 <div className={styles.classItem}>
-                  <h4>Friday – Open Level (20:30–22:30)</h4>
-                  <p>
-                    Fun drills, partnerwork, musical flow — everyone is welcome!
-                  </p>
+                  <h4>{t.home.weeklyClasses.friday.title}</h4>
+                  <p>{t.home.weeklyClasses.friday.description}</p>
                   <div className={styles.friday}>
                     <p>
-                      💡 <strong>Every last Friday of the month:</strong>
+                      {t.home.weeklyClasses.friday.special}
                       <br />
-                      <em>20:30–21:30:</em> Styling Class – express yourself and
-                      build confidence
+                      <em>{t.home.weeklyClasses.friday.styling}</em>{" "}
+                      {t.home.weeklyClasses.friday.stylingDesc}
                       <br />
-                      <em>21:30–22:30:</em> Social Practice – just dance, have
-                      fun, no pressure
+                      <em>{t.home.weeklyClasses.friday.social}</em>{" "}
+                      {t.home.weeklyClasses.friday.socialDesc}
                     </p>
                   </div>
                 </div>
@@ -299,7 +306,7 @@ export default function Home() {
                   </span>
                 </button>
                 <h3 id="prices-title" className={styles.cardTitle}>
-                  💰 Prices
+                  {t.home.prices.title}
                 </h3>
               </header>
               <div
@@ -311,30 +318,29 @@ export default function Home() {
               >
                 <ul>
                   <li>
-                    <strong>Early Bird:</strong> 35 CHF (via EventFrog)
+                    <strong>{t.home.prices.earlyBird}</strong>{" "}
+                    {t.home.prices.earlyBirdPrice}
                   </li>
                   <li>
-                    <strong>At the Door:</strong> 40 CHF (cash or TWINT)
+                    <strong>{t.home.prices.atDoor}</strong>{" "}
+                    {t.home.prices.atDoorPrice}
                   </li>
                   <li>
-                    <strong>First Time?</strong> → Only 20 CHF
+                    <strong>{t.home.prices.firstTime}</strong>{" "}
+                    {t.home.prices.firstTimePrice}
                   </li>
                 </ul>
                 <p>
-                  🔥 Want to come more than 4x per month?
+                  {t.home.prices.membership}
                   <br />
-                  Membership gives you <strong>more for less</strong>.
+                  {t.home.prices.membershipBenefit}
                   <br />
-                  Bachata Lab Pro Memberships start from{" "}
-                  <strong>150–240 CHF/month</strong>.
-                  <br />→ Includes multiple classes, app access, and party
-                  passes.
+                  {t.home.prices.membershipPrice}
+                  <br />
+                  {t.home.prices.membershipIncludes}
                 </p>
                 <p>
-                  <em>
-                    (Ask me for details — I&apos;ll guide you to the best
-                    option)
-                  </em>
+                  <em>{t.home.prices.askMe}</em>
                 </p>
               </div>
             </article>
@@ -357,7 +363,7 @@ export default function Home() {
                   </span>
                 </button>
                 <h3 id="location-title" className={styles.cardTitle}>
-                  📍 Location
+                  {t.home.location.title}
                 </h3>
               </header>
               <div
@@ -373,13 +379,17 @@ export default function Home() {
                   style={{ cursor: "pointer" }}
                 >
                   <span className={styles.mapIcon}>📍</span>
-                  MoveBox Studio <br />
-                  Unterstrasse 22, 9000 St. Gallen
+                  {t.home.location.address.split("\n").map((line, i) => (
+                    <span key={i}>
+                      {line}
+                      {i === 0 && <br />}
+                    </span>
+                  ))}
                 </address>
                 <ul>
-                  <li>✅ Easy access from Davidstrasse</li>
-                  <li>✅ Parking available</li>
-                  <li>✅ Clean, spacious, and full of good energy</li>
+                  <li>{t.home.location.feature1}</li>
+                  <li>{t.home.location.feature2}</li>
+                  <li>{t.home.location.feature3}</li>
                 </ul>
               </div>
             </article>
@@ -402,7 +412,7 @@ export default function Home() {
                   </span>
                 </button>
                 <h3 id="video-title" className={styles.cardTitle}>
-                  🎥 Video
+                  {t.home.video.title}
                 </h3>
               </header>
               <div
@@ -425,16 +435,19 @@ export default function Home() {
 
         {/* Outro */}
         <section className={styles.outro}>
-          <h2>Welcome to Bachata Lab St. Gallen</h2>
+          <h2>{t.home.outro.title}</h2>
           <p>
-            We practice, have fun, and support each other.
-            <br />
-            Come try a class and feel the difference.
+            {t.home.outro.description.split("\n").map((line, i) => (
+              <span key={i}>
+                {line}
+                {i === 0 && <br />}
+              </span>
+            ))}
           </p>
           <p>
-            <strong>See you on the dance floor! 💃</strong>
+            <strong>{t.home.outro.cta}</strong>
             <br />
-            Coach Wil
+            {t.home.outro.signature}
           </p>
           <div className={styles.outroImage}>
             <Image
