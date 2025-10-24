@@ -2,6 +2,8 @@
 
 import { useState, useEffect, useRef } from "react";
 import Image from "next/image";
+import { usePathname } from "next/navigation";
+import { getDictionary, type Locale } from "@/lib/i18n";
 import styles from "./MorePhoto.module.css";
 
 const images = [
@@ -18,6 +20,13 @@ export default function MorePhoto() {
   const [open, setOpen] = useState([false]);
   const contentRefs = [useRef<HTMLDivElement>(null)];
   const [imagesLoaded, setImagesLoaded] = useState(0);
+  const pathname = usePathname();
+
+  // Récupérer la locale actuelle
+  const currentLocale = (pathname.split("/")[1] || "en") as Locale;
+
+  // Charger les traductions
+  const t = getDictionary(currentLocale);
 
   const toggle = (index: number) => {
     setOpen((prev) => {
@@ -56,6 +65,11 @@ export default function MorePhoto() {
     updateHeight();
   }, [open, imagesLoaded]);
 
+  // Vérification de sécurité
+  if (!t || !t.morePhoto) {
+    return null;
+  }
+
   return (
     <section className={styles.cardsSection}>
       <div className={styles.cardsGrid}>
@@ -74,7 +88,7 @@ export default function MorePhoto() {
               <span className={styles.toggleIcon}>{open[0] ? "−" : "+"}</span>
             </button>
             <h3 id="morephoto-title" className={styles.cardTitle}>
-              More Photos
+              {t.morePhoto.title}
             </h3>
           </header>
 

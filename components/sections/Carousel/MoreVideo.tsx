@@ -6,7 +6,10 @@ import { getDictionary, type Locale } from "@/lib/i18n";
 import styles from "./MoreVideo.module.css";
 
 const videos = [
-  { src: "/wil_sandra_video.mp4", alt: "Wilfried and Sandra dancing Bachata" },
+  {
+    src: "/wil_sandra_video_compressed.mp4",
+    alt: "Wilfried and Sandra dancing Bachata",
+  },
 ];
 
 export default function MoreVideo() {
