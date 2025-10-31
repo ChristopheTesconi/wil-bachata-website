@@ -250,6 +250,7 @@ export default function DanceRoom() {
                   <li>{t.danceroom.proVIP.item3}</li>
                   <li>{t.danceroom.proVIP.item4}</li>
                   <li>{t.danceroom.proVIP.item5}</li>
+                  <li>{t.danceroom.proVIP.item6}</li>
                 </ul>
                 <p>{t.danceroom.proVIP.price}</p>
               </div>
