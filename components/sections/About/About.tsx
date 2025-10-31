@@ -185,8 +185,10 @@ export default function About() {
                 <p>{t.about.teaching.p1}</p>
                 <p>{t.about.teaching.p2}</p>
                 <p>{t.about.teaching.p3}</p>
+                <p>{t.about.teaching.p4}</p>
                 <p>
-                  {t.about.teaching.p4}
+                  {t.about.teaching.p5}
+                  <br />
                   <br />
                   <strong>{t.about.teaching.signature}</strong>
                 </p>
