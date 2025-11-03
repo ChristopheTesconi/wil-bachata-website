@@ -49,7 +49,11 @@ export default function DanceRoom() {
     name: "Bachata Lab Pro Membership",
     description:
       "Bachata Lab Pro Membership offers full dance training, access to RDF Bachata Fusion App, and social dance events.",
-    brand: "Bachata Lab",
+    image: "https://bachata-stgallen.ch/rdf_logo.jpeg", // ← AJOUTÉ
+    brand: {
+      "@type": "Brand",
+      name: "Bachata Lab",
+    },
     offers: [
       {
         "@type": "Offer",
@@ -58,6 +62,8 @@ export default function DanceRoom() {
         priceCurrency: "CHF",
         description:
           "All Thursday Beginner Classes + Weekly Dance Practice + RDF App Part 1 + Domingo Latino Party Pass",
+        availability: "https://schema.org/InStock", // ← AJOUTÉ
+        url: "https://bachata-stgallen.ch", // ← AJOUTÉ
       },
       {
         "@type": "Offer",
@@ -66,6 +72,8 @@ export default function DanceRoom() {
         priceCurrency: "CHF",
         description:
           "5 Flexible Classes / Month + RDF App Limited Access + Salsa Ritmo Party Pass",
+        availability: "https://schema.org/InStock",
+        url: "https://bachata-stgallen.ch",
       },
       {
         "@type": "Offer",
@@ -74,6 +82,8 @@ export default function DanceRoom() {
         priceCurrency: "CHF",
         description:
           "8 Flexible Classes / Month + RDF App Laboratorium + Party Passes included",
+        availability: "https://schema.org/InStock",
+        url: "https://bachata-stgallen.ch",
       },
       {
         "@type": "Offer",
@@ -82,6 +92,8 @@ export default function DanceRoom() {
         priceCurrency: "CHF",
         description:
           "Unlimited Classes + Full RDF App Access + Multiple Party Passes + Workshop Included",
+        availability: "https://schema.org/InStock",
+        url: "https://bachata-stgallen.ch",
       },
     ],
   };
