@@ -283,7 +283,9 @@ export default function Footer() {
             email: "rdfbatchatafusion__will@hotmail.com",
             address: {
               "@type": "PostalAddress",
+              streetAddress: "Wildeggstrasse 16",
               addressLocality: "St. Gallen",
+              postalCode: "9000",
               addressCountry: "CH",
             },
             sameAs: [
