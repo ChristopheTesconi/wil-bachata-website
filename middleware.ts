@@ -40,6 +40,13 @@ export function middleware(request: NextRequest) {
     return NextResponse.next();
   }
 
+  // ✅ AJOUT : Ne pas rediriger les bots (Google, Bing, etc.)
+  const userAgent = request.headers.get("user-agent") || "";
+  const isBot =
+    /googlebot|bingbot|slurp|duckduckbot|baiduspider|yandexbot|facebookexternalhit/i.test(
+      userAgent
+    );
+
   // Vérifie si l'URL contient déjà une locale
   const pathnameHasLocale = locales.some(
     (locale) => pathname.startsWith(`/${locale}/`) || pathname === `/${locale}`
@@ -49,7 +56,13 @@ export function middleware(request: NextRequest) {
     return NextResponse.next();
   }
 
-  // Redirige vers l'URL avec la locale
+  // ✅ Si c'est un bot et qu'il n'y a pas de locale, rediriger vers /en (sans boucle)
+  if (isBot) {
+    const newUrl = new URL(`/en${pathname}`, request.url);
+    return NextResponse.redirect(newUrl);
+  }
+
+  // Redirige vers l'URL avec la locale (utilisateurs normaux)
   const locale = getLocale(request);
   const newUrl = new URL(`/${locale}${pathname}`, request.url);
 
