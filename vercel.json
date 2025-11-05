@@ -1,5 +1,4 @@
 {
-  "regions": ["iad1"],
   "redirects": [
     {
       "source": "https://bachata-stgallen.ch/:path*",
