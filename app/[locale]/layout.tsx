@@ -19,82 +19,92 @@ const geistMono = Geist_Mono({
   preload: true,
 });
 
-export const metadata: Metadata = {
-  title: {
-    default:
-      "RDF Bachata Fusion - Professional Bachata Dance Classes in St. Gallen",
-    template: "%s | RDF Bachata Fusion",
-  },
-  description:
-    "Learn Bachata Fusion with Coach Wil in St. Gallen, Switzerland. Professional dance classes for all levels - beginners to advanced. Join our passionate dance community at RDF Bachata Fusion.",
-  keywords: [
-    "Bachata St. Gallen",
-    "RDF Bachata Fusion",
-    "Coach Wil",
-    "Bachata classes Switzerland",
-    "Dance classes St. Gallen",
-    "Bachata Fusion",
-    "Bachata lessons Switzerland",
-    "Latin dance St. Gallen",
-    "Bachata sensual",
-    "partner dance classes",
-    "Wilfried Tah",
-    "Tanzunterricht St. Gallen",
-    "cours de bachata Suisse",
-  ],
-  authors: [{ name: "Coach Wil - RDF Bachata Fusion" }],
-  creator: "RDF Bachata Fusion",
-  publisher: "RDF Bachata Fusion",
-  metadataBase: new URL("https://bachata-stgallen.ch"),
-  openGraph: {
-    title: "RDF Bachata Fusion - Bachata Classes in St. Gallen",
+// ✅ Transformation en fonction pour accéder à locale
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  const baseUrl = "https://www.bachata-stgallen.ch"; // ✅ Avec www.
+
+  return {
+    title: {
+      default:
+        "RDF Bachata Fusion - Professional Bachata Dance Classes in St. Gallen",
+      template: "%s | RDF Bachata Fusion",
+    },
     description:
-      "Join Coach Wil's professional Bachata Fusion dance classes in St. Gallen, Switzerland. Suitable for all levels - from beginners to advanced dancers.",
-    type: "website",
-    locale: "en_US",
-    url: "https://bachata-stgallen.ch",
-    siteName: "RDF Bachata Fusion",
-    images: [
-      {
-        url: "/rdf_logo.jpeg",
-        width: 1200,
-        height: 630,
-        alt: "RDF Bachata Fusion - Professional Dance Classes in St. Gallen",
-      },
+      "Learn Bachata Fusion with Coach Wil in St. Gallen, Switzerland. Professional dance classes for all levels - beginners to advanced. Join our passionate dance community at RDF Bachata Fusion.",
+    keywords: [
+      "Bachata St. Gallen",
+      "RDF Bachata Fusion",
+      "Coach Wil",
+      "Bachata classes Switzerland",
+      "Dance classes St. Gallen",
+      "Bachata Fusion",
+      "Bachata lessons Switzerland",
+      "Latin dance St. Gallen",
+      "Bachata sensual",
+      "partner dance classes",
+      "Wilfried Tah",
+      "Tanzunterricht St. Gallen",
+      "cours de bachata Suisse",
     ],
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "RDF Bachata Fusion - Bachata Classes in St. Gallen",
-    description:
-      "Join Coach Wil's professional Bachata Fusion dance classes in St. Gallen, Switzerland. All levels welcome.",
-    images: ["/rdf_logo.jpeg"],
-  },
-  robots: {
-    index: true,
-    follow: true,
-    googleBot: {
+    authors: [{ name: "Coach Wil - RDF Bachata Fusion" }],
+    creator: "RDF Bachata Fusion",
+    publisher: "RDF Bachata Fusion",
+    metadataBase: new URL(baseUrl), // ✅ Avec www.
+    openGraph: {
+      title: "RDF Bachata Fusion - Bachata Classes in St. Gallen",
+      description:
+        "Join Coach Wil's professional Bachata Fusion dance classes in St. Gallen, Switzerland. Suitable for all levels - from beginners to advanced dancers.",
+      type: "website",
+      locale: locale === "en" ? "en_US" : locale === "de" ? "de_CH" : "fr_CH",
+      url: `${baseUrl}/${locale}`,
+      siteName: "RDF Bachata Fusion",
+      images: [
+        {
+          url: "/rdf_logo.jpeg",
+          width: 1200,
+          height: 630,
+          alt: "RDF Bachata Fusion - Professional Dance Classes in St. Gallen",
+        },
+      ],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: "RDF Bachata Fusion - Bachata Classes in St. Gallen",
+      description:
+        "Join Coach Wil's professional Bachata Fusion dance classes in St. Gallen, Switzerland. All levels welcome.",
+      images: ["/rdf_logo.jpeg"],
+    },
+    robots: {
       index: true,
       follow: true,
-      "max-video-preview": -1,
-      "max-image-preview": "large",
-      "max-snippet": -1,
+      googleBot: {
+        index: true,
+        follow: true,
+        "max-video-preview": -1,
+        "max-image-preview": "large",
+        "max-snippet": -1,
+      },
     },
-  },
-  alternates: {
-    canonical: "https://bachata-stgallen.ch",
-    languages: {
-      en: "https://bachata-stgallen.ch/en",
-      de: "https://bachata-stgallen.ch/de",
-      fr: "https://bachata-stgallen.ch/fr",
-      "x-default": "https://bachata-stgallen.ch",
+    alternates: {
+      canonical: `${baseUrl}/${locale}`, // ✅ Correction du typo
+      languages: {
+        en: `${baseUrl}/en`,
+        de: `${baseUrl}/de`,
+        fr: `${baseUrl}/fr`,
+        "x-default": `${baseUrl}/en`,
+      },
     },
-  },
-  verification: {
-    google: "mHWFQ1kJxeMrG7lCKGpw2c6z104LWWyOraMtsH6zlBw",
-  },
-  category: "Dance & Entertainment",
-};
+    verification: {
+      google: "mHWFQ1kJxeMrG7lCKGpw2c6z104LWWyOraMtsH6zlBw",
+    },
+    category: "Dance & Entertainment",
+  };
+}
 
 export default async function LocaleLayout({
   children,
@@ -123,8 +133,8 @@ export default async function LocaleLayout({
             name: "RDF Bachata Fusion",
             description:
               "Professional Bachata Fusion dance classes in St. Gallen",
-            url: "https://bachata-stgallen.ch",
-            image: "https://bachata-stgallen.ch/rdf_logo.jpeg",
+            url: "https://www.bachata-stgallen.ch", // ✅ Avec www.
+            image: "https://www.bachata-stgallen.ch/rdf_logo.jpeg",
             telephone: "+41774934018",
             email: "rdfbatchatafusion__will@hotmail.com",
             address: {

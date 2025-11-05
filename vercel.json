@@ -1,0 +1,9 @@
+{
+  "redirects": [
+    {
+      "source": "https://bachata-stgallen.ch/:path*",
+      "destination": "https://www.bachata-stgallen.ch/:path*",
+      "permanent": true
+    }
+  ]
+}

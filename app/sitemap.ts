@@ -1,39 +1,41 @@
 import { MetadataRoute } from "next";
 
 export default function sitemap(): MetadataRoute.Sitemap {
+  const baseUrl = "https://www.bachata-stgallen.ch"; // ✅ Ajout de www.
+
   return [
     {
-      url: "https://bachata-stgallen.ch/en",
+      url: `${baseUrl}/en`,
       lastModified: new Date(),
       changeFrequency: "monthly",
       priority: 1,
     },
     {
-      url: "https://bachata-stgallen.ch/de",
+      url: `${baseUrl}/de`,
       lastModified: new Date(),
       changeFrequency: "monthly",
       priority: 1,
     },
     {
-      url: "https://bachata-stgallen.ch/fr",
+      url: `${baseUrl}/fr`,
       lastModified: new Date(),
       changeFrequency: "monthly",
       priority: 1,
     },
     {
-      url: "https://bachata-stgallen.ch/en/legal-notice",
+      url: `${baseUrl}/en/legal-notice`,
       lastModified: new Date(),
       changeFrequency: "yearly",
       priority: 0.5,
     },
     {
-      url: "https://bachata-stgallen.ch/de/impressum",
+      url: `${baseUrl}/de/impressum`,
       lastModified: new Date(),
       changeFrequency: "yearly",
       priority: 0.5,
     },
     {
-      url: "https://bachata-stgallen.ch/fr/mentions-legales",
+      url: `${baseUrl}/fr/mentions-legales`,
       lastModified: new Date(),
       changeFrequency: "yearly",
       priority: 0.5,
