@@ -249,7 +249,7 @@ export default function Footer() {
               <span>{t.footer.app}</span>
             </a>
             <a
-              href="https://www.skool.com/@wilfried-tah-8327?g=rdf-bachata-fusion-ch-2232"
+              href="https://www.skool.com/rdf-bachata-fusion-ch-2232/about?ref=8b30f0ec24234217bab5ed45cd07e4d9"
               target="_blank"
               rel="noopener noreferrer"
               className={styles.socialLink}
