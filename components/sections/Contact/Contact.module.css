@@ -267,6 +267,7 @@
 
 .subContent[style*="max-height:"][style*="px"]:not([style*="max-height: 0px"]) {
   padding: 1rem;
+  margin-bottom: 1rem;
 }
 
 /* GRILLE PHOTOS - AVEC FLEXBOX */
@@ -308,7 +309,34 @@
   margin-top: 0.5rem;
   margin-bottom: 0;
 }
+/* Gestion des liens longs dans les collaborateurs */
+.collaborationList a {
+  word-break: break-word;
+  overflow-wrap: break-word;
+  display: inline-block;
+  max-width: 100%;
+}
 
+.collaborationList strong {
+  color: #ffcc33;
+}
+
+/* Version mobile - retour à la ligne après 👉 */
+@media (max-width: 768px) {
+  .collaborationList a {
+    display: block;
+  }
+
+  .collaborationList li {
+    margin-bottom: 1.5rem;
+  }
+
+  /* Force le br après l'emoji sur mobile */
+  .collaborationList a strong::after {
+    content: "\A";
+    white-space: pre;
+  }
+}
 /* RESPONSIVE */
 @media (max-width: 768px) {
   .contact {

@@ -90,7 +90,7 @@ export default function Footer() {
             </p>
             <p>
               <a
-                href="mailto:rdfbatchatafusion__will@hotmail.com"
+                href="mailto:Rdfbachatafusion_wil@hotmail.com"
                 itemProp="email"
                 aria-label={`Send email to ${t.footer.email}`}
               >
@@ -137,12 +137,33 @@ export default function Footer() {
               </li>
               <li>
                 <a
+                  onClick={() => scrollToSection("collaborators")}
+                  style={{ cursor: "pointer" }}
+                  aria-label="View our collaborators"
+                  className={styles.footerLink}
+                >
+                  {t.footer.collaborators}
+                </a>
+              </li>
+              <li>
+                <a
                   onClick={() => scrollToSection("contact")}
                   style={{ cursor: "pointer" }}
                   aria-label="Contact us for information"
                   className={styles.footerLink}
                 >
                   {t.footer.contact}
+                </a>
+              </li>
+              <li>
+                <a
+                  href="https://eventfrog.ch/en/events.html?searchTerm=Bachata+Lab+St+gallen"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Book your class on EventFrog"
+                  className={styles.footerLink}
+                >
+                  {t.footer.bookings}
                 </a>
               </li>
               <li>
@@ -226,6 +247,28 @@ export default function Footer() {
             >
               <i className="bi bi-phone" aria-hidden="true"></i>
               <span>{t.footer.app}</span>
+            </a>
+            <a
+              href="https://www.skool.com/@wilfried-tah-8327?g=rdf-bachata-fusion-ch-2232"
+              target="_blank"
+              rel="noopener noreferrer"
+              className={styles.socialLink}
+              aria-label="Join our Skool Community"
+              title="Join our Skool Community"
+            >
+              <i className="bi bi-people" aria-hidden="true"></i>
+              <span>{t.footer.skool}</span>
+            </a>
+            <a
+              href="https://www.linkedin.com/in/wilfried-tah-54913a273?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"
+              target="_blank"
+              rel="noopener noreferrer"
+              className={styles.socialLink}
+              aria-label="Connect with Coach Wil on LinkedIn"
+              title="Connect on LinkedIn"
+            >
+              <i className="bi bi-linkedin" aria-hidden="true"></i>
+              <span>{t.footer.linkedin}</span>
             </a>
           </div>
         </div>

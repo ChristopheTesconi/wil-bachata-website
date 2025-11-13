@@ -7,12 +7,13 @@ import styles from "./Home.module.css";
 import { getDictionary, type Locale } from "@/lib/i18n";
 
 export default function Home() {
-  const [open, setOpen] = useState([false, false, false, false]);
+  const [open, setOpen] = useState([false, false, false, false, false]); // 5 éléments
   const contentRefs = [
     useRef<HTMLDivElement>(null),
     useRef<HTMLDivElement>(null),
     useRef<HTMLDivElement>(null),
     useRef<HTMLDivElement>(null),
+    useRef<HTMLDivElement>(null), // 5ème ref
   ];
   const videoRef = useRef<HTMLVideoElement>(null);
   const pathname = usePathname();
@@ -342,6 +343,50 @@ export default function Home() {
                 <p>
                   <em>{t.home.prices.askMe}</em>
                 </p>
+              </div>
+            </article>
+
+            {/* Bookings */}
+            <article className={styles.card} aria-labelledby="bookings-title">
+              <header className={styles.cardHeader} onClick={() => toggle(4)}>
+                <button
+                  className={styles.toggleBtn}
+                  aria-expanded={open[4]}
+                  aria-controls="panel-bookings"
+                  aria-label="Toggle bookings"
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    toggle(4);
+                  }}
+                >
+                  <span className={styles.toggleIcon}>
+                    {open[4] ? "−" : "+"}
+                  </span>
+                </button>
+                <h3 id="bookings-title" className={styles.cardTitle}>
+                  {t.home.bookings.title}
+                </h3>
+              </header>
+              <div
+                id="panel-bookings"
+                role="region"
+                aria-labelledby="bookings-title"
+                className={styles.cardContent}
+                ref={contentRefs[4]}
+              >
+                <p>{t.home.bookings.atDoor}</p>
+                <p>{t.home.bookings.online}</p>
+                <p>
+                  <strong>{t.home.bookings.clickLink}</strong>
+                </p>
+                <a
+                  href={t.home.bookings.eventfrogLink}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={styles.eventfrogLink}
+                >
+                  {t.home.bookings.eventfrogLink}
+                </a>
               </div>
             </article>
 

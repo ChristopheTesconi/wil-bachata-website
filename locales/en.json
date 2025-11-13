@@ -50,6 +50,13 @@
       "membershipIncludes": "→ Includes multiple classes, app access, and party passes.",
       "askMe": "(Ask me for details — I'll guide you to the best option)"
     },
+    "bookings": {
+      "title": "📅 Bookings",
+      "atDoor": "At the door Bookings (cash or TWINT)",
+      "online": "Online Bookings via Eventfrog.ch",
+      "clickLink": "Click the link below:",
+      "eventfrogLink": "https://eventfrog.ch/en/events.html?searchTerm=Bachata+Lab+St+gallen"
+    },
     "location": {
       "title": "📍 Location",
       "address": "MoveBox Studio\nUnterstrasse 22, 9000 St. Gallen",
@@ -153,11 +160,11 @@
     "contactInfo": {
       "title": "📱 Contact Info",
       "whatsapp": "📱 WhatsApp / Call: +41 77 493 40 18 - 👉 Direct Access",
-      "email": "📧 Email: rdfbatchatafusion__will@hotmail.com",
+      "email": "📧 Email: Rdfbachatafusion_wil@hotmail.com",
       "instagram": "📸 Instagram: @coach_wil_84",
       "facebook": "📘 Facebook: Wil Bachata",
       "tiktok": "🎵 TikTok: @rdf_bachata_chanel84",
-      "collaborationTitle": "🤝 Collaboration"
+      "collaborationTitle": "🤝 Collaborators"
     },
     "studioLocations": {
       "title": "🏢 Studio Locations",
@@ -174,7 +181,7 @@
       "photosWildegg": "📸 Photos Wildeggstrasse 16"
     },
     "privateCoaching": {
-      "title": "🤝 Private Coaching",
+      "title": "🎯 Private Coaching",
       "intro": "Want faster progress or personal guidance? I offer 1:1 or 2:1 private sessions for:",
       "item1": "Foundation & body movement training",
       "item2": "Lead & follow technique",
@@ -228,23 +235,27 @@
     }
   },
   "footer": {
-    "brand": "Wil Bachata",
+    "brand": "Coach Wil",
     "tagline": "Professional Bachata Fusion Dance Classes in St. Gallen, Switzerland",
     "address": "St. Gallen, Switzerland",
     "phone": "+41 77 493 40 18",
-    "email": "rdfbatchatafusion__will@hotmail.com",
+    "email": "Rdfbachatafusion_wil@hotmail.com",
     "quickLinks": "Quick Links",
     "followUs": "Follow Us",
     "home": "Home",
     "aboutMe": "About Me",
     "membership": "Membership",
     "contact": "Contact",
+    "collaborators": "Collaborators",
+    "bookings": "Bookings",
     "legal": "Legal Notice",
     "whatsapp": "WhatsApp",
     "instagram": "Instagram",
     "facebook": "Facebook",
     "tiktok": "TikTok",
     "app": "App",
+    "skool": "Skool Community",
+    "linkedin": "LinkedIn",
     "copyright": "All rights reserved",
     "designCredit": "This website was designed and created by christophetesconidev.com"
   }

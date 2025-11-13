@@ -50,6 +50,13 @@
       "membershipIncludes": "→ Comprend plusieurs cours, accès à l'app et passes pour les soirées.",
       "askMe": "(Demandez-moi pour plus de détails — je vous guiderai vers la meilleure option)"
     },
+    "bookings": {
+      "title": "📅 Réservations",
+      "atDoor": "Réservations sur place (espèces ou TWINT)",
+      "online": "Réservations en ligne via Eventfrog.ch",
+      "clickLink": "Cliquez sur le lien ci-dessous :",
+      "eventfrogLink": "https://eventfrog.ch/en/events.html?searchTerm=Bachata+Lab+St+gallen"
+    },
     "location": {
       "title": "📍 Lieu",
       "address": "MoveBox Studio\nUnterstrasse 22, 9000 St. Gallen",
@@ -153,11 +160,11 @@
     "contactInfo": {
       "title": "📱 Coordonnées",
       "whatsapp": "📱 WhatsApp / Appel : +41 77 493 40 18 - 👉 Accès direct",
-      "email": "📧 Email : rdfbatchatafusion__will@hotmail.com",
+      "email": "📧 Email : Rdfbachatafusion_wil@hotmail.com",
       "instagram": "📸 Instagram : @coach_wil_84",
       "facebook": "📘 Facebook : Wil Bachata",
       "tiktok": "🎵 TikTok : @rdf_bachata_chanel84",
-      "collaborationTitle": "🤝 Collaboration"
+      "collaborationTitle": "🤝 Collaborateurs"
     },
     "studioLocations": {
       "title": "🏢 Emplacements des studios",
@@ -174,7 +181,7 @@
       "photosWildegg": "📸 Photos Wildeggstrasse 16"
     },
     "privateCoaching": {
-      "title": "🤝 Coaching privé",
+      "title": "🎯 Coaching privé",
       "intro": "Vous voulez progresser plus rapidement ou bénéficier d'un accompagnement personnalisé ? Je propose des sessions privées 1:1 ou 2:1 pour :",
       "item1": "Entraînement aux fondamentaux & mouvement du corps",
       "item2": "Technique lead & follow",
@@ -228,23 +235,27 @@
     }
   },
   "footer": {
-    "brand": "Wil Bachata",
+    "brand": "Coach Wil",
     "tagline": "Cours de danse Bachata Fusion professionnels à St. Gallen, Suisse",
     "address": "St. Gallen, Suisse",
     "phone": "+41 77 493 40 18",
-    "email": "rdfbatchatafusion__will@hotmail.com",
+    "email": "Rdfbachatafusion_wil@hotmail.com",
     "quickLinks": "Liens rapides",
     "followUs": "Suivez-nous",
     "home": "Accueil",
     "aboutMe": "À propos",
     "membership": "Adhésion",
     "contact": "Contact",
+    "collaborators": "Collaborateurs",
+    "bookings": "Réservations",
     "legal": "Mentions légales",
     "whatsapp": "WhatsApp",
     "instagram": "Instagram",
     "facebook": "Facebook",
     "tiktok": "TikTok",
     "app": "App",
+    "skool": "Communauté Skool",
+    "linkedin": "LinkedIn",
     "copyright": "Tous droits réservés",
     "designCredit": "Ce site web a été conçu et créé par christophetesconidev.com"
   }

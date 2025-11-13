@@ -163,6 +163,32 @@
   color: #fff;
 }
 
+/* Lien EventFrog dans la carte Bookings */
+.eventfrogLink {
+  color: #1cb0f6 !important;
+  text-decoration: underline;
+  word-break: break-all;
+  display: inline-block;
+  margin-top: 0.5rem;
+  margin-bottom: 1rem; /* ← Ajout du margin en dessous */
+  transition: color 0.3s ease;
+}
+
+.eventfrogLink:hover {
+  color: #ffcc33 !important;
+  text-decoration: none;
+}
+
+/* S'assurer que les liens dans cardContent sont visibles */
+.cardContent a {
+  color: #aa01ff !important;
+  text-decoration: underline;
+}
+
+.cardContent a:hover {
+  color: #ffcc33 !important;
+}
+
 /* Élément de classe */
 .classItem {
   margin-bottom: 1.5rem;

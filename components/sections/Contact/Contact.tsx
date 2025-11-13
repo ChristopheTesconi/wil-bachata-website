@@ -7,17 +7,17 @@ import styles from "./Contact.module.css";
 import { getDictionary, type Locale } from "@/lib/i18n";
 
 export default function Contact() {
-  const [open, setOpen] = useState([false, false, false]);
-  const [subOpen, setSubOpen] = useState([false, false, false]);
+  const [open, setOpen] = useState([false, false, false, false]);
+  const [subOpen, setSubOpen] = useState([false, false]);
 
   const contentRefs = [
+    useRef<HTMLDivElement>(null),
     useRef<HTMLDivElement>(null),
     useRef<HTMLDivElement>(null),
     useRef<HTMLDivElement>(null),
   ];
 
   const subContentRefs = [
-    useRef<HTMLDivElement>(null),
     useRef<HTMLDivElement>(null),
     useRef<HTMLDivElement>(null),
   ];
@@ -235,7 +235,7 @@ export default function Contact() {
                   </li>
                   <li>
                     <a
-                      href="mailto:rdfbatchatafusion__will@hotmail.com"
+                      href="mailto:Rdfbachatafusion_wil@hotmail.com"
                       className={styles.contactLink}
                     >
                       {t.contact.contactInfo.email}
@@ -271,85 +271,6 @@ export default function Contact() {
                       {t.contact.contactInfo.tiktok}
                     </a>
                   </li>
-                  {/* Sous-accordéon Collaboration */}
-                  <div className={styles.subAccordion}>
-                    <header
-                      className={styles.subHeader}
-                      onClick={() => toggleSub(2)}
-                    >
-                      <button
-                        className={styles.subToggleBtn}
-                        aria-expanded={subOpen[2]}
-                        aria-controls="sub-panel-collaboration"
-                        aria-label="Toggle Collaboration Partners"
-                        onClick={(e) => {
-                          e.stopPropagation();
-                          toggleSub(2);
-                        }}
-                      >
-                        <span className={styles.toggleIcon}>
-                          {subOpen[2] ? "−" : "+"}
-                        </span>
-                      </button>
-                      <h5 className={styles.subTitle}>
-                        {t.contact.contactInfo.collaborationTitle}
-                      </h5>
-                    </header>
-                    <div
-                      id="sub-panel-collaboration"
-                      className={`${styles.subContent} ${
-                        subOpen[2] ? styles.open : ""
-                      }`}
-                      ref={subContentRefs[2]}
-                    >
-                      <ul className={styles.collaborationList}>
-                        <li>
-                          <a
-                            href="https://sandraburdet.com/"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className={styles.contactLink}
-                          >
-                            🌟 <strong>Sandra Burdet</strong> 👉
-                            https://sandraburdet.com/
-                          </a>
-                        </li>
-                        <li>
-                          <a
-                            href="https://christophetesconidev.com/en"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className={styles.contactLink}
-                          >
-                            💻 <strong>Chris Tesconi</strong> 👉
-                            https://christophetesconidev.com/en
-                          </a>
-                        </li>
-                        <li>
-                          <a
-                            href="https://www.instagram.com/domingolatinosg"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className={styles.contactLink}
-                          >
-                            🎉 <strong>Domingo Latino</strong> 👉
-                            https://www.instagram.com/domingolatinosg
-                          </a>
-                        </li>
-                        <li>
-                          <a
-                            href="https://www.instagram.com/gartnerdjgalante"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className={styles.contactLink}
-                          >
-                            🎵 <strong>DJ Galante Salsaritmo</strong> 👉
-                            https://www.instagram.com/gartnerdjgalante
-                          </a>
-                        </li>
-                      </ul>
-                    </div>
-                  </div>
                 </ul>
               </div>
             </article>
@@ -593,6 +514,98 @@ export default function Contact() {
                   <br />
                   {t.contact.privateCoaching.signature}
                 </p>
+              </div>
+            </article>
+
+            {/* COLLABORATORS */}
+            <article
+              id="collaborators"
+              className={styles.card}
+              aria-labelledby="collaborators-title"
+            >
+              <header className={styles.cardHeader} onClick={() => toggle(3)}>
+                <button
+                  className={styles.toggleBtn}
+                  aria-expanded={open[3]}
+                  aria-controls="panel-collaborators"
+                  aria-label="Toggle Collaborators"
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    toggle(3);
+                  }}
+                >
+                  <span className={styles.toggleIcon}>
+                    {open[3] ? "−" : "+"}
+                  </span>
+                </button>
+                <h3 id="collaborators-title" className={styles.cardTitle}>
+                  {t.contact.contactInfo.collaborationTitle}
+                </h3>
+              </header>
+              <div
+                id="panel-collaborators"
+                role="region"
+                aria-labelledby="collaborators-title"
+                className={styles.cardContent}
+                ref={contentRefs[3]}
+              >
+                <ul className={styles.collaborationList}>
+                  <li>
+                    <a
+                      href="https://sandraburdet.com/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className={styles.contactLink}
+                    >
+                      🌟 <strong>Sandra Burdet</strong> 👉
+                      https://sandraburdet.com/
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      href="https://christophetesconidev.com/en"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className={styles.contactLink}
+                    >
+                      💻 <strong>Chris Tesconi</strong> 👉
+                      https://christophetesconidev.com/en
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      href="https://www.instagram.com/domingolatinosg"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className={styles.contactLink}
+                    >
+                      🎉 <strong>Domingo Latino</strong> 👉
+                      https://www.instagram.com/domingolatinosg
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      href="https://www.instagram.com/gartnerdjgalante"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className={styles.contactLink}
+                    >
+                      🎵 <strong>DJ Galante Salsaritmo</strong> 👉
+                      https://www.instagram.com/gartnerdjgalante
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      href="https://www.instagram.com/bachata.loca.events?igsh=MXZueW9jZzJnaWZxdQ=="
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className={styles.contactLink}
+                    >
+                      🐸 <strong>Bachata Loca Event</strong> 👉
+                      https://www.instagram.com/bachata.loca.events
+                    </a>
+                  </li>
+                </ul>
               </div>
             </article>
           </div>

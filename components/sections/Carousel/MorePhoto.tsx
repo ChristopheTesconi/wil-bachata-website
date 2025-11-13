@@ -12,8 +12,12 @@ const images = [
   { src: "/wil_sandra4.jpg", alt: "Wilfried and Sandra dancing Bachata" },
   { src: "/wil_sandra5.jpg", alt: "Wilfried and Sandra performance" },
   { src: "/wil_sandra6.jpg", alt: "Wilfried and Sandra Bachata Geneva" },
-  { src: "/wil1.jpg", alt: "Wilfried and Sandra Bachata Geneva" },
-  { src: "/wil2.jpg", alt: "Wilfried and Sandra Bachata Geneva" },
+  { src: "/wil_sandra7.jpg", alt: "Wilfried and Sandra performance" },
+  { src: "/wil_sandra8.jpg", alt: "Wilfried and Sandra performance" },
+  { src: "/wil1.jpg", alt: "Wilfried" },
+  { src: "/wil2.jpg", alt: "Wilfried" },
+  { src: "/wil3.jpg", alt: "Wilfried" },
+  { src: "/wil4.jpg", alt: "Wilfried" },
 ];
 
 export default function MorePhoto() {
