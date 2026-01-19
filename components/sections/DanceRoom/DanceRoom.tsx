@@ -1,3 +1,4 @@
+// DanceRoom.tsx
 "use client";
 
 import { useState, useRef, useEffect } from "react";
@@ -6,8 +7,9 @@ import styles from "./DanceRoom.module.css";
 import { getDictionary, type Locale } from "@/lib/i18n";
 
 export default function DanceRoom() {
-  const [open, setOpen] = useState([false, false, false, false]);
+  const [open, setOpen] = useState([false, false, false, false, false]);
   const contentRefs = [
+    useRef<HTMLDivElement>(null),
     useRef<HTMLDivElement>(null),
     useRef<HTMLDivElement>(null),
     useRef<HTMLDivElement>(null),
@@ -42,14 +44,14 @@ export default function DanceRoom() {
     return null;
   }
 
-  // Structured Data pour SEO
+  // Structured Data pour SEO - UPDATED
   const structuredData = {
     "@context": "https://schema.org",
     "@type": "Product",
     name: "Bachata Lab Pro Membership",
     description:
       "Bachata Lab Pro Membership offers full dance training, access to RDF Bachata Fusion App, and social dance events.",
-    image: "https://bachata-stgallen.ch/rdf_logo.jpeg", // ← AJOUTÉ
+    image: "https://bachata-stgallen.ch/rdf_logo.jpeg",
     brand: {
       "@type": "Brand",
       name: "Bachata Lab",
@@ -57,41 +59,41 @@ export default function DanceRoom() {
     offers: [
       {
         "@type": "Offer",
-        name: "Pro Student",
+        name: "Bachata Lab Pro Student",
         price: "110",
         priceCurrency: "CHF",
         description:
-          "All Thursday Beginner Classes + Weekly Dance Practice + RDF App Part 1 + Domingo Latino Party Pass",
-        availability: "https://schema.org/InStock", // ← AJOUTÉ
-        url: "https://bachata-stgallen.ch", // ← AJOUTÉ
+          "4 flexible classes per month + RDF App Laboratorium access for students up to 26 years old",
+        availability: "https://schema.org/InStock",
+        url: "https://bachata-stgallen.ch",
       },
       {
         "@type": "Offer",
-        name: "Pro Classic",
+        name: "Bachata Lab Pro Classic",
         price: "150",
         priceCurrency: "CHF",
         description:
-          "5 Flexible Classes / Month + RDF App Limited Access + Salsa Ritmo Party Pass",
+          "5 Flexible Classes per month + RDF App + Salsa Ritmo Workshop and Party Pass",
         availability: "https://schema.org/InStock",
         url: "https://bachata-stgallen.ch",
       },
       {
         "@type": "Offer",
-        name: "Pro PartyBanger",
+        name: "Bachata Lab Pro PartyBanger",
         price: "190",
         priceCurrency: "CHF",
         description:
-          "8 Flexible Classes / Month + RDF App Laboratorium + Party Passes included",
+          "8 Flexible Classes + RDF App + Bachata Step Challenge Part 1 + Multiple Party Passes",
         availability: "https://schema.org/InStock",
         url: "https://bachata-stgallen.ch",
       },
       {
         "@type": "Offer",
-        name: "Pro VIP",
+        name: "Bachata Lab Pro VIP",
         price: "240",
         priceCurrency: "CHF",
         description:
-          "Unlimited Classes + Full RDF App Access + Multiple Party Passes + Workshop Included",
+          "Unlimited Classes + Full RDF App + Multiple Party Passes + Private Coaching",
         availability: "https://schema.org/InStock",
         url: "https://bachata-stgallen.ch",
       },
@@ -142,13 +144,15 @@ export default function DanceRoom() {
                 className={styles.cardContent}
                 ref={contentRefs[0]}
               >
+                <p className={styles.description}>
+                  {t.danceroom.proStudent.description}
+                </p>
                 <ul>
-                  <li>{t.danceroom.proStudent.item1}</li>
-                  <li>{t.danceroom.proStudent.item2}</li>
-                  <li>{t.danceroom.proStudent.item3}</li>
-                  <li>{t.danceroom.proStudent.item4}</li>
+                  {t.danceroom.proStudent.items.map((item, i) => (
+                    <li key={i}>{item}</li>
+                  ))}
                 </ul>
-                <p>{t.danceroom.proStudent.price}</p>
+                <p className={styles.price}>{t.danceroom.proStudent.price}</p>
               </div>
             </article>
 
@@ -180,12 +184,15 @@ export default function DanceRoom() {
                 className={styles.cardContent}
                 ref={contentRefs[1]}
               >
+                <p className={styles.description}>
+                  {t.danceroom.proClassic.description}
+                </p>
                 <ul>
-                  <li>{t.danceroom.proClassic.item1}</li>
-                  <li>{t.danceroom.proClassic.item2}</li>
-                  <li>{t.danceroom.proClassic.item3}</li>
+                  {t.danceroom.proClassic.items.map((item, i) => (
+                    <li key={i}>{item}</li>
+                  ))}
                 </ul>
-                <p>{t.danceroom.proClassic.price}</p>
+                <p className={styles.price}>{t.danceroom.proClassic.price}</p>
               </div>
             </article>
 
@@ -217,14 +224,17 @@ export default function DanceRoom() {
                 className={styles.cardContent}
                 ref={contentRefs[2]}
               >
+                <p className={styles.description}>
+                  {t.danceroom.proPartyBanger.description}
+                </p>
                 <ul>
-                  <li>{t.danceroom.proPartyBanger.item1}</li>
-                  <li>{t.danceroom.proPartyBanger.item2}</li>
-                  <li>{t.danceroom.proPartyBanger.item3}</li>
-                  <li>{t.danceroom.proPartyBanger.item4}</li>
-                  <li>{t.danceroom.proPartyBanger.item5}</li>
+                  {t.danceroom.proPartyBanger.items.map((item, i) => (
+                    <li key={i}>{item}</li>
+                  ))}
                 </ul>
-                <p>{t.danceroom.proPartyBanger.price}</p>
+                <p className={styles.price}>
+                  {t.danceroom.proPartyBanger.price}
+                </p>
               </div>
             </article>
 
@@ -256,22 +266,65 @@ export default function DanceRoom() {
                 className={styles.cardContent}
                 ref={contentRefs[3]}
               >
+                <p className={styles.description}>
+                  {t.danceroom.proVIP.description}
+                </p>
                 <ul>
-                  <li>{t.danceroom.proVIP.item1}</li>
-                  <li>{t.danceroom.proVIP.item2}</li>
-                  <li>{t.danceroom.proVIP.item3}</li>
-                  <li>{t.danceroom.proVIP.item4}</li>
-                  <li>{t.danceroom.proVIP.item5}</li>
-                  <li>{t.danceroom.proVIP.item6}</li>
+                  {t.danceroom.proVIP.items.map((item, i) => (
+                    <li key={i}>{item}</li>
+                  ))}
                 </ul>
-                <p>{t.danceroom.proVIP.price}</p>
+                <p className={styles.price}>{t.danceroom.proVIP.price}</p>
+              </div>
+            </article>
+
+            {/* Good to Know */}
+            <article className={styles.card} aria-labelledby="goodtoknow-title">
+              <header className={styles.cardHeader} onClick={() => toggle(4)}>
+                <button
+                  className={styles.toggleBtn}
+                  aria-expanded={open[4]}
+                  aria-controls="panel-goodtoknow"
+                  aria-label="Toggle Good to Know"
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    toggle(4);
+                  }}
+                >
+                  <span className={styles.toggleIcon}>
+                    {open[4] ? "−" : "+"}
+                  </span>
+                </button>
+                <h3 id="goodtoknow-title" className={styles.cardTitle}>
+                  {t.danceroom.goodToKnow.title}
+                </h3>
+              </header>
+              <div
+                id="panel-goodtoknow"
+                role="region"
+                aria-labelledby="goodtoknow-title"
+                className={styles.cardContent}
+                ref={contentRefs[4]}
+              >
+                <ul>
+                  {t.danceroom.goodToKnow.items.map((item, i) => (
+                    <li key={i}>{item}</li>
+                  ))}
+                </ul>
+                <p>
+                  <strong>Eventfrog Link:</strong>
+                  <br />
+                  <a
+                    href={t.danceroom.goodToKnow.eventfrogLink}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    {t.danceroom.goodToKnow.eventfrogLink}
+                  </a>
+                </p>
               </div>
             </article>
           </div>
-        </section>
-
-        <section className={styles.outro}>
-          <p>{t.danceroom.outro}</p>
         </section>
       </main>
     </>

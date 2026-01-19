@@ -7,8 +7,12 @@ import styles from "./MoreVideo.module.css";
 
 const videos = [
   {
-    src: "/wil_sandra_video_compressed.mp4",
-    alt: "Wilfried and Sandra dancing Bachata",
+    src: "/wil_step_box.mp4",
+    alt: "Wilfried gives class",
+  },
+  {
+    src: "/wil_lateralstep.mp4",
+    alt: "Wilfried gives class",
   },
 ];
 

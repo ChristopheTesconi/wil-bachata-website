@@ -9,15 +9,16 @@ import styles from "./MorePhoto.module.css";
 const images = [
   { src: "/class1.jpg", alt: "Wilfried teaching Bachata class" },
   { src: "/class2.jpg", alt: "Wilfried teaching Bachata class" },
-  { src: "/wil_sandra4.jpg", alt: "Wilfried and Sandra dancing Bachata" },
-  { src: "/wil_sandra5.jpg", alt: "Wilfried and Sandra performance" },
-  { src: "/wil_sandra6.jpg", alt: "Wilfried and Sandra Bachata Geneva" },
-  { src: "/wil_sandra7.jpg", alt: "Wilfried and Sandra performance" },
-  { src: "/wil_sandra8.jpg", alt: "Wilfried and Sandra performance" },
+  { src: "/class3.jpg", alt: "Wilfried teaching Bachata class" },
+  { src: "/class4.jpg", alt: "Wilfried teaching Bachata class" },
   { src: "/wil1.jpg", alt: "Wilfried" },
   { src: "/wil2.jpg", alt: "Wilfried" },
   { src: "/wil3.jpg", alt: "Wilfried" },
   { src: "/wil4.jpg", alt: "Wilfried" },
+  { src: "/wil5.jpg", alt: "Wilfried" },
+  { src: "/wil6.jpg", alt: "Wilfried" },
+  { src: "/wil7.jpg", alt: "Wilfried" },
+  { src: "/wil8.jpg", alt: "Wilfried" },
 ];
 
 export default function MorePhoto() {

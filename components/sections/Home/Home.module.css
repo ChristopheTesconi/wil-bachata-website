@@ -283,7 +283,32 @@
   height: auto;
   max-width: 1200px;
 }
+/* Ajout pour les listes à puces - Weekly Classes */
 
+.cardContent ul {
+  list-style-type: disc;
+  padding-left: 1.5rem;
+  margin: 0.5rem 0;
+}
+
+.cardContent li {
+  margin-bottom: 0.5rem;
+  line-height: 1.6;
+}
+
+.classItem ul {
+  margin-top: 0.75rem;
+}
+
+.classItem .time {
+  font-weight: 600;
+  color: var(--accent-color, #e63946);
+  margin: 0.25rem 0;
+}
+
+.friday ul {
+  margin-top: 0.5rem;
+}
 @media (min-width: 1024px) {
   .outroImage :global(img) {
     width: 70%;

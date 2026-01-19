@@ -16,39 +16,59 @@
     "weeklyClasses": {
       "title": "🗓 Wöchentliche Kurse",
       "monday": {
-        "title": "Montag – Mittelstufe (20:30–22:30)",
-        "description": "Wir konzentrieren uns den ganzen Monat auf eine Kombination. Das hilft dir, die Technik wirklich zu lernen, deinen Körper zu kontrollieren und sie mit Selbstvertrauen und Flow zu tanzen."
+        "title": "📅 Montag — Mittelstufe / Fortgeschritten",
+        "time": "20:30 – 22:30",
+        "intro": "Für Tänzer mit soliden Grundlagen, die tiefer einsteigen wollen:",
+        "points": [
+          "Technik & Kontrolle",
+          "Musikalität & Timing",
+          "Partnerverbindung & Flow"
+        ]
       },
       "thursday": {
-        "title": "Donnerstag – Anfänger + Übung (20:30–22:30)",
-        "part1": "20:30–21:30:",
-        "part1desc": "Lerne Partnerwork-Grundlagen, Rhythmus, Körperbewegung und Verbindung.",
-        "part2": "21:30–22:30:",
-        "part2desc": "Übe in entspannter Atmosphäre — wachse in deinem eigenen Tempo."
+        "title": "📅 Donnerstag — Anfänger / Fortschreitende",
+        "time": "20:30 – 22:30",
+        "intro": "Perfekt für Anfänger und Tänzer, die Selbstvertrauen aufbauen:",
+        "points": [
+          "Bachata-Grundlagen & Rhythmus",
+          "Lead & Follow Basics",
+          "Einfache Kombinationen",
+          "Geführte Praxis für stetiges Wachstum"
+        ]
       },
       "friday": {
-        "title": "Freitag – Offenes Level (20:30–22:30)",
-        "description": "Spaßige Übungen, Partnerwork, musikalischer Flow — alle sind willkommen!",
-        "special": "💡 Jeden letzten Freitag im Monat:",
-        "styling": "20:30–21:30:",
-        "stylingDesc": "Styling-Kurs – drücke dich aus und baue Selbstvertrauen auf",
-        "social": "21:30–22:30:",
-        "socialDesc": "Social Practice – einfach tanzen, Spaß haben, kein Druck"
+        "title": "📅 Freitag — Offenes Level / Spezielle Kurse",
+        "time": "20:30 – 22:30",
+        "intro": "Kreative und dynamische Sessions für alle Level:",
+        "points": [
+          "Bewegungsübungen & Flow",
+          "Musikalität & Ausdruck",
+          "Partnerwork-Erkundung"
+        ],
+        "special": "Einmal pro Monat (normalerweise letzter Freitag):",
+        "specialItems": [
+          "✨ Spezialkurs (Styling, Technik oder Gastkünstler)",
+          "✨ Gefolgt von Social Dance Praxis"
+        ]
       }
     },
     "prices": {
-      "title": "💰 Preise",
-      "earlyBird": "Early Bird:",
-      "earlyBirdPrice": "35 CHF (via EventFrog)",
-      "atDoor": "An der Tür:",
-      "atDoorPrice": "40 CHF (bar oder TWINT)",
-      "firstTime": "Zum ersten Mal?",
-      "firstTimePrice": "→ Nur 20 CHF",
-      "membership": "🔥 Willst du mehr als 4x pro Monat kommen?",
+      "title": "💳 Preise",
+      "singleClass": "🎟 Einzelkurs (2h)",
+      "earlyBird": "Early Bird (via EventFrog): 35 CHF",
+      "atDoor": "An der Tür: 40 CHF (Bar oder TWINT)",
+      "firstTimer": "Erstmals-Angebot:",
+      "firstTimerEventfrog": "20 CHF via EventFrog",
+      "firstTimerDoor": "25 CHF an der Tür",
+      "membership": "⭐ Willst du mehr als 3x pro Monat kommen?",
       "membershipBenefit": "Mitgliedschaft gibt dir mehr für weniger.",
-      "membershipPrice": "Bachata Lab Pro Mitgliedschaften beginnen bei 150–240 CHF/Monat.",
-      "membershipIncludes": "→ Beinhaltet mehrere Kurse, App-Zugang und Party-Pässe.",
-      "askMe": "(Frag mich nach Details — ich führe dich zur besten Option)"
+      "membershipRange": "Bachata Lab Pro Mitgliedschaften beginnen bei 110 CHF bis zu 240 CHF / Monat, einschließlich:",
+      "membershipIncludes": [
+        "Mehrere Gruppenkurse",
+        "Zugang zur RDF Bachata App (Solo-Training & Übung)",
+        "Party-Pässe & besondere Events"
+      ],
+      "membershipLink": "Direkter Zugang zu Mitgliedschaften unten verfügbar"
     },
     "bookings": {
       "title": "📅 Buchungen",
@@ -81,24 +101,76 @@
     },
     "journey": {
       "title": "🎵 Meine Tanzreise",
-      "p1": "Ich tanze seit über 15 Jahren lateinamerikanische Stile. Während COVID habe ich erkannt, dass die meisten Menschen Bachata zuerst durch Partnerwork lernen, aber echter Fortschritt kommt, wenn man auch seine Solo-Grundlagen trainiert — Fußarbeit, Körperbewegung, Armkoordination, Timing und Musikalität.",
-      "p2": "Ich bin zu den Grundlagen zurückgekehrt, habe Fundamentals wiederholt geübt, und da begann alles besser zu fließen, als ich es erwartet hätte."
+      "p1": "Coach Wil ist ein leidenschaftlicher Bachata-Tänzer mit über 15 Jahren Erfahrung im lateinamerikanischen Tanz. Wie viele Tänzer begann er mit dem Erlernen von Schritten und Partnerarbeit.",
+      "p2": "Aber mit der Zeit bemerkte er etwas Wichtiges: Viele Tänzer bleiben stecken, nicht weil sie sich nicht genug anstrengen, sondern weil sie niemals vollständig ihre Grundlagen aufbauen.",
+      "p3": "Während der COVID-Zeit traf Wil die bewusste Entscheidung, langsamer zu werden und sein eigenes Tanzen von Grund auf neu aufzubauen. Er konzentrierte sich intensiv auf Fußarbeit, Körperbewegung, Timing, Armkoordination und Musikalität. Elemente, die Paartanz wirklich natürlich und mühelos machen.",
+      "p4": "Diese Veränderung hat für Wil alles verändert..."
     },
     "rdf": {
       "title": "💻 RDF Bachata Fusion App",
-      "intro": "Ich habe RDF für Menschen entwickelt wie:",
-      "item1": "Absolute Anfänger, die von Anfang an richtig lernen wollen",
-      "item2": "Schüchterne oder unsichere Tänzer, die lieber zuerst Selbstvertrauen aufbauen",
-      "item3": "Erfahrene Tänzer, die aufgehört haben sich zu verbessern und ihre Grundlagen neu aufbauen wollen",
-      "outro": "RDF konzentriert sich auf Rhythmus, Tanz und Flow — hilft jedem, in seinem eigenen Tempo Fortschritte zu machen."
+      "subtitle": "Trainiere intelligenter. Bewege dich besser. Tanze mit Selbstvertrauen.",
+      "intro": "Die RDF Bachata Fusion App ist darauf ausgelegt, dir zu helfen, starke Bachata-Grundlagen durch strukturiertes Solo-Training aufzubauen, damit du dich selbstbewusster und kontrollierter fühlst, wenn du mit einem Partner tanzt.",
+      "insideApp": "In der App findest du:",
+      "challenge": {
+        "title": "🔹 Bachata Step Challenge – Teil 1 & Teil 2",
+        "description": "Geführte Schritt-für-Schritt-Programme zur Verbesserung von:",
+        "points": [
+          "Fußarbeit",
+          "Körperbewegung",
+          "Armkoordination",
+          "Musikalität"
+        ],
+        "part1": "Teil 1 ist für Anfänger bis Fortschreitende.",
+        "part2": "Teil 2 ist für fortgeschrittene bis erfahrene Tänzer."
+      },
+      "laboratorium": {
+        "title": "🔹 Das RDF Laboratorium",
+        "description": "Ein dedizierter Raum für kontinuierliche Praxis, einschließlich:",
+        "points": [
+          "Mini-Solo-Herausforderungen",
+          "Solo-Choreografie-Training",
+          "Styling & Ausdruck",
+          "Tutorials inspiriert von Bachata Lab Gruppenkursen"
+        ],
+        "conclusion": "Das Laboratorium hilft dir, konsequent zu üben, wichtige Konzepte zu wiederholen und Solo-Training mit echter Partnerarbeit zu verbinden."
+      },
+      "whyExists": {
+        "title": "🎯 Warum diese App existiert",
+        "reason1": "Die meisten Tänzer lernen nur durch Partnerarbeit.",
+        "reason2": "Echter Fortschritt passiert, wenn du auch deine Solo-Grundlagen trainierst.",
+        "reason3": "Diese App gibt dir die Werkzeuge, um jederzeit in deinem eigenen Tempo zu üben — damit Kurse leichter werden, das Tanzen flüssiger wird und Selbstvertrauen natürlich wächst."
+      },
+      "cta": {
+        "title": "👉 Willst du alle Details?",
+        "description": "Erkunde die vollständige Erfahrung in der App und entdecke alle verfügbaren Inhalte.",
+        "linkText": "Mehr erfahren → Schau es dir in der App an",
+        "link": "https://rdf-bachata-fusion.passion.io/app/products/252244/lessons/4405329"
+      }
     },
     "teaching": {
       "title": "🏫 Unterrichten in St. Gallen",
-      "p1": "Ich unterrichte seit 4 Jahren in St. Gallen und bin dankbar für jeden Schüler, der mir vertraut hat. Meine Partnerin Sandra kommt regelmäßig mit und hilft, Leader und Follower mit Geduld, Klarheit und Spaß zu führen.",
-      "p2": "Auch wenn unsere Kurse hauptsächlich auf Englisch unterrichtet werden, haben wir immer die perfekte Balance zwischen Klarheit und Spaß gefunden. Sprache war nie eine Barriere — Tanz verbindet uns alle. Egal ob Englisch deine Muttersprache ist oder nicht, jeder fühlt sich einbezogen, unterstützt und Teil des Rhythmus.",
-      "p3": "Unsere Mission: Starke Grundlagen, klarer Unterricht, echter Fortschritt und eine unterstützende Gemeinschaft. Bachata Lab dreht sich um Selbstvertrauen, Verbindung, Spaß und Wachstum.",
-      "p4": "Jede Woche sehe ich, wie Fremde zu Freunden werden, Tänzer lächeln und Schüler Selbstvertrauen gewinnen. Deshalb mache ich das.",
-      "p5": "Lass uns üben, Spaß haben und mit Leidenschaft tanzen. Ich freue mich darauf, dich in der Bachata Lab Familie willkommen zu heißen.",
+      "p1": "Seit 4 Jahren unterrichtet und coacht Coach Wil Bachata in St. Gallen und arbeitet mit Tänzern aller Stufen, von absoluten Anfängern bis hin zu erfahrenen Tänzern, die sich festgefahren fühlen.",
+      "p2": "Seine Kurse sind bekannt dafür:",
+      "p2List": [
+        "Klar und strukturiert zu sein",
+        "Unterstützend und einladend zu sein",
+        "Sich auf echte Verbesserung zu konzentrieren, nicht nur auf das Auswendiglernen von Bewegungen"
+      ],
+      "p3": "Wil glaubt, dass Menschen aus vielen Gründen zum Tanzen kommen: um sich selbstbewusst zu fühlen, zu sozialisieren, sich frei zu bewegen, sich wieder mit sich selbst zu verbinden und all das zählt.",
+      "p4": "Deshalb geht es bei Bachata Lab nicht nur um Kurse, sondern darum, eine Gemeinschaft aufzubauen, in der Tänzer gemeinsam wachsen.",
+      "mission": {
+        "title": "Coach Wils Mission:",
+        "content": "Tänzern helfen, starke Grundlagen aufzubauen, sich selbstbewusst zu bewegen und sich frei und verbunden auf der Tanzfläche zu fühlen.",
+        "extra": "Egal ob du gerade anfängst oder deine Technik verfeinerst, Coach Wils Ziel ist einfach: dich Schritt für Schritt zu führen, ohne Druck und mit Absicht."
+      },
+      "personalNote": {
+        "title": "Wils persönliche Notiz:",
+        "content": "Seit ich mit dem Unterrichten begonnen habe, sehe ich immer wieder etwas Schönes passieren: Fremde werden zu Freunden, Tänzer lächeln mehr und Schüler gewinnen Selbstvertrauen — nicht nur beim Tanzen, sondern auch in sich selbst und in ihrem Alltag.",
+        "reason": "Das ist einer der Hauptgründe, warum ich tue, was ich tue.",
+        "gratitude": "Ich bin zutiefst dankbar für die Gelegenheit, so viele großartige Menschen hier in St. Gallen zu unterrichten und zu coachen und Teil ihrer Reise auf und neben der Tanzfläche zu sein.",
+        "invitation": "Also lade ich dich ein, mit Absicht zu üben, Spaß zu haben und mit Leidenschaft zu tanzen.",
+        "closing": "Ich freue mich darauf, dich in der Bachata Lab Familie willkommen zu heißen."
+      },
       "signature": "Coach Wil"
     }
   },
@@ -108,40 +180,69 @@
       "subtitle": "Komplettes Tanzerlebnis, Lernen, Üben und Anwenden"
     },
     "proStudent": {
-      "title": "🎓 Pro Student (≤26 Jahre)",
-      "item1": "✅ Alle Donnerstag-Anfängerkurse",
-      "item2": "✅ Wöchentliche Tanzpraxis inklusive",
-      "item3": "✅ RDF App Bachata Step Challenge Teil 1",
-      "item4": "✅ Domingo Latino Party Pass",
+      "title": "🎓 Bachata Lab Pro Student",
+      "description": "110 CHF / Monat (Studenten bis 26 Jahre)",
+      "items": [
+        "4 flexible Kurse pro Monat (wähle deine Tage)",
+        "RDF Bachata Fusion App – Laboratorium Zugang",
+        "Fokus auf Grundlagen, Solo-Praxis & Beständigkeit"
+      ],
       "price": "💳 110 CHF / Monat"
     },
     "proClassic": {
-      "title": "⭐ Pro Classic",
-      "item1": "✅ 5 flexible Kurse / Monat",
-      "item2": "✅ Zugang zur RDF App – Begrenzter Zugang zu Laboratorium + BSC Teil 1",
-      "item3": "✅ Salsa Ritmo Party Pass",
+      "title": "✨ Bachata Lab Pro Classic",
+      "description": "150 CHF / Monat",
+      "items": [
+        "5 flexible Kurse pro Monat (10 Stunden insgesamt)",
+        "RDF Bachata Fusion App – Laboratorium Zugang",
+        "1 Salsa Ritmo Workshop + Party Pass",
+        "Perfekte Balance zwischen Training, Übung & sozialem Tanzen"
+      ],
       "price": "💳 150 CHF / Monat"
     },
     "proPartyBanger": {
-      "title": "🔥 Pro PartyBanger",
-      "item1": "✅ 8 flexible Kurse / Monat",
-      "item2": "✅ Zugang zur RDF App Laboratorium + BSC Teil 1",
-      "item3": "✅ Salsa Ritmo Party Pass (x1)",
-      "item4": "✅ Domingo Latino Party Pass (x1)",
-      "item5": "✅ Bachata Loca Party Pass (x1)",
+      "title": "💥 Bachata Lab Pro PartyBanger",
+      "description": "190 CHF / Monat",
+      "items": [
+        "8 flexible Kurse pro Monat",
+        "RDF Bachata Fusion App – Laboratorium",
+        "Bachata Step Challenge – Teil 1",
+        "Party Pässe inklusive:",
+        "• 1× Salsa Ritmo (Workshop + Party)",
+        "• 1× Domingo Latino Party",
+        "• 1× Bachata Loca Party",
+        "Für Tänzer, die mehr Kurse, mehr Übung & mehr Socials wollen"
+      ],
       "price": "💳 190 CHF / Monat"
     },
     "proVIP": {
-      "title": "👑 Pro VIP",
-      "item1": "✅ Unbegrenzte Kurse (Montag / Donnerstag / Freitag)",
-      "item2": "✅ Vollzugriff auf RDF App — Alle Module freigeschaltet",
-      "item3": "✅ Salsa Ritmo Party Pass (x1)",
-      "item4": "✅ Domingo Latino Party Pass (x2)",
-      "item5": "✅ Bachata Loca Party Pass + Workshop inklusive (x1)",
-      "item6": "✅ Privatstunde (1h) mit Coach Wil",
+      "title": "👑 Bachata Lab Pro VIP",
+      "description": "240 CHF / Monat (Begrenzte Plätze)",
+      "items": [
+        "Unbegrenzte Kurse (trainiere so viel du willst)",
+        "RDF Bachata Fusion App:",
+        "• Laboratorium",
+        "• Bachata Step Challenge Teil 1",
+        "Party Pässe inklusive:",
+        "• Salsa Ritmo (Workshop + Party)",
+        "• Domingo Latino (2 Party Pässe)",
+        "• Bachata Loca (Workshop + Party)",
+        "1 Stunde Privat-Coaching mit Coach Wil",
+        "Die vollständige Bachata-Erfahrung Training, Anleitung & Transformation"
+      ],
       "price": "💳 240 CHF / Monat"
     },
-    "outro": "Lass uns hier starten und die Reise gemeinsam erleben!"
+    "goodToKnow": {
+      "title": "⚠️ Gut zu wissen",
+      "items": [
+        "Alle Kurse sind flexibel basierend auf deinem Level; du wählst, wann du teilnimmst",
+        "Kurse werden auf Englisch unterrichtet (und teilweise auf Deutsch/Niederländisch)",
+        "Mitgliedschaften sind auf insgesamt 30 Personen begrenzt",
+        "Anmeldung ist zwischen dem 28. Ende des Monats und dem 2. Anfang des Monats.",
+        "Nicht-Mitglieder können dennoch über EventFrog oder an der Tür teilnehmen (zu einem höheren Preis)"
+      ],
+      "eventfrogLink": "https://eventfrog.ch/en/events.html?searchTerm=Bachata+Lab+St+gallen"
+    }
   },
   "review": {
     "title": "Bewertungen"
@@ -163,8 +264,7 @@
       "email": "📧 E-Mail: Rdfbachatafusion_wil@hotmail.com",
       "instagram": "📸 Instagram: @coach_wil_84",
       "facebook": "📘 Facebook: Wil Bachata",
-      "tiktok": "🎵 TikTok: @rdf_bachata_chanel84",
-      "collaborationTitle": "🤝 Kooperationspartner"
+      "tiktok": "🎵 TikTok: @rdf_bachata_chanel84"
     },
     "studioLocations": {
       "title": "🏢 Studio-Standorte",
@@ -181,17 +281,57 @@
       "photosWildegg": "📸 Fotos Wildeggstrasse 16"
     },
     "privateCoaching": {
-      "title": "🎯 Privates Coaching",
-      "intro": "Möchtest du schnellere Fortschritte oder persönliche Anleitung? Ich biete 1:1 oder 2:1 Privatstunden für:",
-      "item1": "Grundlagen & Körperbewegungstraining",
-      "item2": "Lead & Follow Technik",
-      "item3": "Styling, Musikalität & Flow",
-      "item4": "Hochzeitstanz oder Performance-Vorbereitung",
-      "sendMessage": "Sende mir einfach eine Nachricht mit:",
-      "messageTemplate": "\"Privatkurs + deine Verfügbarkeit\"",
-      "proposeOptions": "und ich schlage dir die besten Optionen vor.",
-      "lookForward": "Ich freue mich darauf, bald mit dir zu tanzen!",
+      "title": "🎯 Privates Bachata-Coaching mit Coach Wil",
+      "intro": "Wenn du schnellere Fortschritte, persönliche Anleitung und echte Ergebnisse möchtest, ist privates Coaching der effektivste Weg, dein Bachata zu verbessern.",
+      "availability": "Private Sessions sind verfügbar:",
+      "availabilityList": [
+        "Eins-zu-eins",
+        "Oder als Paar",
+        "Vollständig angepasst an dein Level und deine Ziele"
+      ],
+      "whatWeWorkOn": {
+        "title": "🎯 Woran wir arbeiten",
+        "intro": "Privates Coaching ermöglicht es uns, uns genau auf das zu konzentrieren, was du brauchst:",
+        "items": [
+          "Starke Grundlagen & Fußarbeit",
+          "Körperbewegung und Kontrolle",
+          "Lead & Follow Technik",
+          "Styling (Damen & Herren)",
+          "Musikalität & Timing",
+          "Flüssiger Flow & Verbindung",
+          "Hochzeitstanz..."
+        ],
+        "outro": "Kein Warten, kein Raten jede Minute ist auf dich zugeschnitten."
+      },
+      "prices": {
+        "title": "💳 Preise für Privatstunden",
+        "nonMembers": "Nicht-Mitglieder: 90 CHF / Stunde",
+        "members": "Mitglieder (Classic, PartyBanger & VIP): 65 CHF / Stunde"
+      },
+      "packages": {
+        "title": "📦 Privatstunden-Pakete",
+        "package1": "Buche 4 Privatstunden → Erhalte die 5. GRATIS",
+        "package2": "Buche 10 Privatstunden → 70 CHF pro Stunde (statt 90 CHF)",
+        "benefit": "Perfekt, wenn du kontinuierlichen Fortschritt und langfristige Ergebnisse möchtest."
+      },
+      "transformation": {
+        "title": "🚀 Willst du eine vollständige Transformation?",
+        "intro": "Wenn du bereit für eine tiefere Veränderung bist, gibt es auch ein 3-Monats-Bachata-Transformationsprogramm.",
+        "includes": "Dies beinhaltet:",
+        "includesList": [
+          "Strukturiertes privates Coaching",
+          "Gruppenkurse",
+          "App-basiertes Solo-Training",
+          "Persönliche Anleitung auf und neben der Tanzfläche"
+        ],
+        "contact": "Für das 3-Monats-Programm kontaktiere mich direkt",
+        "videoCall": "Wir machen einen kurzen Videoanruf und sehen, wie ich deine Bachata-Reise am besten unterstützen kann."
+      },
+      "closing": "✨ Egal ob du Klarheit, Selbstvertrauen oder einen vollständigen Durchbruch möchtest, privates Coaching bietet dir den schnellsten Weg nach vorne.",
       "signature": "Coach Wil"
+    },
+    "contactInfo2": {
+      "collaborationTitle": "Kooperationspartner"
     }
   },
   "faq": {

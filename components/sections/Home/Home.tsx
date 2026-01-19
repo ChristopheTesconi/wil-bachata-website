@@ -1,3 +1,4 @@
+// Home.tsx
 "use client";
 
 import { useState, useRef, useEffect } from "react";
@@ -56,7 +57,7 @@ export default function Home() {
     return null;
   }
 
-  // Structured Data pour SEO
+  // Structured Data pour SEO - UPDATED
   const structuredData = {
     "@context": "https://schema.org",
     "@type": "DanceGroup",
@@ -113,8 +114,9 @@ export default function Home() {
     event: [
       {
         "@type": "DanceEvent",
-        name: "Bachata Intermediate Class",
-        description: "Monthly focused combination for intermediate dancers",
+        name: "Bachata Intermediate / Advanced Class",
+        description:
+          "For dancers with solid fundamentals focusing on technique, musicality and partner connection",
         startDate: "2025-10-06T20:30",
         endDate: "2025-10-06T22:30",
         eventSchedule: {
@@ -142,8 +144,9 @@ export default function Home() {
       },
       {
         "@type": "DanceEvent",
-        name: "Bachata Beginner Class + Practice",
-        description: "Learn basics and practice session for beginners",
+        name: "Bachata Beginner / Improver Class",
+        description:
+          "Perfect for beginners and dancers building confidence with fundamentals and guided practice",
         startDate: "2025-10-09T20:30",
         endDate: "2025-10-09T22:30",
         eventSchedule: {
@@ -171,8 +174,9 @@ export default function Home() {
       },
       {
         "@type": "DanceEvent",
-        name: "Bachata Open Level Class",
-        description: "Fun drills, partnerwork, musical flow - everyone welcome",
+        name: "Bachata Open Level / Special Classes",
+        description:
+          "Creative and dynamic sessions for all levels with monthly special styling classes",
         startDate: "2025-10-10T20:30",
         endDate: "2025-10-10T22:30",
         eventSchedule: {
@@ -229,7 +233,7 @@ export default function Home() {
         {/* Cards Grid */}
         <section className={styles.cardsSection}>
           <div className={styles.cardsGrid}>
-            {/* Weekly Classes */}
+            {/* Weekly Classes - UPDATED */}
             <article className={styles.card} aria-labelledby="weekly-title">
               <header className={styles.cardHeader} onClick={() => toggle(0)}>
                 <button
@@ -259,31 +263,50 @@ export default function Home() {
               >
                 <div className={styles.classItem}>
                   <h4>{t.home.weeklyClasses.monday.title}</h4>
-                  <p>{t.home.weeklyClasses.monday.description}</p>
+                  <p className={styles.time}>
+                    {t.home.weeklyClasses.monday.time}
+                  </p>
+                  <p>{t.home.weeklyClasses.monday.intro}</p>
+                  <ul>
+                    {t.home.weeklyClasses.monday.points.map((point, i) => (
+                      <li key={i}>{point}</li>
+                    ))}
+                  </ul>
                 </div>
                 <div className={styles.classItem}>
                   <h4>{t.home.weeklyClasses.thursday.title}</h4>
-                  <p>
-                    <strong>{t.home.weeklyClasses.thursday.part1}</strong>{" "}
-                    {t.home.weeklyClasses.thursday.part1desc}
-                    <br />
-                    <strong>{t.home.weeklyClasses.thursday.part2}</strong>{" "}
-                    {t.home.weeklyClasses.thursday.part2desc}
+                  <p className={styles.time}>
+                    {t.home.weeklyClasses.thursday.time}
                   </p>
+                  <p>{t.home.weeklyClasses.thursday.intro}</p>
+                  <ul>
+                    {t.home.weeklyClasses.thursday.points.map((point, i) => (
+                      <li key={i}>{point}</li>
+                    ))}
+                  </ul>
                 </div>
                 <div className={styles.classItem}>
                   <h4>{t.home.weeklyClasses.friday.title}</h4>
-                  <p>{t.home.weeklyClasses.friday.description}</p>
+                  <p className={styles.time}>
+                    {t.home.weeklyClasses.friday.time}
+                  </p>
+                  <p>{t.home.weeklyClasses.friday.intro}</p>
+                  <ul>
+                    {t.home.weeklyClasses.friday.points.map((point, i) => (
+                      <li key={i}>{point}</li>
+                    ))}
+                  </ul>
                   <div className={styles.friday}>
                     <p>
-                      {t.home.weeklyClasses.friday.special}
-                      <br />
-                      <em>{t.home.weeklyClasses.friday.styling}</em>{" "}
-                      {t.home.weeklyClasses.friday.stylingDesc}
-                      <br />
-                      <em>{t.home.weeklyClasses.friday.social}</em>{" "}
-                      {t.home.weeklyClasses.friday.socialDesc}
+                      <strong>{t.home.weeklyClasses.friday.special}</strong>
                     </p>
+                    <ul>
+                      {t.home.weeklyClasses.friday.specialItems.map(
+                        (item, i) => (
+                          <li key={i}>{item}</li>
+                        )
+                      )}
+                    </ul>
                   </div>
                 </div>
               </div>
@@ -317,31 +340,33 @@ export default function Home() {
                 className={styles.cardContent}
                 ref={contentRefs[1]}
               >
+                <h4 className={styles.cardTitle}>
+                  {t.home.prices.singleClass}
+                </h4>
                 <ul>
-                  <li>
-                    <strong>{t.home.prices.earlyBird}</strong>{" "}
-                    {t.home.prices.earlyBirdPrice}
-                  </li>
-                  <li>
-                    <strong>{t.home.prices.atDoor}</strong>{" "}
-                    {t.home.prices.atDoorPrice}
-                  </li>
-                  <li>
-                    <strong>{t.home.prices.firstTime}</strong>{" "}
-                    {t.home.prices.firstTimePrice}
-                  </li>
+                  <li>{t.home.prices.earlyBird}</li>
+                  <li>{t.home.prices.atDoor}</li>
                 </ul>
                 <p>
+                  <strong>{t.home.prices.firstTimer}</strong>
+                </p>
+                <ul>
+                  <li>{t.home.prices.firstTimerEventfrog}</li>
+                  <li>{t.home.prices.firstTimerDoor}</li>
+                </ul>
+                <p className={styles.membershipHighlight}>
                   {t.home.prices.membership}
                   <br />
                   {t.home.prices.membershipBenefit}
-                  <br />
-                  {t.home.prices.membershipPrice}
-                  <br />
-                  {t.home.prices.membershipIncludes}
                 </p>
+                <p>{t.home.prices.membershipRange}</p>
+                <ul>
+                  {t.home.prices.membershipIncludes.map((item, i) => (
+                    <li key={i}>{item}</li>
+                  ))}
+                </ul>
                 <p>
-                  <em>{t.home.prices.askMe}</em>
+                  <em>({t.home.prices.membershipLink})</em>
                 </p>
               </div>
             </article>
@@ -469,7 +494,7 @@ export default function Home() {
               >
                 <div className={styles.videoWrapper}>
                   <video controls ref={videoRef}>
-                    <source src="/wil_sandra4.mp4" type="video/mp4" />
+                    <source src="/wil_classdemo_small.mp4" type="video/mp4" />
                     Your browser does not support the video tag.
                   </video>
                 </div>

@@ -9,9 +9,9 @@ import MoreVideo from "./MoreVideo";
 const images = [
   { src: "/wil_class.jpg", alt: "Wilfried teaching Bachata class" },
   { src: "/wil_class2.jpg", alt: "Wilfried teaching Bachata class" },
-  { src: "/wil_sandra1.jpg", alt: "Wilfried and Sandra dancing Bachata" },
-  { src: "/wil_sandra2.jpg", alt: "Wilfried and Sandra performance" },
-  { src: "/wil_sandra3.jpg", alt: "Wilfried and Sandra Bachata Geneva" },
+  { src: "/wil_class3.jpg", alt: "Wilfried teaching Bachata class" },
+  { src: "/wil_class4.jpg", alt: "Wilfried teaching Bachata class" },
+  { src: "/Carousel.jpg", alt: "Dance night" },
 ];
 
 export default function CarouselPhoto() {

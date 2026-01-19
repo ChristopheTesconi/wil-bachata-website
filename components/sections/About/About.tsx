@@ -83,7 +83,7 @@ export default function About() {
         {/* Cards Grid */}
         <section className={styles.cardsSection}>
           <div className={styles.cardsGrid}>
-            {/* Journey */}
+            {/* Journey - UPDATED */}
             <article className={styles.card} aria-labelledby="journey-title">
               <header className={styles.cardHeader} onClick={() => toggle(0)}>
                 <button
@@ -113,6 +113,8 @@ export default function About() {
               >
                 <p>{t.about.journey.p1}</p>
                 <p>{t.about.journey.p2}</p>
+                <p>{t.about.journey.p3}</p>
+                <p>{t.about.journey.p4}</p>
               </div>
             </article>
 
@@ -144,13 +146,57 @@ export default function About() {
                 className={styles.cardContent}
                 ref={contentRefs[1]}
               >
+                <p>
+                  <strong>{t.about.rdf.subtitle}</strong>
+                </p>
                 <p>{t.about.rdf.intro}</p>
+
+                <p>
+                  <strong>{t.about.rdf.insideApp}</strong>
+                </p>
+
+                <h4>{t.about.rdf.challenge.title}</h4>
+                <p>{t.about.rdf.challenge.description}</p>
                 <ul>
-                  <li>{t.about.rdf.item1}</li>
-                  <li>{t.about.rdf.item2}</li>
-                  <li>{t.about.rdf.item3}</li>
+                  {t.about.rdf.challenge.points.map((point, i) => (
+                    <li key={i}>{point}</li>
+                  ))}
                 </ul>
-                <p>{t.about.rdf.outro}</p>
+                <p>
+                  {t.about.rdf.challenge.part1}
+                  <br />
+                  {t.about.rdf.challenge.part2}
+                </p>
+
+                <h4>{t.about.rdf.laboratorium.title}</h4>
+                <p>{t.about.rdf.laboratorium.description}</p>
+                <ul>
+                  {t.about.rdf.laboratorium.points.map((point, i) => (
+                    <li key={i}>{point}</li>
+                  ))}
+                </ul>
+                <p>{t.about.rdf.laboratorium.conclusion}</p>
+
+                <h4>{t.about.rdf.whyExists.title}</h4>
+                <p>
+                  {t.about.rdf.whyExists.reason1}
+                  <br />
+                  {t.about.rdf.whyExists.reason2}
+                  <br />
+                  {t.about.rdf.whyExists.reason3}
+                </p>
+
+                <h4>{t.about.rdf.cta.title}</h4>
+                <p>{t.about.rdf.cta.description}</p>
+                <p>
+                  <a
+                    href={t.about.rdf.cta.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    {t.about.rdf.cta.linkText}
+                  </a>
+                </p>
               </div>
             </article>
 
@@ -183,13 +229,33 @@ export default function About() {
                 ref={contentRefs[2]}
               >
                 <p>{t.about.teaching.p1}</p>
+
                 <p>{t.about.teaching.p2}</p>
+                <ul>
+                  {t.about.teaching.p2List.map((item, i) => (
+                    <li key={i}>{item}</li>
+                  ))}
+                </ul>
+
                 <p>{t.about.teaching.p3}</p>
                 <p>{t.about.teaching.p4}</p>
+
                 <p>
-                  {t.about.teaching.p5}
-                  <br />
-                  <br />
+                  <strong>{t.about.teaching.mission.title}</strong>{" "}
+                  {t.about.teaching.mission.content}
+                </p>
+                <p>{t.about.teaching.mission.extra}</p>
+
+                <p>
+                  <strong>{t.about.teaching.personalNote.title}</strong>
+                </p>
+                <p>{t.about.teaching.personalNote.content}</p>
+                <p>{t.about.teaching.personalNote.reason}</p>
+                <p>{t.about.teaching.personalNote.gratitude}</p>
+                <p>{t.about.teaching.personalNote.invitation}</p>
+                <p>{t.about.teaching.personalNote.closing}</p>
+
+                <p>
                   <strong>{t.about.teaching.signature}</strong>
                 </p>
               </div>

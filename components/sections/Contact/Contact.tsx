@@ -1,3 +1,4 @@
+// Contacts.tsx
 "use client";
 
 import { useState, useRef, useEffect } from "react";
@@ -466,7 +467,7 @@ export default function Contact() {
               </div>
             </article>
 
-            {/* PRIVATE COACHING */}
+            {/* PRIVATE COACHING - UPDATED */}
             <article className={styles.card} aria-labelledby="coaching-title">
               <header className={styles.cardHeader} onClick={() => toggle(2)}>
                 <button
@@ -495,24 +496,66 @@ export default function Contact() {
                 ref={contentRefs[2]}
               >
                 <p>{t.contact.privateCoaching.intro}</p>
+
+                <p>
+                  <strong>{t.contact.privateCoaching.availability}</strong>
+                </p>
                 <ul>
-                  <li>{t.contact.privateCoaching.item1}</li>
-                  <li>{t.contact.privateCoaching.item2}</li>
-                  <li>{t.contact.privateCoaching.item3}</li>
-                  <li>{t.contact.privateCoaching.item4}</li>
+                  {t.contact.privateCoaching.availabilityList.map((item, i) => (
+                    <li key={i}>{item}</li>
+                  ))}
+                </ul>
+
+                <h4>{t.contact.privateCoaching.whatWeWorkOn.title}</h4>
+                <p>{t.contact.privateCoaching.whatWeWorkOn.intro}</p>
+                <ul>
+                  {t.contact.privateCoaching.whatWeWorkOn.items.map(
+                    (item, i) => (
+                      <li key={i}>{item}</li>
+                    )
+                  )}
                 </ul>
                 <p>
-                  {t.contact.privateCoaching.sendMessage} <br />
-                  <em>
-                    &quot;{t.contact.privateCoaching.messageTemplate}&quot;
-                  </em>
-                  <br />
-                  {t.contact.privateCoaching.proposeOptions}
+                  <em>{t.contact.privateCoaching.whatWeWorkOn.outro}</em>
+                </p>
+
+                <h4>{t.contact.privateCoaching.prices.title}</h4>
+                <ul>
+                  <li>{t.contact.privateCoaching.prices.nonMembers}</li>
+                  <li>{t.contact.privateCoaching.prices.members}</li>
+                </ul>
+
+                <h4>{t.contact.privateCoaching.packages.title}</h4>
+                <ul>
+                  <li>{t.contact.privateCoaching.packages.package1}</li>
+                  <li>{t.contact.privateCoaching.packages.package2}</li>
+                </ul>
+                <p>
+                  <em>{t.contact.privateCoaching.packages.benefit}</em>
+                </p>
+
+                <h4>{t.contact.privateCoaching.transformation.title}</h4>
+                <p>{t.contact.privateCoaching.transformation.intro}</p>
+                <p>
+                  <strong>
+                    {t.contact.privateCoaching.transformation.includes}
+                  </strong>
+                </p>
+                <ul>
+                  {t.contact.privateCoaching.transformation.includesList.map(
+                    (item, i) => (
+                      <li key={i}>{item}</li>
+                    )
+                  )}
+                </ul>
+                <p>{t.contact.privateCoaching.transformation.contact}</p>
+                <p>{t.contact.privateCoaching.transformation.videoCall}</p>
+
+                <p>
+                  <strong>{t.contact.privateCoaching.closing}</strong>
                 </p>
                 <p>
-                  {t.contact.privateCoaching.lookForward}
-                  <br />
-                  {t.contact.privateCoaching.signature}
+                  <strong>{t.contact.privateCoaching.signature}</strong>
                 </p>
               </div>
             </article>
@@ -539,7 +582,7 @@ export default function Contact() {
                   </span>
                 </button>
                 <h3 id="collaborators-title" className={styles.cardTitle}>
-                  {t.contact.contactInfo.collaborationTitle}
+                  {t.contact.contactInfo2.collaborationTitle}
                 </h3>
               </header>
               <div
@@ -550,17 +593,6 @@ export default function Contact() {
                 ref={contentRefs[3]}
               >
                 <ul className={styles.collaborationList}>
-                  <li>
-                    <a
-                      href="https://sandraburdet.com/"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className={styles.contactLink}
-                    >
-                      🌟 <strong>Sandra Burdet</strong> 👉
-                      https://sandraburdet.com/
-                    </a>
-                  </li>
                   <li>
                     <a
                       href="https://christophetesconidev.com/en"
