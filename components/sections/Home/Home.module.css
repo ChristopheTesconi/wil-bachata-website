@@ -63,7 +63,9 @@
   border-radius: 16px;
   overflow: hidden;
   box-shadow: 0 6px 18px rgba(0, 0, 0, 0.35);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
 }
 
 .card:hover {
@@ -99,7 +101,9 @@
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  transition: background 0.25s ease, transform 0.4s ease;
+  transition:
+    background 0.25s ease,
+    transform 0.4s ease;
 }
 
 .toggleBtn:hover {
@@ -131,7 +135,9 @@
   max-height: 0;
   overflow: hidden;
   opacity: 0;
-  transition: max-height 0.6s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.4s ease;
+  transition:
+    max-height 0.6s cubic-bezier(0.4, 0, 0.2, 1),
+    opacity 0.4s ease;
   padding: 0 1.5rem;
   color: #fff;
 }
@@ -163,6 +169,11 @@
   color: #fff;
 }
 
+.cardContent h4 {
+  font-size: 1.25rem;
+  color: #aa01ff !important;
+}
+
 /* Lien EventFrog dans la carte Bookings */
 .eventfrogLink {
   color: #1cb0f6 !important;
@@ -179,14 +190,31 @@
   text-decoration: none;
 }
 
+/* Liens internes (Membership, Private Classes) */
+.internalLink {
+  color: #ffcc33 !important;
+  text-decoration: none;
+  font-weight: 600;
+  display: inline-block;
+  margin-top: 0.5rem;
+  transition:
+    color 0.3s ease,
+    transform 0.2s ease;
+}
+
+.internalLink:hover {
+  color: #aa01ff !important;
+  transform: translateX(5px);
+}
+
 /* S'assurer que les liens dans cardContent sont visibles */
 .cardContent a {
-  color: #aa01ff !important;
-  text-decoration: underline;
+  color: #ffcc33 !important;
+  /* text-decoration: underline; */
 }
 
 .cardContent a:hover {
-  color: #ffcc33 !important;
+  color: #aa01ff !important;
 }
 
 /* Élément de classe */
@@ -211,10 +239,8 @@
   color: black !important;
   margin-bottom: 1rem;
   padding: 1rem;
-  background: linear-gradient(
-      rgba(255, 255, 255, 0.65),
-      rgba(255, 255, 255, 0.65)
-    ),
+  background:
+    linear-gradient(rgba(255, 255, 255, 0.65), rgba(255, 255, 255, 0.65)),
     url("/gm_background.png") center center / cover no-repeat;
   border-radius: 12px;
   transition: all 0.3s ease;

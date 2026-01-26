@@ -8,11 +8,10 @@ import styles from "./Contact.module.css";
 import { getDictionary, type Locale } from "@/lib/i18n";
 
 export default function Contact() {
-  const [open, setOpen] = useState([false, false, false, false]);
+  const [open, setOpen] = useState([false, false, false]);
   const [subOpen, setSubOpen] = useState([false, false]);
 
   const contentRefs = [
-    useRef<HTMLDivElement>(null),
     useRef<HTMLDivElement>(null),
     useRef<HTMLDivElement>(null),
     useRef<HTMLDivElement>(null),
@@ -126,7 +125,7 @@ export default function Contact() {
     const encodedAddress = encodeURIComponent(address);
     window.open(
       `https://www.google.com/maps/search/?api=1&query=${encodedAddress}`,
-      "_blank"
+      "_blank",
     );
   };
 
@@ -309,7 +308,7 @@ export default function Contact() {
                   className={styles.address}
                   onClick={() =>
                     openGoogleMaps(
-                      "MoveBox Studio, Unterstrasse 22, 9000 St. Gallen"
+                      "MoveBox Studio, Unterstrasse 22, 9000 St. Gallen",
                     )
                   }
                   style={{ cursor: "pointer" }}
@@ -467,98 +466,7 @@ export default function Contact() {
               </div>
             </article>
 
-            {/* PRIVATE COACHING - UPDATED */}
-            <article className={styles.card} aria-labelledby="coaching-title">
-              <header className={styles.cardHeader} onClick={() => toggle(2)}>
-                <button
-                  className={styles.toggleBtn}
-                  aria-expanded={open[2]}
-                  aria-controls="panel-coaching"
-                  aria-label="Toggle Private Coaching"
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    toggle(2);
-                  }}
-                >
-                  <span className={styles.toggleIcon}>
-                    {open[2] ? "−" : "+"}
-                  </span>
-                </button>
-                <h3 id="coaching-title" className={styles.cardTitle}>
-                  {t.contact.privateCoaching.title}
-                </h3>
-              </header>
-              <div
-                id="panel-coaching"
-                role="region"
-                aria-labelledby="coaching-title"
-                className={styles.cardContent}
-                ref={contentRefs[2]}
-              >
-                <p>{t.contact.privateCoaching.intro}</p>
-
-                <p>
-                  <strong>{t.contact.privateCoaching.availability}</strong>
-                </p>
-                <ul>
-                  {t.contact.privateCoaching.availabilityList.map((item, i) => (
-                    <li key={i}>{item}</li>
-                  ))}
-                </ul>
-
-                <h4>{t.contact.privateCoaching.whatWeWorkOn.title}</h4>
-                <p>{t.contact.privateCoaching.whatWeWorkOn.intro}</p>
-                <ul>
-                  {t.contact.privateCoaching.whatWeWorkOn.items.map(
-                    (item, i) => (
-                      <li key={i}>{item}</li>
-                    )
-                  )}
-                </ul>
-                <p>
-                  <em>{t.contact.privateCoaching.whatWeWorkOn.outro}</em>
-                </p>
-
-                <h4>{t.contact.privateCoaching.prices.title}</h4>
-                <ul>
-                  <li>{t.contact.privateCoaching.prices.nonMembers}</li>
-                  <li>{t.contact.privateCoaching.prices.members}</li>
-                </ul>
-
-                <h4>{t.contact.privateCoaching.packages.title}</h4>
-                <ul>
-                  <li>{t.contact.privateCoaching.packages.package1}</li>
-                  <li>{t.contact.privateCoaching.packages.package2}</li>
-                </ul>
-                <p>
-                  <em>{t.contact.privateCoaching.packages.benefit}</em>
-                </p>
-
-                <h4>{t.contact.privateCoaching.transformation.title}</h4>
-                <p>{t.contact.privateCoaching.transformation.intro}</p>
-                <p>
-                  <strong>
-                    {t.contact.privateCoaching.transformation.includes}
-                  </strong>
-                </p>
-                <ul>
-                  {t.contact.privateCoaching.transformation.includesList.map(
-                    (item, i) => (
-                      <li key={i}>{item}</li>
-                    )
-                  )}
-                </ul>
-                <p>{t.contact.privateCoaching.transformation.contact}</p>
-                <p>{t.contact.privateCoaching.transformation.videoCall}</p>
-
-                <p>
-                  <strong>{t.contact.privateCoaching.closing}</strong>
-                </p>
-                <p>
-                  <strong>{t.contact.privateCoaching.signature}</strong>
-                </p>
-              </div>
-            </article>
+            {/* PRIVATE COACHING */}
 
             {/* COLLABORATORS */}
             <article
@@ -566,19 +474,19 @@ export default function Contact() {
               className={styles.card}
               aria-labelledby="collaborators-title"
             >
-              <header className={styles.cardHeader} onClick={() => toggle(3)}>
+              <header className={styles.cardHeader} onClick={() => toggle(2)}>
                 <button
                   className={styles.toggleBtn}
-                  aria-expanded={open[3]}
+                  aria-expanded={open[2]}
                   aria-controls="panel-collaborators"
                   aria-label="Toggle Collaborators"
                   onClick={(e) => {
                     e.stopPropagation();
-                    toggle(3);
+                    toggle(2);
                   }}
                 >
                   <span className={styles.toggleIcon}>
-                    {open[3] ? "−" : "+"}
+                    {open[2] ? "−" : "+"}
                   </span>
                 </button>
                 <h3 id="collaborators-title" className={styles.cardTitle}>
@@ -590,7 +498,7 @@ export default function Contact() {
                 role="region"
                 aria-labelledby="collaborators-title"
                 className={styles.cardContent}
-                ref={contentRefs[3]}
+                ref={contentRefs[2]}
               >
                 <ul className={styles.collaborationList}>
                   <li>

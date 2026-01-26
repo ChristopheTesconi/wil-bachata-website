@@ -172,8 +172,8 @@ export default function Footer() {
                     currentLocale === "en"
                       ? "/en/legal-notice"
                       : currentLocale === "de"
-                      ? "/de/impressum"
-                      : "/fr/mentions-legales"
+                        ? "/de/impressum"
+                        : "/fr/mentions-legales"
                   }
                   aria-label="Read our legal notice and privacy policy"
                   className={styles.footerLink}
@@ -248,27 +248,34 @@ export default function Footer() {
               <i className="bi bi-phone" aria-hidden="true"></i>
               <span>{t.footer.app}</span>
             </a>
-            <a
-              href="https://www.skool.com/rdf-bachata-fusion-ch-2232/about?ref=8b30f0ec24234217bab5ed45cd07e4d9"
+            {/* <a
+              href="https://eventfrog.ch/en/events.html?searchTerm=Bachata+Lab+St+gallen"
               target="_blank"
               rel="noopener noreferrer"
               className={styles.socialLink}
               aria-label="Join our Skool Community"
-              title="Join our Skool Community"
+              title="EventFrogBachataStGallen"
             >
               <i className="bi bi-people" aria-hidden="true"></i>
               <span>{t.footer.skool}</span>
-            </a>
+            </a> */}
             <a
-              href="https://www.linkedin.com/in/wilfried-tah-54913a273?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"
+              href="https://eventfrog.ch/en/events.html?searchTerm=Bachata+Lab+St+gallen"
               target="_blank"
               rel="noopener noreferrer"
               className={styles.socialLink}
-              aria-label="Connect with Coach Wil on LinkedIn"
+              aria-label="See the events on Eventfrog"
               title="Connect on LinkedIn"
             >
-              <i className="bi bi-linkedin" aria-hidden="true"></i>
-              <span>{t.footer.linkedin}</span>
+              <Image
+                src="/eventfrog_white.png"
+                alt="Wil Bachata - Professional Bachata Dance Classes in St. Gallen"
+                width={18}
+                height={25}
+                priority
+                className={styles.footerImg}
+              />
+              <span>EventFrog</span>
             </a>
           </div>
         </div>

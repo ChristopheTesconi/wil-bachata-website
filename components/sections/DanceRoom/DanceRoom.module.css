@@ -56,7 +56,9 @@
   border-radius: 16px;
   overflow: hidden;
   box-shadow: 0 6px 18px rgba(0, 0, 0, 0.35);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
 }
 
 .card:hover {
@@ -92,7 +94,9 @@
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  transition: background 0.25s ease, transform 0.4s ease;
+  transition:
+    background 0.25s ease,
+    transform 0.4s ease;
 }
 
 .toggleBtn:hover {
@@ -123,7 +127,9 @@
   max-height: 0;
   overflow: hidden;
   opacity: 0;
-  transition: max-height 0.6s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.4s ease;
+  transition:
+    max-height 0.6s cubic-bezier(0.4, 0, 0.2, 1),
+    opacity 0.4s ease;
   padding: 0 1.5rem;
   color: #fff;
 }
@@ -159,6 +165,12 @@
 }
 
 /* Ajout au fichier DanceRoom.module.css - Styles pour les nouvelles sections */
+
+.cardContent h4 {
+  margin-top: 1rem;
+  margin-bottom: 0.5rem;
+  color: #ffcc33;
+}
 
 .cardContent ul {
   list-style-type: disc;

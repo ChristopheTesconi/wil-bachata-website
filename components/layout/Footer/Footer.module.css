@@ -163,6 +163,15 @@
   object-fit: cover;
 }
 
+.footerImg {
+  transition: filter 0s ease;
+}
+
+.socialLink:hover .footerImg {
+  filter: brightness(0) saturate(100%) invert(17%) sepia(93%) saturate(5477%)
+    hue-rotate(270deg) brightness(98%) contrast(103%);
+}
+
 .footerBottom {
   border-top: 1px solid #ddd;
   padding: 1.5rem 1rem;

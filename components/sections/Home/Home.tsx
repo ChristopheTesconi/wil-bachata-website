@@ -8,13 +8,13 @@ import styles from "./Home.module.css";
 import { getDictionary, type Locale } from "@/lib/i18n";
 
 export default function Home() {
-  const [open, setOpen] = useState([false, false, false, false, false]); // 5 éléments
+  const [open, setOpen] = useState([false, false, false, false, false]);
   const contentRefs = [
     useRef<HTMLDivElement>(null),
     useRef<HTMLDivElement>(null),
     useRef<HTMLDivElement>(null),
     useRef<HTMLDivElement>(null),
-    useRef<HTMLDivElement>(null), // 5ème ref
+    useRef<HTMLDivElement>(null),
   ];
   const videoRef = useRef<HTMLVideoElement>(null);
   const pathname = usePathname();
@@ -207,11 +207,11 @@ export default function Home() {
 
   const openGoogleMaps = () => {
     const address = encodeURIComponent(
-      "MoveBox Studio, Unterstrasse 22, 9000 St. Gallen"
+      "MoveBox Studio, Unterstrasse 22, 9000 St. Gallen",
     );
     window.open(
       `https://www.google.com/maps/search/?api=1&query=${address}`,
-      "_blank"
+      "_blank",
     );
   };
 
@@ -304,7 +304,7 @@ export default function Home() {
                       {t.home.weeklyClasses.friday.specialItems.map(
                         (item, i) => (
                           <li key={i}>{item}</li>
-                        )
+                        ),
                       )}
                     </ul>
                   </div>
@@ -312,7 +312,7 @@ export default function Home() {
               </div>
             </article>
 
-            {/* Prices */}
+            {/* Prices - UPDATED WITH LINKS */}
             <article className={styles.card} aria-labelledby="prices-title">
               <header className={styles.cardHeader} onClick={() => toggle(1)}>
                 <button
@@ -365,8 +365,67 @@ export default function Home() {
                     <li key={i}>{item}</li>
                   ))}
                 </ul>
+                <br />
+                <h4 className="directaccess">
+                  {t.home.prices.membershipLinkText}
+                </h4>
                 <p>
-                  <em>({t.home.prices.membershipLink})</em>
+                  <a
+                    href="#danceroom"
+                    onClick={(e) => {
+                      e.preventDefault();
+                      const element = document.getElementById("danceroom");
+                      if (element) {
+                        const navbarHeight = 120;
+                        const elementPosition =
+                          element.getBoundingClientRect().top +
+                          window.pageYOffset;
+                        const offsetPosition = elementPosition - navbarHeight;
+                        window.scrollTo({
+                          top: offsetPosition,
+                          behavior: "smooth",
+                        });
+                      }
+                    }}
+                    className={styles.internalLink}
+                  >
+                    {t.home.prices.membershipLink}
+                  </a>
+                  <br />
+                  <a
+                    href="#danceroom"
+                    onClick={(e) => {
+                      e.preventDefault();
+                      const element =
+                        document.getElementById("private-coaching");
+                      if (element) {
+                        const navbarHeight = 120;
+                        const elementPosition =
+                          element.getBoundingClientRect().top +
+                          window.pageYOffset;
+                        const offsetPosition = elementPosition - navbarHeight;
+                        window.scrollTo({
+                          top: offsetPosition,
+                          behavior: "smooth",
+                        });
+                        // Ouvrir la dernière carte (Private Coaching) après le scroll
+                        setTimeout(() => {
+                          const privateCoachingCard = document.querySelector(
+                            "#private-coaching button",
+                          );
+                          if (
+                            privateCoachingCard &&
+                            privateCoachingCard instanceof HTMLElement
+                          ) {
+                            privateCoachingCard.click();
+                          }
+                        }, 600);
+                      }
+                    }}
+                    className={styles.internalLink}
+                  >
+                    {t.home.prices.privateClassesLink}
+                  </a>
                 </p>
               </div>
             </article>

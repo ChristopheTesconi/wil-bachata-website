@@ -68,7 +68,9 @@
         "Access to the RDF Bachata App (solo training & practice)",
         "Party passes & special events"
       ],
-      "membershipLink": "Direct access to memberships available below"
+      "membershipLinkText": "Direct access to:",
+      "membershipLink": "Membership",
+      "privateClassesLink": "Private Classes"
     },
     "bookings": {
       "title": "📅 Bookings",
@@ -208,9 +210,9 @@
         "RDF Bachata Fusion App – Laboratorium",
         "Bachata Step Challenge – Part 1",
         "Party Passes included:",
-        "• 1× Salsa Ritmo (Workshop + Party)",
-        "• 1× Domingo Latino Party",
-        "• 1× Bachata Loca Party",
+        "1× Salsa Ritmo (Workshop + Party)",
+        "1× Domingo Latino Party",
+        "1× Bachata Loca Party",
         "For dancers who want more classes, more practice & more socials"
       ],
       "price": "💳 190 CHF / month"
@@ -220,13 +222,11 @@
       "description": "240 CHF / month (Limited spots)",
       "items": [
         "Unlimited classes (train as much as you want)",
-        "RDF Bachata Fusion App:",
-        "• Laboratorium",
-        "• Bachata Step Challenge Part 1",
+        "RDF Bachata Fusion App: Laboratorium & Bachata Step Challenge Part 1",
         "Party Passes included:",
-        "• Salsa Ritmo (Workshop + Party)",
-        "• Domingo Latino (2 Party Passes)",
-        "• Bachata Loca (Workshop + Party)",
+        "Salsa Ritmo (Workshop + Party)",
+        "Domingo Latino (2 Party Passes)",
+        "Bachata Loca (Workshop + Party)",
         "1-hour Private Coaching with Coach Wil",
         "The full bachata experience training, guidance & transformation"
       ],
@@ -238,10 +238,46 @@
         "All classes are flexible base on your level; you choose when to attend",
         "Classes are taught in English (and partially in German/Dutch)",
         "Memberships are limited to 30 people in total",
-        "Registration is between the 28th end of the month to 2nd start of the month.",
-        "Non-members can still join classes via EventFrog or at the door (at a higher price)"
+        "Registration is between the 28th end of the month to 2nd start of the month",
+        "Non-members can still join classes via EventFrog or at the door (at a higher price)",
+        "All members get extra classes for 25 CHF instead of 46 CHF",
+        "All members get private classes for 65 CHF/hour instead of 95 CHF/hour (Applies to Classic, Party Bangers, and VIP members)"
       ],
       "eventfrogLink": "https://eventfrog.ch/en/events.html?searchTerm=Bachata+Lab+St+gallen"
+    },
+    "privateCoaching": {
+      "title": "🎯 Private Bachata Coaching",
+      "intro": "Private coaching is available for solo or couple sessions, fully adapted to your level and goals.",
+      "schedule": {
+        "title": "📅 Schedule & Availability",
+        "tueFri": "Tuesday to Friday: 1:00 PM – 5:00 PM",
+        "sat": "Saturday: 10:00 AM – 6:00 PM",
+        "appointment": "On appointment only"
+      },
+      "pricing": {
+        "title": "💳 Private Classes Pricing",
+        "perHour": {
+          "title": "Per Hour",
+          "nonMembersSolo": "Non-Members Solo: 90 CHF",
+          "nonMembersCouple": "Non-Members Couple: 125 CHF",
+          "membersSolo": "Members Solo: 65 CHF",
+          "membersCouple": "Members Couple: 100 CHF"
+        },
+        "package5": {
+          "title": "Package of 5 Hours",
+          "nonMembersSolo": "Non-Members Solo: 72 CHF/hour",
+          "nonMembersCouple": "Non-Members Couple: 120 CHF/hour",
+          "membersSolo": "Members Solo: 60 CHF/hour",
+          "membersCouple": "Members Couple: 95 CHF/hour"
+        },
+        "package10": {
+          "title": "Package of 10 Hours",
+          "nonMembersSolo": "Non-Members Solo: 70 CHF/hour",
+          "nonMembersCouple": "Non-Members Couple: 110 CHF/hour",
+          "membersSolo": "Members Solo: 55 CHF/hour",
+          "membersCouple": "Members Couple: 90 CHF/hour"
+        }
+      }
     }
   },
   "review": {
@@ -289,7 +325,6 @@
         "Or as a couple",
         "Fully adapted to your level and goals"
       ],
-      
       "whatWeWorkOn": {
         "title": "🎯 What We Work On",
         "intro": "Private coaching allows us to focus exactly on what you need:",
@@ -304,16 +339,36 @@
         ],
         "outro": "No waiting, no guessing every minute is tailored to you."
       },
+      "schedule": {
+        "title": "📅 Schedule & Availability",
+        "tueFri": "Tuesday to Friday: 1:00 PM – 5:00 PM",
+        "sat": "Saturday: 10:00 AM – 6:00 PM",
+        "appointment": "On appointment only"
+      },
       "prices": {
-        "title": "💳 Private Classes Prices",
-        "nonMembers": "Non-members: 90 CHF / hour",
-        "members": "Members (Classic, PartyBanger & VIP): 65 CHF / hour"
+        "title": "💳 Private Classes – Pricing Per Hour",
+        "nonMembersTitle": "Non-Members",
+        "nonMembersSolo": "Solo: 90 CHF",
+        "nonMembersCouple": "Couple: 125 CHF",
+        "membersTitle": "Members",
+        "membersSolo": "Solo: 65 CHF",
+        "membersCouple": "Couple: 100 CHF"
       },
       "packages": {
-        "title": "📦 Private Classes Packages",
-        "package1": "Book 4 private classes → Get the 5th FREE",
-        "package2": "Book 10 private classes → 70 CHF per class (instead of 90 CHF)",
-        "benefit": "Perfect if you want consistent progress and long-term results."
+        "package5Title": "📦 Package of 5 Hours",
+        "package5NonMembersTitle": "Non-Members",
+        "package5NonMembersSolo": "Solo: 72 CHF/hour",
+        "package5NonMembersCouple": "Couple: 120 CHF/hour",
+        "package5MembersTitle": "Members",
+        "package5MembersSolo": "Solo: 60 CHF/hour",
+        "package5MembersCouple": "Couple: 95 CHF/hour",
+        "package10Title": "📦 Package of 10 Hours",
+        "package10NonMembersTitle": "Non-Members",
+        "package10NonMembersSolo": "Solo: 70 CHF/hour",
+        "package10NonMembersCouple": "Couple: 110 CHF/hour",
+        "package10MembersTitle": "Members",
+        "package10MembersSolo": "Solo: 55 CHF/hour",
+        "package10MembersCouple": "Couple: 90 CHF/hour"
       },
       "transformation": {
         "title": "🚀 Want a Full Transformation?",
@@ -332,8 +387,8 @@
       "signature": "Coach Wil"
     },
     "contactInfo2": {
-        "collaborationTitle": "Collaborators"
-      }
+      "collaborationTitle": "Collaborators"
+    }
   },
   "faq": {
     "hero": {
@@ -395,8 +450,6 @@
     "facebook": "Facebook",
     "tiktok": "TikTok",
     "app": "App",
-    "skool": "Skool Community",
-    "linkedin": "LinkedIn",
     "copyright": "All rights reserved",
     "designCredit": "This website was designed and created by christophetesconidev.com"
   }

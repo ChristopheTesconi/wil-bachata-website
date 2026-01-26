@@ -7,13 +7,14 @@ import styles from "./DanceRoom.module.css";
 import { getDictionary, type Locale } from "@/lib/i18n";
 
 export default function DanceRoom() {
-  const [open, setOpen] = useState([false, false, false, false, false]);
+  const [open, setOpen] = useState([false, false, false, false, false, false]); // 6 éléments maintenant
   const contentRefs = [
     useRef<HTMLDivElement>(null),
     useRef<HTMLDivElement>(null),
     useRef<HTMLDivElement>(null),
     useRef<HTMLDivElement>(null),
     useRef<HTMLDivElement>(null),
+    useRef<HTMLDivElement>(null), // 6ème ref
   ];
   const pathname = usePathname();
 
@@ -324,9 +325,326 @@ export default function DanceRoom() {
                 </p>
               </div>
             </article>
+
+            {/* PRIVATE COACHING - UPDATED */}
+            <article
+              className={styles.card}
+              aria-labelledby="coaching-title"
+              id="private-coaching"
+            >
+              <header className={styles.cardHeader} onClick={() => toggle(5)}>
+                <button
+                  className={styles.toggleBtn}
+                  aria-expanded={open[5]}
+                  aria-controls="panel-coaching"
+                  aria-label="Toggle Private Coaching"
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    toggle(5);
+                  }}
+                >
+                  <span className={styles.toggleIcon}>
+                    {open[5] ? "−" : "+"}
+                  </span>
+                </button>
+                <h3 id="coaching-title" className={styles.cardTitle}>
+                  {t.contact.privateCoaching.title}
+                </h3>
+              </header>
+              <div
+                id="panel-coaching"
+                role="region"
+                aria-labelledby="coaching-title"
+                className={styles.cardContent}
+                ref={contentRefs[5]}
+              >
+                <p>{t.contact.privateCoaching.intro}</p>
+
+                <p>
+                  <strong>{t.contact.privateCoaching.availability}</strong>
+                </p>
+                <ul>
+                  {t.contact.privateCoaching.availabilityList.map((item, i) => (
+                    <li key={i}>{item}</li>
+                  ))}
+                </ul>
+
+                <h4>{t.contact.privateCoaching.whatWeWorkOn.title}</h4>
+                <p>{t.contact.privateCoaching.whatWeWorkOn.intro}</p>
+                <ul>
+                  {t.contact.privateCoaching.whatWeWorkOn.items.map(
+                    (item, i) => (
+                      <li key={i}>{item}</li>
+                    ),
+                  )}
+                </ul>
+                <p>
+                  <em>{t.contact.privateCoaching.whatWeWorkOn.outro}</em>
+                </p>
+
+                {/* Schedule & Availability - NEW */}
+                <h4>{t.contact.privateCoaching.schedule.title}</h4>
+                <ul>
+                  <li>{t.contact.privateCoaching.schedule.tueFri}</li>
+                  <li>{t.contact.privateCoaching.schedule.sat}</li>
+                  <li>
+                    <strong>
+                      {t.contact.privateCoaching.schedule.appointment}
+                    </strong>
+                  </li>
+                </ul>
+
+                {/* Pricing Per Hour - UPDATED */}
+                <h4>{t.contact.privateCoaching.prices.title}</h4>
+                <p>
+                  <strong>
+                    {t.contact.privateCoaching.prices.nonMembersTitle}
+                  </strong>
+                </p>
+                <ul>
+                  <li>{t.contact.privateCoaching.prices.nonMembersSolo}</li>
+                  <li>{t.contact.privateCoaching.prices.nonMembersCouple}</li>
+                </ul>
+                <p>
+                  <strong>
+                    {t.contact.privateCoaching.prices.membersTitle}
+                  </strong>
+                </p>
+                <ul>
+                  <li>{t.contact.privateCoaching.prices.membersSolo}</li>
+                  <li>{t.contact.privateCoaching.prices.membersCouple}</li>
+                </ul>
+
+                {/* Package of 5 Hours - UPDATED */}
+                <h4>{t.contact.privateCoaching.packages.package5Title}</h4>
+                <p>
+                  <strong>
+                    {t.contact.privateCoaching.packages.package5NonMembersTitle}
+                  </strong>
+                </p>
+                <ul>
+                  <li>
+                    {t.contact.privateCoaching.packages.package5NonMembersSolo}
+                  </li>
+                  <li>
+                    {
+                      t.contact.privateCoaching.packages
+                        .package5NonMembersCouple
+                    }
+                  </li>
+                </ul>
+                <p>
+                  <strong>
+                    {t.contact.privateCoaching.packages.package5MembersTitle}
+                  </strong>
+                </p>
+                <ul>
+                  <li>
+                    {t.contact.privateCoaching.packages.package5MembersSolo}
+                  </li>
+                  <li>
+                    {t.contact.privateCoaching.packages.package5MembersCouple}
+                  </li>
+                </ul>
+
+                {/* Package of 10 Hours - UPDATED */}
+                <h4>{t.contact.privateCoaching.packages.package10Title}</h4>
+                <p>
+                  <strong>
+                    {
+                      t.contact.privateCoaching.packages
+                        .package10NonMembersTitle
+                    }
+                  </strong>
+                </p>
+                <ul>
+                  <li>
+                    {t.contact.privateCoaching.packages.package10NonMembersSolo}
+                  </li>
+                  <li>
+                    {
+                      t.contact.privateCoaching.packages
+                        .package10NonMembersCouple
+                    }
+                  </li>
+                </ul>
+                <p>
+                  <strong>
+                    {t.contact.privateCoaching.packages.package10MembersTitle}
+                  </strong>
+                </p>
+                <ul>
+                  <li>
+                    {t.contact.privateCoaching.packages.package10MembersSolo}
+                  </li>
+                  <li>
+                    {t.contact.privateCoaching.packages.package10MembersCouple}
+                  </li>
+                </ul>
+
+                {/* Transformation Program */}
+                <h4>{t.contact.privateCoaching.transformation.title}</h4>
+                <p>{t.contact.privateCoaching.transformation.intro}</p>
+                <p>
+                  <strong>
+                    {t.contact.privateCoaching.transformation.includes}
+                  </strong>
+                </p>
+                <ul>
+                  {t.contact.privateCoaching.transformation.includesList.map(
+                    (item, i) => (
+                      <li key={i}>{item}</li>
+                    ),
+                  )}
+                </ul>
+                <p>{t.contact.privateCoaching.transformation.contact}</p>
+                <p>{t.contact.privateCoaching.transformation.videoCall}</p>
+
+                <p>
+                  <strong>{t.contact.privateCoaching.closing}</strong>
+                </p>
+                <p>
+                  <strong>{t.contact.privateCoaching.signature}</strong>
+                </p>
+              </div>
+            </article>
           </div>
         </section>
       </main>
     </>
   );
 }
+
+{
+  /* Private Coaching - NEW SECTION */
+}
+// <article
+//   className={styles.card}
+//   aria-labelledby="private-coaching-title"
+//   id="private-coaching"
+// >
+//   <header className={styles.cardHeader} onClick={() => toggle(5)}>
+//     <button
+//       className={styles.toggleBtn}
+//       aria-expanded={open[5]}
+//       aria-controls="panel-private-coaching"
+//       aria-label="Toggle Private Coaching"
+//       onClick={(e) => {
+//         e.stopPropagation();
+//         toggle(5);
+//       }}
+//     >
+//       <span className={styles.toggleIcon}>
+//         {open[5] ? "−" : "+"}
+//       </span>
+//     </button>
+//     <h3 id="private-coaching-title" className={styles.cardTitle}>
+//       {t.danceroom.privateCoaching.title}
+//     </h3>
+//   </header>
+//   <div
+//     id="panel-private-coaching"
+//     role="region"
+//     aria-labelledby="private-coaching-title"
+//     className={styles.cardContent}
+//     ref={contentRefs[5]}
+//   >
+//     <p>{t.danceroom.privateCoaching.intro}</p>
+
+//     {/* Schedule */}
+//     <h4>{t.danceroom.privateCoaching.schedule.title}</h4>
+//     <ul>
+//       <li>{t.danceroom.privateCoaching.schedule.tueFri}</li>
+//       <li>{t.danceroom.privateCoaching.schedule.sat}</li>
+//       <li>
+//         <strong>
+//           {t.danceroom.privateCoaching.schedule.appointment}
+//         </strong>
+//       </li>
+//     </ul>
+
+//     {/* Pricing */}
+//     <h4>{t.danceroom.privateCoaching.pricing.title}</h4>
+
+//     {/* Per Hour */}
+//     <p>
+//       <strong>
+//         {t.danceroom.privateCoaching.pricing.perHour.title}
+//       </strong>
+//     </p>
+//     <ul>
+//       <li>
+//         {t.danceroom.privateCoaching.pricing.perHour.nonMembersSolo}
+//       </li>
+//       <li>
+//         {
+//           t.danceroom.privateCoaching.pricing.perHour
+//             .nonMembersCouple
+//         }
+//       </li>
+//       <li>
+//         {t.danceroom.privateCoaching.pricing.perHour.membersSolo}
+//       </li>
+//       <li>
+//         {t.danceroom.privateCoaching.pricing.perHour.membersCouple}
+//       </li>
+//     </ul>
+
+//     {/* Package 5 */}
+//     <p>
+//       <strong>
+//         {t.danceroom.privateCoaching.pricing.package5.title}
+//       </strong>
+//     </p>
+//     <ul>
+//       <li>
+//         {
+//           t.danceroom.privateCoaching.pricing.package5
+//             .nonMembersSolo
+//         }
+//       </li>
+//       <li>
+//         {
+//           t.danceroom.privateCoaching.pricing.package5
+//             .nonMembersCouple
+//         }
+//       </li>
+//       <li>
+//         {t.danceroom.privateCoaching.pricing.package5.membersSolo}
+//       </li>
+//       <li>
+//         {t.danceroom.privateCoaching.pricing.package5.membersCouple}
+//       </li>
+//     </ul>
+
+//     {/* Package 10 */}
+//     <p>
+//       <strong>
+//         {t.danceroom.privateCoaching.pricing.package10.title}
+//       </strong>
+//     </p>
+//     <ul>
+//       <li>
+//         {
+//           t.danceroom.privateCoaching.pricing.package10
+//             .nonMembersSolo
+//         }
+//       </li>
+//       <li>
+//         {
+//           t.danceroom.privateCoaching.pricing.package10
+//             .nonMembersCouple
+//         }
+//       </li>
+//       <li>
+//         {t.danceroom.privateCoaching.pricing.package10.membersSolo}
+//       </li>
+//       <li>
+//         {
+//           t.danceroom.privateCoaching.pricing.package10
+//             .membersCouple
+//         }
+//       </li>
+//     </ul>
+//   </div>
+// </article>
