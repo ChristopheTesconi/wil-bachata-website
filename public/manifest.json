@@ -1,0 +1,33 @@
+{
+  "name": "RDF Bachata Fusion - Professional Bachata Dance Classes",
+  "short_name": "RDF Bachata",
+  "description": "Professional Bachata Dance Classes by Wilfried",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#E91E63",
+  "theme_color": "#E91E63",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/favicon_512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/rdf_fav.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "/favicon_512x512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ],
+  "categories": ["education", "entertainment", "lifestyle"],
+  "lang": "en"
+}

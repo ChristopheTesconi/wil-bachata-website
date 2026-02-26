@@ -1,0 +1,209 @@
+/* Global DanceRoom */
+.danceRoom {
+  padding: 3rem 2rem;
+  background: linear-gradient(to bottom, #000000 40%, #aa01ff 100%);
+
+  color: #fff;
+}
+
+/* Hero */
+.hero {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.hero h1 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #ffcc33;
+}
+
+.hero h2 {
+  font-size: 1.25rem;
+  color: #aa01ff;
+  margin-top: 1rem;
+}
+
+/* Cards Grid */
+.cardsSection {
+  margin-bottom: 3rem;
+  display: flex;
+  justify-content: center;
+}
+
+.cardsGrid {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  width: 70%;
+  max-width: 100%;
+}
+
+.cardsGrid article {
+  width: 100%;
+  align-self: flex-start;
+}
+
+@media (max-width: 992px) {
+  .cardsGrid {
+    width: 100%;
+  }
+}
+
+/* Card */
+.card {
+  background: #111;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.35);
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 24px rgba(255, 255, 255, 0.08);
+}
+
+/* Header */
+.cardHeader {
+  display: flex;
+  align-items: center;
+  padding: 1rem 1.5rem;
+  cursor: pointer;
+  user-select: none;
+}
+
+.cardHeader:hover .cardTitle {
+  color: #aa01ff;
+  transition: color 0.3s ease;
+}
+
+/* Toggle Button */
+.toggleBtn {
+  background: #222;
+  color: #fff;
+  border: none;
+  border-radius: 50%;
+  width: 2.2rem;
+  height: 2.2rem;
+  font-size: 1.2rem;
+  margin-right: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition:
+    background 0.25s ease,
+    transform 0.4s ease;
+}
+
+.toggleBtn:hover {
+  background: #333;
+  transform: scale(1.1);
+}
+
+.toggleIcon {
+  display: inline-block;
+  transition: transform 0.4s ease;
+}
+
+[aria-expanded="true"] .toggleIcon {
+  transform: rotate(180deg);
+}
+
+/* Card title */
+.cardTitle {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin: 0;
+  color: #fff;
+  transition: color 0.3s ease;
+}
+
+/* Card content */
+.cardContent {
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  transition:
+    max-height 0.6s cubic-bezier(0.4, 0, 0.2, 1),
+    opacity 0.4s ease;
+  padding: 0 1.5rem;
+  color: #fff;
+}
+
+.cardContent[style*="max-height:"][style*="px"] {
+  opacity: 1;
+}
+
+.cardContent p,
+.cardContent li {
+  margin-bottom: 0.75rem;
+  color: #fff;
+}
+
+.cardContent ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+.cardContent ul li {
+  color: #fff;
+}
+
+.cardContent strong,
+.cardContent em {
+  color: #fff;
+}
+
+/* Outro */
+.outro {
+  text-align: center;
+  margin-top: 3;
+}
+
+/* Ajout au fichier DanceRoom.module.css - Styles pour les nouvelles sections */
+
+.cardContent h4 {
+  margin-top: 1rem;
+  margin-bottom: 0.5rem;
+  color: #ffcc33;
+}
+
+.cardContent ul {
+  list-style-type: disc;
+  padding-left: 1.5rem;
+  margin: 0.75rem 0;
+}
+
+.cardContent li {
+  margin-bottom: 0.5rem;
+  line-height: 1.6;
+  color: #fff;
+}
+
+.description {
+  font-weight: 600;
+  color: #ffcc33;
+  margin-bottom: 0.75rem;
+}
+
+.price {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #aa01ff;
+  margin-top: 1rem;
+}
+
+.cardContent a {
+  color: #aa01ff;
+  text-decoration: underline;
+  transition: color 0.3s ease;
+  word-break: break-all;
+}
+
+.cardContent a:hover {
+  color: #ffcc33;
+}

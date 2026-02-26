@@ -1,0 +1,142 @@
+/* Cards Section */
+.cardsSection {
+  margin-bottom: 3rem;
+  display: flex;
+  justify-content: center;
+  padding: 0 1rem;
+  background: #aa01ff;
+  padding-bottom: 0.5rem;
+}
+
+.cardsGrid {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  width: 70%;
+  max-width: 100%;
+}
+
+@media (max-width: 992px) {
+  .cardsGrid {
+    width: 100%;
+  }
+}
+
+/* Card */
+.card {
+  background: #111;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.35);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 24px rgba(255, 255, 255, 0.08);
+}
+
+/* Header */
+.cardHeader {
+  display: flex;
+  align-items: center;
+  padding: 1rem 1.5rem;
+  cursor: pointer;
+  user-select: none;
+}
+
+.cardHeader:hover .cardTitle {
+  color: #aa01ff;
+  transition: color 0.3s ease;
+}
+
+/* Toggle Button */
+.toggleBtn {
+  background: #222;
+  color: #fff;
+  border: none;
+  border-radius: 50%;
+  width: 2.2rem;
+  height: 2.2rem;
+  font-size: 1.2rem;
+  margin-right: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background 0.25s ease, transform 0.4s ease;
+}
+
+.toggleBtn:hover {
+  background: #333;
+  transform: scale(1.1);
+}
+
+/* Toggle Icon Animation */
+.toggleIcon {
+  display: inline-block;
+  transition: transform 0.4s ease;
+}
+
+[aria-expanded="true"] .toggleIcon {
+  transform: rotate(180deg);
+}
+
+/* Card Title */
+.cardTitle {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin: 0;
+  color: #fff;
+  transition: color 0.3s ease;
+}
+
+/* Card Content */
+.cardContent {
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  transition: max-height 0.6s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.4s ease;
+  padding: 0 1.5rem;
+}
+
+.cardContent[style*="max-height:"][style*="px"] {
+  opacity: 1;
+}
+
+/* Videos Container */
+.videosContainer {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.5rem;
+  padding: 1.5rem 0;
+}
+
+@media (max-width: 768px) {
+  .videosContainer {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Video Wrapper */
+.videoWrapper {
+  position: relative;
+  width: 100%;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.videoWrapper:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 20px rgba(170, 1, 255, 0.4);
+}
+
+/* Video */
+.video {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 12px;
+}

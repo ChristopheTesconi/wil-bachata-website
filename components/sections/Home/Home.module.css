@@ -1,0 +1,342 @@
+/* Global Home */
+.home {
+  padding: 6rem 2rem;
+  background-color: #000;
+  color: #fff;
+}
+
+/* Hero */
+.hero {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.hero h1 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #ffcc33;
+}
+
+.hero h1 span {
+  display: block;
+  font-size: 1.8rem;
+  color: #1cb0f6;
+}
+
+.hero h2 {
+  font-size: 1.25rem;
+  color: #aa01ff;
+}
+
+/* --- Cards Flexbox --- */
+.cardsSection {
+  margin-bottom: 3rem;
+  display: flex;
+  justify-content: center;
+  background: linear-gradient(to bottom, #000000 40%, #aa01ff 100%);
+  padding-bottom: 0.5rem;
+}
+
+.cardsGrid {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  /* Modifier la largeur des cartes ici (ex: 70%, 80%, 900px, etc.) */
+  width: 70%;
+  max-width: 100%;
+}
+
+.cardsGrid article {
+  width: 100%;
+  align-self: flex-start;
+}
+
+@media (max-width: 992px) {
+  .cardsGrid {
+    width: 100%;
+  }
+}
+
+/* --- Card --- */
+.card {
+  background: #111;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.35);
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 24px rgba(255, 255, 255, 0.08);
+}
+
+/* Header */
+.cardHeader {
+  display: flex;
+  align-items: center;
+  padding: 1rem 1.5rem;
+  cursor: pointer;
+  user-select: none;
+}
+
+.cardHeader:hover .cardTitle {
+  color: #aa01ff;
+  transition: color 0.3s ease;
+}
+
+/* Bouton rond + animation rotation */
+.toggleBtn {
+  background: #222;
+  color: #fff;
+  border: none;
+  border-radius: 50%;
+  width: 2.2rem;
+  height: 2.2rem;
+  font-size: 1.2rem;
+  margin-right: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition:
+    background 0.25s ease,
+    transform 0.4s ease;
+}
+
+.toggleBtn:hover {
+  background: #333;
+  transform: scale(1.1);
+}
+
+/* Animation rotation + → – */
+.toggleIcon {
+  display: inline-block;
+  transition: transform 0.4s ease;
+}
+
+[aria-expanded="true"] .toggleIcon {
+  transform: rotate(180deg);
+}
+
+/* Titre de la carte */
+.cardTitle {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin: 0;
+  color: #fff;
+  transition: color 0.3s ease;
+}
+
+/* --- Contenu animé --- */
+.cardContent {
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  transition:
+    max-height 0.6s cubic-bezier(0.4, 0, 0.2, 1),
+    opacity 0.4s ease;
+  padding: 0 1.5rem;
+  color: #fff;
+}
+
+/* Quand JS applique un max-height > 0 */
+.cardContent[style*="max-height:"][style*="px"] {
+  opacity: 1;
+}
+
+/* Texte du contenu */
+.cardContent p,
+.cardContent li,
+.cardContent address {
+  margin-bottom: 0.75rem;
+  color: #fff;
+}
+
+.cardContent ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+.cardContent ul li {
+  color: #fff;
+}
+
+.cardContent strong,
+.cardContent em {
+  color: #fff;
+}
+
+.cardContent h4 {
+  font-size: 1.25rem;
+  color: #aa01ff !important;
+}
+
+/* Lien EventFrog dans la carte Bookings */
+.eventfrogLink {
+  color: #1cb0f6 !important;
+  text-decoration: underline;
+  word-break: break-all;
+  display: inline-block;
+  margin-top: 0.5rem;
+  margin-bottom: 1rem; /* ← Ajout du margin en dessous */
+  transition: color 0.3s ease;
+}
+
+.eventfrogLink:hover {
+  color: #ffcc33 !important;
+  text-decoration: none;
+}
+
+/* Liens internes (Membership, Private Classes) */
+.internalLink {
+  color: #ffcc33 !important;
+  text-decoration: none;
+  font-weight: 600;
+  display: inline-block;
+  margin-top: 0.5rem;
+  transition:
+    color 0.3s ease,
+    transform 0.2s ease;
+}
+
+.internalLink:hover {
+  color: #aa01ff !important;
+  transform: translateX(5px);
+}
+
+/* S'assurer que les liens dans cardContent sont visibles */
+.cardContent a {
+  color: #ffcc33 !important;
+  /* text-decoration: underline; */
+}
+
+.cardContent a:hover {
+  color: #aa01ff !important;
+}
+
+/* Élément de classe */
+.classItem {
+  margin-bottom: 1.5rem;
+  padding-bottom: 1.5rem;
+}
+
+.classItem:last-child {
+  margin-bottom: 0;
+  padding-bottom: 1rem;
+}
+
+.classItem h4 {
+  color: #fff;
+  margin-bottom: 0.5rem;
+}
+
+/* Adresse */
+.address {
+  font-style: normal;
+  color: black !important;
+  margin-bottom: 1rem;
+  padding: 1rem;
+  background:
+    linear-gradient(rgba(255, 255, 255, 0.65), rgba(255, 255, 255, 0.65)),
+    url("/gm_background.png") center center / cover no-repeat;
+  border-radius: 12px;
+  transition: all 0.3s ease;
+  display: inline-block;
+  font-weight: 500;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+}
+
+.address:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(170, 1, 255, 0.4);
+}
+
+.address:active {
+  transform: translateY(0);
+}
+
+.mapIcon {
+  font-size: 1.2rem;
+  margin-right: 0.5rem;
+}
+
+/* Friday special highlight */
+.friday {
+  border-left: 4px solid #dc3545;
+  padding-left: 0.75rem;
+  margin-top: 1rem;
+  color: #fff;
+}
+
+.friday p,
+.friday em,
+.friday strong {
+  color: #fff;
+}
+
+/* Outro */
+.outro {
+  text-align: center;
+  margin-top: 3rem;
+  color: #fff;
+}
+
+.outro h2,
+.outro p,
+.outro strong {
+  color: #fff;
+}
+/* Video wrapper pour responsive */
+.videoWrapper {
+  position: relative;
+  width: 100%;
+  margin-bottom: 1rem;
+}
+
+.videoWrapper video {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+/* --- Outro image responsive --- */
+.outroImage :global(img) {
+  width: 90%;
+  height: auto;
+  max-width: 1200px;
+}
+/* Ajout pour les listes à puces - Weekly Classes */
+
+.cardContent ul {
+  list-style-type: disc;
+  padding-left: 1.5rem;
+  margin: 0.5rem 0;
+}
+
+.cardContent li {
+  margin-bottom: 0.5rem;
+  line-height: 1.6;
+}
+
+.classItem ul {
+  margin-top: 0.75rem;
+}
+
+.classItem .time {
+  font-weight: 600;
+  color: var(--accent-color, #e63946);
+  margin: 0.25rem 0;
+}
+
+.friday ul {
+  margin-top: 0.5rem;
+}
+@media (min-width: 1024px) {
+  .outroImage :global(img) {
+    width: 70%;
+  }
+}
